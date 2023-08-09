@@ -1,25 +1,14 @@
-import logo from './logo.svg';
-import './App.scss';
+import React, {useState} from "react";
+import RoutingLogin from "./routers/routes-sign-in/RoutingLogin";
 
-function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+export default function App() {
+    const [currentUser, setCurrentUser] = useState(null);
+
+    return (
+        currentUser ?
+        <div>
+            <h1>El usuario esta logueado</h1>
+        </div>
+        : <RoutingLogin/>
+    )
 }
-
-export default App;
