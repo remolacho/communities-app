@@ -1,12 +1,19 @@
 import React from "react";
-import { Link } from 'react-router-dom'
+import { Container, Row, Col } from "react-bootstrap";
+import SignInForm from "../../../components/users/forms/SignInForm";
+
+import "./SignIn.scss"
 
 function SignIn(props){
     return (
-        <div>
-            <h1>Se debe loguear</h1>
-        </div>
-    )
+        <Container>
+            <Row>
+                <Col md={{ span: 6, offset: 3 }} className={"sign-in-body"}>
+                    <SignInForm/>
+                </Col>
+            </Row>
+        </Container>
+    );
 }
 
 export default SignIn
