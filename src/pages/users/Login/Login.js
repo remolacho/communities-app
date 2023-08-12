@@ -1,19 +1,21 @@
 import React from "react";
 import { Container, Row, Col } from "react-bootstrap";
+import SignInForm from "../../../components/users/forms/SignInForm";
 
-import ForgotPasswordForm from "../../components/users/forms/ForgotPasswordForm";
-import "./ForgotPassword.scss"
+import "./Login.scss"
 
-function ForgotPassword(){
+function Login(props){
+    const {setCallLogin } = props
+
     return (
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }} className={"home-login"}>
-                    <ForgotPasswordForm/>
+                    <SignInForm setCallLogin={setCallLogin}/>
                 </Col>
             </Row>
         </Container>
     );
 }
 
-export default ForgotPassword
+export default Login
