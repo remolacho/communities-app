@@ -1,8 +1,9 @@
-import {API_HOST, V1_API, LANG} from "../../../utils/variablesApi"
+import {API_HOST} from "../../../utils/variablesApi"
 import {getSubdomainApi} from "../../Auth/authEnterprise";
+import {getLang} from "../../Auth/authLang";
 
 export function signInService(formData) {
-    const url = `${API_HOST}/${getSubdomainApi()}/${V1_API}/users/sign_in?lang=${LANG}`;
+    const url = `${API_HOST}/${getSubdomainApi()}/v1/users/sign_in?lang=${getLang()}`;
     const user = parseUser(formData);
 
     return fetch(url, params(user)).then(response => {

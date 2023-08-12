@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import {toast} from "react-toastify"
 import {validFormSignIn} from "../../../../utils/validations/signIn"
 import {signInService} from "../../../../services/users/SignIn/signInService";
-import {setTokenApi} from "../../../../services/Auth/auth"
+import {setTokenApi} from "../../../../services/Auth/authUser"
 
 import Logo from "../../../../assets/png/logo2.png";
 
