@@ -1,6 +1,6 @@
 @import "../../../../scss/index";
 
-.sign-in-form {
+.subdomain-form {
   h2{
     font-weight: bold;
     margin-bottom: 20px;
@@ -21,7 +21,6 @@
     font-weight: bold;
     padding: 10px;
     border-radius: 50px;
-    margin-top: 20px;
 
     .spinner-border {
       width: 25px;
@@ -30,10 +29,15 @@
   }
 
   .row{
-    margin-top: 20px;
+    margin-top: 5px;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-left: 60px;
+  }
+
+  .col{
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
