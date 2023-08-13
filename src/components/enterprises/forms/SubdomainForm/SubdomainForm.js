@@ -1,12 +1,13 @@
 import React, {useState} from "react";
-import {Form, Button} from "react-bootstrap";
+import {Form, Button, Spinner} from "react-bootstrap";
 
 import Logo from "../../../../assets/png/logo2.png";
 
 import "./SubdomainForm.scss"
-import {setSubdomainApi} from "../../../../services/Auth/authEnterprise";
+import {setSubdomainApi} from "../../../../services/Auth/authSubdomain";
 import {toast} from "react-toastify";
 import {SUBDOMAIN} from "../../../../utils/variablesApi";
+import {validSubdomainService} from "../../../../services/enterprises/Subdomain/validSubdomainService";
 
 function initialAttributes(){
     return {
@@ -17,6 +18,7 @@ function initialAttributes(){
 export default function SubdomainForm(props){
     const { setCallLogin } = props;
     const [formData, setFormData] = useState(initialAttributes())
+    const [btnLoading, setBtnLoading] = useState(false)
 
     const onChance = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -25,13 +27,22 @@ export default function SubdomainForm(props){
     const onSubmit = e =>{
         e.preventDefault();
 
-        if(formData.subdomain !== SUBDOMAIN){
-            toast.error("Subdominio Invalido", {theme: "colored"});
-            return
-        }
+        setBtnLoading(true)
 
-        setSubdomainApi(formData.subdomain)
-        setCallLogin(true)
+        validSubdomainService(formData.subdomain).then(response => {
+            if (!response.success) {
+                toast.warning(response.message, {theme: "colored"});
+                return null
+            }
+
+            toast.success(response.message, {theme: "colored"});
+            setSubdomainApi(formData.subdomain)
+            setCallLogin(true)
+        }).catch(() =>{
+            toast.error("Error del servidor", {theme: "colored"});
+        }).finally(() =>{
+            setBtnLoading(false);
+        })
     }
 
     return (
@@ -48,8 +59,8 @@ export default function SubdomainForm(props){
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    Iniciar
+                <Button variant="primary" type="submit" disabled={btnLoading}>
+                    {!btnLoading ? "Iniciar" : <Spinner animation="border"/> }
                 </Button>
             </Form>
         </div>

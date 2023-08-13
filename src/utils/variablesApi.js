@@ -4,3 +4,4 @@ export const ENTERPRISE_KEY = "subdomain";
 export const SUBDOMAIN = "altos-de-berlin";
 export const LANG_KEY = "lang";
 export const LANG = "es";
+export const ENTERPRISE_SETTING = "enterprise"
