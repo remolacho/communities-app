@@ -10,7 +10,7 @@ export function userLoggedApi(){
 
     if (!token) return null;
 
-    if (isExpiredToken(token)) return logoutUser();
+    if (isExpiredToken(token)) return removeJwt();
 
     return jwtDecode(token);
 }
@@ -20,10 +20,8 @@ export function getTokenApi() {
 }
 
 export function logoutUser(){
-    localStorage.removeItem(JWT);
-    localStorage.removeItem(ENTERPRISE_KEY);
-    localStorage.removeItem(ENTERPRISE_SETTING);
-
+    removeJwt();
+    clearCookies();
     return null
 }
 
@@ -35,4 +33,13 @@ export function isExpiredToken(token){
     const timeOut = expired - Date.now();
 
     return timeOut < 0
+}
+
+function clearCookies(){
+    localStorage.removeItem(ENTERPRISE_KEY);
+    localStorage.removeItem(ENTERPRISE_SETTING);
+}
+
+function removeJwt(){
+    localStorage.removeItem(JWT);
 }
