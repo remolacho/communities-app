@@ -4,14 +4,12 @@ import SignUpForm from "../../../components/users/forms/SignUpForm";
 
 import "./SignUp.scss"
 
-function SignUp(props){
-    const {setCallLogin } = props
-
+function SignUp(){
     return (
         <Container>
             <Row>
                 <Col md={{ span: 6, offset: 3 }} className={"sign-up-page"}>
-                    <SignUpForm setCallLogin={setCallLogin}/>
+                    <SignUpForm/>
                 </Col>
             </Row>
         </Container>

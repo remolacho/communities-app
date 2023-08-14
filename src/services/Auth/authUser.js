@@ -1,4 +1,4 @@
-import {ENTERPRISE_KEY, ENTERPRISE_SETTING, JWT, SUBDOMAIN} from "../../utils/variablesApi"
+import {ENTERPRISE_KEY, ENTERPRISE_SETTING, JWT} from "../../utils/variablesApi"
 import jwtDecode from "jwt-decode";
 
 export function setTokenApi(token){

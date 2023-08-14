@@ -23,10 +23,10 @@ export function validFormSignUp(data){
         return result;
     }
 
-    if(!isReferenceValid(data)){
-        result.message = "El referencia debe tener esta estructura T4-P11-A1102, las letras de inicio Son T-P-A. Respetar guiones y mayusculas esto hace referencia a la ubuicacion del apartamento";
-        return result;
-    }
+    // if(!isReferenceValid(data)){
+    //     result.message = "El referencia debe tener esta estructura T4-P11-A1102, las letras de inicio Son T-P-A. Respetar guiones y mayusculas esto hace referencia a la ubuicacion del apartamento";
+    //     return result;
+    // }
 
     if(!isPhoneValid(data)){
         result.message = "El telefono debe tener esta estructura 3174131178, minimo 8 digitos maximo 15";
@@ -73,10 +73,10 @@ function isEmailValid(data) {
     return pattern.test(String(data.email).toLowerCase())
 }
 
-function isReferenceValid(data) {
-    const pattern = /^(T[0-4]-P(0?[0-9]|1[0-6])-A([0-8]{1,4}|1608))$/
-    return pattern.test(String(data.reference))
-}
+// function isReferenceValid(data) {
+//     const pattern = /^T[0-4]-P(1[0-6]|[1-9])-A((10[1-8])|(20[1-8])|(30[1-8])|(40[1-8])|(50[1-8])|(60[1-8])|(70[1-8])|(80[1-8])|(90[1-8])|(100[1-8])|(110[1-8])|(120[1-8])|(130[1-8])|(140[1-8])|(150[1-8])|(160[1-8]))$/
+//     return pattern.test(String(data.reference))
+// }
 
 function isPhoneValid(data) {
     const minDigits = 8;

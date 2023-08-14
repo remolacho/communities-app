@@ -1,6 +1,4 @@
 import {API_HOST} from "../../../utils/variablesApi"
-import {getSubdomainApi} from "../../Auth/authSubdomain";
-import {getLang} from "../../Auth/authLang";
 
 export function validSubdomainService(subdomain) {
     const url = `${API_HOST}/${subdomain}/v1/enterprise/subdomain`;

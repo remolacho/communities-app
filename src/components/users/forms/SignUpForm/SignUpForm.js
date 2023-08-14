@@ -3,9 +3,10 @@ import {Form, Button, Spinner, Row, Col} from "react-bootstrap";
 import { Link } from 'react-router-dom'
 import {toast} from "react-toastify"
 import {validFormSignUp} from "../../../../utils/validations/signUp"
+import { useNavigate } from 'react-router-dom';
+import {signUpService} from "../../../../services/users/SignUp/signUpService";
 
 import Logo from "../../../../assets/png/logo2.png";
-
 import "./SignUpForm.scss"
 
 function initialAttributes(){
@@ -24,6 +25,7 @@ function initialAttributes(){
 export default function SignUpForm(){
     const [formData, setFormData] = useState(initialAttributes())
     const [btnLoading, setBtnLoading] = useState(false)
+    const navigate = useNavigate()
 
     const onChance = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -39,9 +41,23 @@ export default function SignUpForm(){
             return
         }
 
-        console.log(formData);
-
         setBtnLoading(true)
+
+        signUpService(formData).then(response => {
+            if (!response.success) {
+                toast.error(response.message, {theme: "colored"});
+                return null
+            }
+
+            toast.success(response.message, {theme: "colored"});
+            setFormData(initialAttributes);
+
+            navigate('/')
+        }).catch(() =>{
+            toast.error("Error del servidor", {theme: "colored"});
+        }).finally(() =>{
+            setBtnLoading(false);
+        })
     }
 
     return (

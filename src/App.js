@@ -7,27 +7,20 @@ import {userLoggedApi} from "./services/Auth/authUser";
 import {getSubdomainApi} from "./services/Auth/authSubdomain";
 import Subdomain from "./pages/Subdomain";
 import {setLang} from "./services/Auth/authLang";
-import {enterpriseApi} from "./services/Auth/authEnterprise"
 
 import {Button} from "react-bootstrap";
 import {logoutUser} from "./services/Auth/authUser";
 
 export default function App() {
     const [currentUser, setCurrentUser] = useState(null);
-    const [currentEnterprise, setCurrentEnterprise] = useState(null);
     const [callLogin, setCallLogin] = useState(false);
     const [loadApp, setLoadApp] = useState(false);
 
-    console.log("fuera del useEffect", callLogin)
-
     useEffect(() => {
         setLang(LANG)
-        console.log("dentro del useEffect", callLogin)
         setCurrentUser(userLoggedApi());
-        setCurrentEnterprise(enterpriseApi());
         setLoadApp(true);
         setCallLogin(false);
-        console.log("dentro del useEffect post setCallLogin", callLogin)
     }, [callLogin])
 
     if (!loadApp) return null;
@@ -38,7 +31,7 @@ export default function App() {
     }
 
     return (
-        <AuthContext.Provider value={{currentUser: currentUser, currentEnterprise: currentEnterprise}}>
+        <AuthContext.Provider value={currentUser}>
             {
                 getSubdomainApi() ?
                     currentUser ?
