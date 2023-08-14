@@ -64,7 +64,7 @@ export default function ForgotPasswordForm(){
                     />
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
+                <Button variant="primary" type="submit" disabled={btnLoading}>
                     {!btnLoading ? "Enviar" : <Spinner animation="border"/> }
                 </Button>
             </Form>

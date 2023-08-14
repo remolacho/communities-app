@@ -1,9 +1,27 @@
-import {ENTERPRISE_KEY} from "../../utils/variablesApi"
+import {ENTERPRISE_SETTING} from "../../utils/variablesApi"
+import {settingEnterpriseService} from "../enterprises/Enterprise/settingEnterpriseService";
+import {userLoggedApi} from "./authUser";
 
-export function setSubdomainApi(subdomain){
-    localStorage.setItem(ENTERPRISE_KEY, subdomain);
+export function enterpriseApi(){
+    if(!userLoggedApi() || getEnterprise()){
+        return null
+    }
+
+    settingEnterpriseService().then(response => {
+        if (!response.success) {
+            return null
+        }
+
+        setEnterprise(response.data.token)
+    }).catch(() =>{
+        return null
+    })
 }
 
-export function getSubdomainApi() {
-    return localStorage.getItem(ENTERPRISE_KEY);
+function setEnterprise(token){
+    localStorage.setItem(ENTERPRISE_SETTING, token);
+}
+
+function getEnterprise() {
+    return localStorage.getItem(ENTERPRISE_SETTING);
 }

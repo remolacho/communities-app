@@ -1,5 +1,6 @@
-import Login from "../../pages/Login";
-import ForgotPassword from "../../pages/ForgotPassword";
+import Login from "../../pages/users/Login";
+import ForgotPassword from "../../pages/users/ForgotPassword";
+import SignUp from "../../pages/users/SignUp";
 
 export default [
     {
@@ -11,6 +12,11 @@ export default [
         path: "users/forgot-password",
         exact: true,
         page: ForgotPassword
+    },
+    {
+        path: "users/sign-up",
+        exact: true,
+        page: SignUp
     },
     {
         path: "/",

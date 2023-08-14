@@ -2,8 +2,8 @@ import {API_HOST} from "../../../utils/variablesApi"
 import {getSubdomainApi} from "../../Auth/authSubdomain";
 import {getLang} from "../../Auth/authLang";
 
-export function signInService(formData) {
-    const url = `${API_HOST}/${getSubdomainApi()}/v1/users/sign_in?lang=${getLang()}`;
+export function signUpService(formData) {
+    const url = `${API_HOST}/${getSubdomainApi()}/v1/users/sign_up?lang=${getLang()}`;
     const user = parseUser(formData);
 
     return fetch(url, params(user)).then(response => {
@@ -16,7 +16,7 @@ export function signInService(formData) {
 }
 
 function parseUser(formData) {
-    return { "sign_in": {
+    return { "sign_up": {
             ...formData,
             email: formData.email.toLowerCase(),
         }
@@ -27,7 +27,7 @@ function params(user) {
     return {
         method: "POST",
         headers: {
-            "Content-Type": "application/json",
+            "Content-Type": "application/json"
         },
         body: JSON.stringify(user),
     }

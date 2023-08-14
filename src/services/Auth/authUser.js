@@ -1,4 +1,4 @@
-import {JWT, SUBDOMAIN} from "../../utils/variablesApi"
+import {ENTERPRISE_KEY, ENTERPRISE_SETTING, JWT} from "../../utils/variablesApi"
 import jwtDecode from "jwt-decode";
 
 export function setTokenApi(token){
@@ -8,9 +8,9 @@ export function setTokenApi(token){
 export function userLoggedApi(){
     const token = getTokenApi()
 
-    if (isExpiredToken(token)){
-       return logoutUser();
-    }
+    if (!token) return null;
+
+    if (isExpiredToken(token)) return logoutUser();
 
     return jwtDecode(token);
 }
@@ -21,7 +21,9 @@ export function getTokenApi() {
 
 export function logoutUser(){
     localStorage.removeItem(JWT);
-    localStorage.removeItem(SUBDOMAIN);
+    localStorage.removeItem(ENTERPRISE_KEY);
+    localStorage.removeItem(ENTERPRISE_SETTING);
+
     return null
 }
 

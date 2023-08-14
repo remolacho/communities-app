@@ -20,7 +20,7 @@ function initialLoginAttributes(){
 export default function SignInForm(props){
     const { setCallLogin } = props;
     const [formData, setFormData] = useState(initialLoginAttributes())
-    const [signInLoading, setSignInLoading] = useState(false)
+    const [btnLoading, setBtnLoading] = useState(false)
 
     const onChance = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -36,7 +36,7 @@ export default function SignInForm(props){
             return
         }
 
-        setSignInLoading(true)
+        setBtnLoading(true)
 
         signInService(formData).then(response => {
             if (!response.success) {
@@ -51,7 +51,7 @@ export default function SignInForm(props){
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         }).finally(() =>{
-            setSignInLoading(false);
+            setBtnLoading(false);
         })
     }
 
@@ -75,8 +75,8 @@ export default function SignInForm(props){
                                   name="password"/>
                 </Form.Group>
 
-                <Button variant="primary" type="submit">
-                    {!signInLoading ? "Iniciar sesion" : <Spinner animation="border"/> }
+                <Button variant="primary" type="submit"  disabled={btnLoading}>
+                    {!btnLoading ? "Iniciar sesion" : <Spinner animation="border"/> }
                 </Button>
             </Form>
 
@@ -85,7 +85,7 @@ export default function SignInForm(props){
                     <Link to="/users/forgot-password">Olvide mi contraseña</Link>
                 </Col>
                 <Col>
-                    <Link to="/">Registrarse</Link>
+                    <Link to="/users/sign-up">Registrarse</Link>
                 </Col>
             </Row>
         </div>
