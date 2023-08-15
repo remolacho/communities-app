@@ -3,13 +3,12 @@ import {LANG} from "./utils/variablesApi"
 import {ToastContainer} from "react-toastify"
 import {AuthContext} from "./utils/contexts"
 import RoutingLogin from "./routers/routes-sign-in/RoutingLogin";
-import {userLoggedApi} from "./services/Auth/authUser";
-import {getSubdomainApi} from "./services/Auth/authSubdomain";
-import Subdomain from "./pages/Subdomain";
-import {setLang} from "./services/Auth/authLang";
+import {userLoggedApi} from "./services/auth/authUser";
+import {getSubdomainApi} from "./services/auth/authSubdomain";
+import Subdomain from "./pages/SignInSignUp/Subdomain";
+import {setLang} from "./services/auth/authLang";
 
-import {Button} from "react-bootstrap";
-import {logoutUser} from "./services/Auth/authUser";
+import RoutingHome from "./routers/routes-home/RoutingHome";
 
 export default function App() {
     const [currentUser, setCurrentUser] = useState(null);
@@ -25,20 +24,12 @@ export default function App() {
 
     if (!loadApp) return null;
 
-    const close = ()=> {
-        logoutUser()
-        setCallLogin(true)
-    }
-
     return (
         <AuthContext.Provider value={currentUser}>
             {
                 getSubdomainApi() ?
                     currentUser ?
-                        <div>
-                            <h1>El usuario esta logueado</h1>
-                            <Button onClick={close}>Cerrar session</Button>
-                        </div>
+                        <RoutingHome setCallLogin={setCallLogin} callLogin={callLogin}/>
                         : <RoutingLogin setCallLogin={setCallLogin}/>
                     : <Subdomain setCallLogin={setCallLogin}/>
             }

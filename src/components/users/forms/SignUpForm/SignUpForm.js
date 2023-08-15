@@ -6,9 +6,6 @@ import {validFormSignUp} from "../../../../utils/validations/signUp"
 import { useNavigate } from 'react-router-dom';
 import {signUpService} from "../../../../services/users/SignUp/signUpService";
 
-import Logo from "../../../../assets/png/logo2.png";
-import "./SignUpForm.scss"
-
 function initialAttributes(){
     return {
         email: "",
@@ -61,9 +58,7 @@ export default function SignUpForm(){
     }
 
     return (
-        <div className="sign-up-form">
-
-            <h2><center><img src={Logo} alt="Communities"/></center></h2>
+        <>
             <h2><center>Crear cuenta</center></h2>
             <Form onSubmit={onSubmit} onChange={onChance}>
                 <Form.Group>
@@ -151,6 +146,6 @@ export default function SignUpForm(){
                     <Link to="/">Volver</Link>
                 </Col>
             </Row>
-        </div>
+        </>
     )
 }

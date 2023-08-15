@@ -1,6 +1,6 @@
 import {API_HOST} from "../../../utils/variablesApi"
-import {getSubdomainApi} from "../../Auth/authSubdomain";
-import {getLang} from "../../Auth/authLang";
+import {getSubdomainApi} from "../../auth/authSubdomain";
+import {getLang} from "../../auth/authLang";
 
 export function signInService(formData) {
     const url = `${API_HOST}/${getSubdomainApi()}/v1/users/sign_in?lang=${getLang()}`;

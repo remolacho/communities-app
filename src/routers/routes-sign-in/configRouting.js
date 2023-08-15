@@ -1,6 +1,6 @@
-import Login from "../../pages/users/Login";
-import ForgotPassword from "../../pages/users/ForgotPassword";
-import SignUp from "../../pages/users/SignUp";
+import Login from "../../pages/SignInSignUp/users/Login";
+import ForgotPassword from "../../pages/SignInSignUp/users/ForgotPassword";
+import SignUp from "../../pages/SignInSignUp/users/SignUp";
 
 export default [
     {

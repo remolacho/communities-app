@@ -1,7 +1,7 @@
 import {API_HOST} from "../../../utils/variablesApi"
-import {getSubdomainApi} from "../../Auth/authSubdomain";
-import {getLang} from "../../Auth/authLang";
-import {getTokenApi} from "../../Auth/authUser";
+import {getSubdomainApi} from "../../auth/authSubdomain";
+import {getLang} from "../../auth/authLang";
+import {getTokenApi} from "../../auth/authUser";
 
 export function settingEnterpriseService() {
     const url = `${API_HOST}/${getSubdomainApi()}/v1/enterprise/setting?lang=${getLang()}`;

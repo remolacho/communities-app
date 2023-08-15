@@ -51,9 +51,7 @@ export default function ForgotPasswordForm(){
     }
 
     return (
-        <div className="forgot-password-form">
-
-            <h2><center><img src={Logo} alt="Communities"/></center></h2>
+        <>
             <h2><center>¿Olvido su contraseña?</center></h2>
             <Form onSubmit={onSubmit} onChange={onChance}>
                 <Form.Group>
@@ -74,6 +72,6 @@ export default function ForgotPasswordForm(){
                     <Link to="/">Volver</Link>
                 </Col>
             </Row>
-        </div>
+        </>
     )
 }

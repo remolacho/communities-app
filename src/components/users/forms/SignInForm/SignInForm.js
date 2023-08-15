@@ -4,11 +4,7 @@ import { Link } from 'react-router-dom'
 import {toast} from "react-toastify"
 import {validFormSignIn} from "../../../../utils/validations/signIn"
 import {signInService} from "../../../../services/users/SignIn/signInService";
-import {setTokenApi} from "../../../../services/Auth/authUser"
-
-import Logo from "../../../../assets/png/logo2.png";
-
-import "./SignInForm.scss"
+import {setTokenApi} from "../../../../services/auth/authUser"
 
 function initialLoginAttributes(){
     return {
@@ -56,9 +52,7 @@ export default function SignInForm(props){
     }
 
     return (
-        <div className="sign-in-form">
-
-            <h2><center><img src={Logo} alt="Communities"/></center></h2>
+        <>
             <Form onSubmit={onSubmit} onChange={onChance}>
                 <Form.Group>
                     <Form.Control type="email"
@@ -88,6 +82,6 @@ export default function SignInForm(props){
                     <Link to="/users/sign-up">Registrarse</Link>
                 </Col>
             </Row>
-        </div>
+        </>
     )
 }
