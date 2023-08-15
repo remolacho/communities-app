@@ -3,29 +3,42 @@ import {LANG} from "./utils/variablesApi"
 import {ToastContainer} from "react-toastify"
 import {AuthContext} from "./utils/contexts"
 import RoutingLogin from "./routers/routes-sign-in/RoutingLogin";
-import {userLoggedApi} from "./services/auth/authUser";
+import {getTokenApi, userLoggedApi} from "./services/auth/authUser";
 import {getSubdomainApi} from "./services/auth/authSubdomain";
 import Subdomain from "./pages/SignInSignUp/Subdomain";
 import {setLang} from "./services/auth/authLang";
 
 import RoutingHome from "./routers/routes-home/RoutingHome";
+import {settingEnterpriseService} from "./services/enterprises/Enterprise/settingEnterpriseService";
 
 export default function App() {
     const [currentUser, setCurrentUser] = useState(null);
+    const [currentEnterprise, setCurrentEnterprise] = useState(null);
     const [callLogin, setCallLogin] = useState(false);
     const [loadApp, setLoadApp] = useState(false);
 
+
     useEffect(() => {
         setLang(LANG)
+
+        if(getTokenApi() && !callLogin){
+            settingEnterpriseService().then(response => {
+                if (!response.success) {
+                    return
+                }
+
+                setCurrentEnterprise(response.data)
+            }).catch(() =>{
+                return null
+            })
+        }
+
         setCurrentUser(userLoggedApi());
-        setLoadApp(true);
         setCallLogin(false);
     }, [callLogin])
 
-    if (!loadApp) return null;
-
     return (
-        <AuthContext.Provider value={currentUser}>
+        <AuthContext.Provider value={{currentUser: currentUser, currentEnterprise: currentEnterprise}}>
             {
                 getSubdomainApi() ?
                     currentUser ?

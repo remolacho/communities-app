@@ -1,7 +1,9 @@
 import {ENTERPRISE_KEY, ENTERPRISE_LOGO_KEY} from "../../utils/variablesApi"
 
 export function setSubdomainApi(subdomain){
-    localStorage.setItem(ENTERPRISE_KEY, subdomain);
+    if(subdomain){
+        localStorage.setItem(ENTERPRISE_KEY, subdomain);
+    }
 }
 
 export function getSubdomainApi() {
@@ -9,7 +11,9 @@ export function getSubdomainApi() {
 }
 
 export function setLogoEnterpriseApi(logoUrl){
-    localStorage.setItem(ENTERPRISE_LOGO_KEY, logoUrl);
+    if(logoUrl){
+        localStorage.setItem(ENTERPRISE_LOGO_KEY, logoUrl);
+    }
 }
 
 export function getLogoEnterpriseApi() {

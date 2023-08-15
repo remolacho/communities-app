@@ -4,8 +4,7 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faDashboard, faBuilding, faUsers, faPowerOff, faMap} from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom';
 import {logoutUser} from "../../services/auth/authUser";
-import {getLogoEnterpriseApi} from "../../services/auth/authSubdomain";
-
+import useAuth from "../../hooks/contextValues/useAuth";
 import Logo from "../../../src/assets/png/logo2.png";
 import "./SideBar.scss"
 
@@ -14,8 +13,8 @@ function SideBar(props) {
     const [enterpriseMenuExpanded, seEnterpriseMenuExpanded] = useState(false);
     const [userMenuExpanded, setUserMenuExpanded] = useState(false);
     const [petitionsMenuExpanded, setPetitionsMenuExpanded] = useState(false);
-    const logoEnterprise = getLogoEnterpriseApi()
     const navigate = useNavigate()
+    const {currentUser, currentEnterprise} = useAuth()
 
     const toggleEnterpriseMenu = () => {
         seEnterpriseMenuExpanded(!enterpriseMenuExpanded);
@@ -29,8 +28,8 @@ function SideBar(props) {
         setPetitionsMenuExpanded(!petitionsMenuExpanded);
     };
 
-    const logoUrl = logoEnterprise === null
-        ? logoEnterprise
+    const logoUrl = currentEnterprise?.logo_url
+        ? currentEnterprise.logo_url
         : Logo
 
     const close = ()=> {
@@ -42,6 +41,8 @@ function SideBar(props) {
     return (
         <Nav className="flex-column">
             <div className="logo"><img src={logoUrl} alt="Communities"/></div>
+            <div className="user">{currentUser?.name} {currentUser?.lastname}</div>
+
             <div className="separator" />
             <Nav.Link href="/home"><FontAwesomeIcon icon={faDashboard} /> Dashboard</Nav.Link>
             <Nav.Link onClick={toggleEnterpriseMenu}><FontAwesomeIcon icon={faBuilding} /> Empresa</Nav.Link>
