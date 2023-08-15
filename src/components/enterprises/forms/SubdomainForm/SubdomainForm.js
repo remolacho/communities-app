@@ -1,10 +1,7 @@
 import React, {useState} from "react";
 import {Form, Button, Spinner} from "react-bootstrap";
 
-import Logo from "../../../../assets/png/logo2.png";
-
-import "./SubdomainForm.scss"
-import {setSubdomainApi} from "../../../../services/Auth/authSubdomain";
+import {setLogoEnterpriseApi, setSubdomainApi} from "../../../../services/auth/authSubdomain";
 import {toast} from "react-toastify";
 import {SUBDOMAIN} from "../../../../utils/variablesApi";
 import {validSubdomainService} from "../../../../services/enterprises/Subdomain/validSubdomainService";
@@ -37,6 +34,7 @@ export default function SubdomainForm(props){
 
             toast.success(response.message, {theme: "colored"});
             setSubdomainApi(formData.subdomain)
+            setLogoEnterpriseApi(response.data.logo_url)
             setCallLogin(true)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
@@ -46,9 +44,7 @@ export default function SubdomainForm(props){
     }
 
     return (
-        <div className="subdomain-form">
-
-            <h2><center><img src={Logo} alt="Communities"/></center></h2>
+        <>
             <h2><center>Iniciar con el dominio de tu comunidad</center></h2>
             <Form onSubmit={onSubmit} onChange={onChance}>
                 <Form.Group>
@@ -63,6 +59,6 @@ export default function SubdomainForm(props){
                     {!btnLoading ? "Iniciar" : <Spinner animation="border"/> }
                 </Button>
             </Form>
-        </div>
+        </>
     )
 }
