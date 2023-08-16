@@ -9,7 +9,7 @@ export default function SignInSignUpLayout(props) {
     const { children } = props
     const logoEnterprise = getLogoEnterpriseApi()
 
-    const logoUrl = logoEnterprise === null
+    const logoUrl = logoEnterprise
         ? logoEnterprise
         : Logo
 
