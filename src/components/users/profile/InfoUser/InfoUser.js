@@ -1,6 +1,6 @@
 import React from "react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faPhone, faLocation, faUser, faMailBulk, faMap} from "@fortawesome/free-solid-svg-icons"
+import {faPhone, faLocation, faUser, faMailBulk} from "@fortawesome/free-solid-svg-icons"
 import "./InfoUser.scss"
 
 export default function InfoUser(props){

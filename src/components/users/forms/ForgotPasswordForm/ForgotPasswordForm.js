@@ -5,8 +5,6 @@ import {toast} from "react-toastify"
 import {validFormForgot} from "../../../../utils/validations/forgotPassword"
 import {forgotPasswordService} from "../../../../services/users/ForgotPassword/forgotPasswordService";
 
-import Logo from "../../../../assets/png/logo2.png";
-
 import "./ForgotPasswordForm.scss"
 
 function initialAttributes(){

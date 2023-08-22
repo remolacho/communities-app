@@ -1,0 +1,52 @@
+@import "../../../../scss/index";
+
+.info-enterprise{
+  margin: 20px;
+
+  *{
+    margin: 0;
+  }
+
+  svg{
+    width: 15px;
+    height: 15px;
+    fill: $font-grey;
+  }
+
+  .name{
+    font-size: 18px;
+    font-weight: bold;
+  }
+  .email{
+    margin-top: 5px;
+    font-size: 14px;
+    color: $font-grey;
+    svg{
+      margin-right: 10px;
+    }
+  }
+  .address{
+    margin: 10px 0;
+    white-space: pre-line;
+    font-size: 14px;
+  }
+  .more-info{
+    margin-top: 5px;
+    display: flex;
+    align-items: center;
+
+    p, a{
+      color: $font-light;
+      padding-right: 20px;
+      font-size: 14px;
+
+      svg{
+        margin-right: 10px;
+      }
+    }
+
+    a{
+      color: $primary;
+    }
+  }
+}
