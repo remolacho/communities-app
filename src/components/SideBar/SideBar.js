@@ -1,7 +1,7 @@
 import React,  { useState }  from "react";
 import {Nav} from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faDashboard, faBuilding, faUsers, faPowerOff, faMap} from "@fortawesome/free-solid-svg-icons"
+import {faDashboard, faBuilding, faUsers, faPowerOff, faMap, faComment} from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom';
 import {logoutUser} from "../../services/auth/authUser";
 import useAuth from "../../hooks/contextValues/useAuth";
@@ -59,12 +59,13 @@ function SideBar(props) {
                     <Nav.Link href="#">Listar</Nav.Link>
                 </div>
             )}
-            <Nav.Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap} /> Peticiones</Nav.Link>
+            <Nav.Link href="#"><FontAwesomeIcon icon={faComment} /> Sugerencias</Nav.Link>
+            <Nav.Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap} /> PQRs</Nav.Link>
             {petitionsMenuExpanded && (
                 <div className="sub-menu">
-                    <Nav.Link href="#">Mis peticiones</Nav.Link>
+                    <Nav.Link href="#">Mis Pqrs</Nav.Link>
                     <Nav.Link href="#">Crear</Nav.Link>
-                    <Nav.Link href="#">Listar todas</Nav.Link>
+                    <Nav.Link href="#">Listar todos</Nav.Link>
                 </div>
             )}
             <div className="separator" />
