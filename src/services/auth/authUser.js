@@ -1,4 +1,4 @@
-import {ENTERPRISE_KEY, ENTERPRISE_SETTING, JWT} from "../../utils/variablesApi"
+import {ENTERPRISE_LOGO_KEY, ENTERPRISE_KEY, ENTERPRISE_SETTING, JWT} from "../../utils/variablesApi"
 import jwtDecode from "jwt-decode";
 
 export function setTokenApi(token){
@@ -37,6 +37,7 @@ export function isExpiredToken(token){
 
 function clearCookies(){
     localStorage.removeItem(ENTERPRISE_KEY);
+    localStorage.removeItem(ENTERPRISE_LOGO_KEY);
     localStorage.removeItem(ENTERPRISE_SETTING);
 }
 

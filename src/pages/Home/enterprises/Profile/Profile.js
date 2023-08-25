@@ -1,11 +1,12 @@
 import React, {useState, useEffect} from "react";
-import MainLayout from "../../../../layouts/MainLayout";
 import {toast} from "react-toastify";
 import {profileEnterpriseService} from "../../../../services/enterprises/Enterprise/profileEnterpriseService";
-import BannerLogo from "../../../../components/enterprises/profile/BannerLogo";
 import InfoEnterprise from "../../../../components/enterprises/profile/InfoEnterprise";
 
 import "./Profile.scss";
+import BannerLayout from "../../../../layouts/BannerLayout";
+import {Link} from "react-router-dom";
+import {Button} from "react-bootstrap";
 
 export default function Profile(props){
     const {setCallLogin} = props;
@@ -28,15 +29,15 @@ export default function Profile(props){
     if (!enterprise) return
 
     return(
-        <MainLayout setCallLogin={setCallLogin} className="profile-enterprise">
-            <div className="profile-enterprise__title">
-                <h2>
-                    {enterprise.name}
-                </h2>
+        <BannerLayout setCallLogin={setCallLogin}>
+            <div className="profile-enterprise__actions">
+                <Link to="/enterprises/edit">
+                    <Button>
+                        Editar
+                    </Button>
+                </Link>
             </div>
-
-            <BannerLogo enterprise={enterprise} />
             <InfoEnterprise enterprise={enterprise} />
-        </MainLayout>
+        </BannerLayout>
     )
 }

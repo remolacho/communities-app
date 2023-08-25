@@ -7,6 +7,7 @@ import {logoutUser} from "../../services/auth/authUser";
 import useAuth from "../../hooks/contextValues/useAuth";
 import Logo from "../../../src/assets/png/logo2.png";
 import "./SideBar.scss"
+import {CameraIcon} from "../../utils/icons";
 
 function SideBar(props) {
     const {setCallLogin } = props
@@ -28,8 +29,8 @@ function SideBar(props) {
         setPetitionsMenuExpanded(!petitionsMenuExpanded);
     };
 
-    const logoUrl = currentEnterprise?.logo_url
-        ? currentEnterprise.logo_url
+    const avatarUrl = currentUser?.avatar_url
+        ? currentUser.avatar_url
         : Logo
 
     const close = ()=> {
@@ -40,7 +41,9 @@ function SideBar(props) {
 
     return (
         <Nav className="flex-column">
-            <div className="logo"><img src={logoUrl} alt="Communities" width="150"/></div>
+            <div className="avatar"
+                 style={{ backgroundImage: `url('${avatarUrl}')`}}>
+            </div>
             <div className="user">{currentUser?.name} {currentUser?.lastname}</div>
 
             <div className="separator" />

@@ -1,14 +1,19 @@
 @import "../../../../scss/index";
 
 .profile-enterprise{
-  &__title{
-    border-bottom: 1px solid $border-grey;
-    padding: 15px;
+  &__actions{
+    bottom: -50px;
+    right: 15px;
+    margin-left: 20px;
+    button{
+      border-radius: 50px;
+      background-color: $primary;
+      width: 150px;
 
-    h2{
-      font-size: 22px;
-      margin-bottom: 0;
-      font-weight: bold;
+      &:hover{
+        background-color: $primary;
+        opacity: 0.6;
+      }
     }
   }
 }
