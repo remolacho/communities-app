@@ -1,7 +1,7 @@
 import React,  { useState }  from "react";
 import {Nav} from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faDashboard, faBuilding, faUsers, faPowerOff, faMap} from "@fortawesome/free-solid-svg-icons"
+import {faDashboard, faBuilding, faUsers, faPowerOff, faMap, faComment} from "@fortawesome/free-solid-svg-icons"
 import { useNavigate } from 'react-router-dom';
 import {logoutUser} from "../../services/auth/authUser";
 import useAuth from "../../hooks/contextValues/useAuth";
@@ -40,7 +40,7 @@ function SideBar(props) {
 
     return (
         <Nav className="flex-column">
-            <div className="logo"><img src={logoUrl} alt="Communities"/></div>
+            <div className="logo"><img src={logoUrl} alt="Communities" width="150"/></div>
             <div className="user">{currentUser?.name} {currentUser?.lastname}</div>
 
             <div className="separator" />
@@ -48,8 +48,8 @@ function SideBar(props) {
             <Nav.Link onClick={toggleEnterpriseMenu}><FontAwesomeIcon icon={faBuilding} /> Empresa</Nav.Link>
             {enterpriseMenuExpanded && (
                 <div className="sub-menu">
-                    <Nav.Link href="#">Perfil</Nav.Link>
-                    <Nav.Link href="#">Asignar roles</Nav.Link>
+                    <Nav.Link href="/enterprises/profile">Ver</Nav.Link>
+                    <Nav.Link href="/enterprises/edit">Editar</Nav.Link>
                 </div>
             )}
             <Nav.Link onClick={toggleUserMenu}><FontAwesomeIcon icon={faUsers} /> Usuarios</Nav.Link>
@@ -57,16 +57,19 @@ function SideBar(props) {
                 <div className="sub-menu">
                     <Nav.Link href="/users/profile">Mi perfil</Nav.Link>
                     <Nav.Link href="#">Listar</Nav.Link>
+                    <Nav.Link href="#">Asignar roles</Nav.Link>
+                    <Nav.Link href="#">Remover roles</Nav.Link>
                 </div>
             )}
-            <Nav.Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap} /> Peticiones</Nav.Link>
+            <Nav.Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap} /> PQRs</Nav.Link>
             {petitionsMenuExpanded && (
                 <div className="sub-menu">
-                    <Nav.Link href="#">Mis peticiones</Nav.Link>
-                    <Nav.Link href="#">Crear</Nav.Link>
-                    <Nav.Link href="#">Listar todas</Nav.Link>
+                    <Nav.Link href="#">Mis PQRs</Nav.Link>
+                    <Nav.Link href="#">Crear PQR</Nav.Link>
+                    <Nav.Link href="#">Listar PQRs</Nav.Link>
                 </div>
             )}
+            <Nav.Link href="#"><FontAwesomeIcon icon={faComment} /> Sugerencias</Nav.Link>
             <div className="separator" />
 
             <Nav.Link onClick={close}><FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesión</Nav.Link>

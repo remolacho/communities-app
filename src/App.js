@@ -15,8 +15,6 @@ export default function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [currentEnterprise, setCurrentEnterprise] = useState(null);
     const [callLogin, setCallLogin] = useState(false);
-    const [loadApp, setLoadApp] = useState(false);
-
 
     useEffect(() => {
         setLang(LANG)
