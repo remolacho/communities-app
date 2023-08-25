@@ -1,10 +1,12 @@
 import React, {useState, useCallback} from "react";
 import { Form, Button, Row, Col, Spinner } from  "react-bootstrap";
-
-import "./EditEnterpriseForm.scss"
-import {profileEnterpriseService} from "../../../../services/enterprises/Enterprise/profileEnterpriseService";
+import { useDropzone } from "react-dropzone"
+import { CameraIcon } from "../../../../utils/icons"
 import {toast} from "react-toastify";
 import {updateEnterpriseService} from "../../../../services/enterprises/Enterprise/updateEnterpriseService";
+import LogoAlt from "../../../../assets/png/logo2.png";
+import BannerAlt from "../../../../assets/png/banner.png";
+import "./EditEnterpriseForm.scss"
 
 function attributes(){
     return  {
@@ -35,6 +37,50 @@ export default function EditEnterpriseForm(props){
     const [formData, setFormData] = useState(initializer(enterprise));
     const [btnLoading, setBtnLoading] = useState(false)
 
+    const [bannerFile, setBannerFile] = useState(null);
+    const [bannerUrl, setBannerUrl] = useState(
+        enterprise.banner_url ?
+            enterprise.banner_url
+            : BannerAlt
+
+    );
+
+    const onDropBanner = useCallback(acceptedFile => {
+        const file = acceptedFile[0];
+        setBannerUrl(URL.createObjectURL(file));
+        setBannerFile(file);
+    }, [])
+
+
+    const { getRootProps: getRootBannerProps, getInputProps: getInputBannerProps } = useDropzone({
+        accept: 'image/jpeg, image/png',
+        noKeyboard: true,
+        multiple: false,
+        onDrop: onDropBanner
+    })
+
+
+    const [logoFile, setLogoFile] = useState(null);
+    const [logoUrl, setLogoUrl] = useState(
+        enterprise.logo_url
+            ? enterprise.logo_url
+            : LogoAlt
+    );
+
+    const onDropLogo = useCallback(acceptedFile => {
+        const file = acceptedFile[0];
+        setLogoUrl(URL.createObjectURL(file));
+        setLogoFile(file);
+    }, [])
+
+
+    const { getRootProps: getRootLogoProps, getInputProps: getInputLogoProps } = useDropzone({
+        accept: 'image/jpeg, image/png',
+        noKeyboard: true,
+        multiple: false,
+        onDrop: onDropLogo
+    })
+
     const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value })
     }
@@ -44,7 +90,7 @@ export default function EditEnterpriseForm(props){
 
         setBtnLoading(true)
 
-        updateEnterpriseService(enterprise.token, formData).then(response => {
+        updateEnterpriseService(enterprise.token, formData, logoFile, bannerFile).then(response => {
             if (!response.success) {
                 toast.warning(response.message, {theme: "colored"});
                 return null
@@ -60,6 +106,23 @@ export default function EditEnterpriseForm(props){
 
     return(
         <div className="edit-enterprise-form">
+            <div
+                className="banner"
+                style={{ backgroundImage: `url('${bannerUrl}')`}}
+                {...getRootBannerProps()}>
+
+                <input {...getInputBannerProps()} />
+                <CameraIcon/>
+            </div>
+
+            <div className="logo"
+                 style={{ backgroundImage: `url('${logoUrl}')`}}
+                 {...getRootLogoProps()}>
+
+                <input {...getInputLogoProps()} />
+                <CameraIcon/>
+            </div>
+
             <Form onSubmit={onSubmit}>
                 <Form.Group>
                     <Row>

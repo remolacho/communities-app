@@ -4,10 +4,10 @@ import {getLang} from "../../auth/authLang";
 import {getTokenApi} from "../../auth/authUser";
 import {each} from "lodash";
 
-export function updateEnterpriseService(token, dataEnterprise) {
+export function updateEnterpriseService(token, dataEnterprise, logoFile, bannerFile) {
     const url = `${API_HOST}/${getSubdomainApi()}/v1/enterprise/update/${token}?lang=${getLang()}`;
 
-    return fetch(url, params(dataEnterprise)).then(response => {
+    return fetch(url, params(dataEnterprise, logoFile, bannerFile)).then(response => {
         return response.json();
     }).then(result =>{
         return result;
@@ -17,15 +17,13 @@ export function updateEnterpriseService(token, dataEnterprise) {
 }
 
 function parse(formData) {
-    const enterprise = {
+    return {
         ...formData,
         email: formData.email.toLowerCase(),
     };
-
-    return enterprise;
 }
 
-function params(dataEnterprise) {
+function params(dataEnterprise, logoFile, bannerFile) {
     const formData = new FormData();
     const data = parse(dataEnterprise);
 
@@ -34,6 +32,14 @@ function params(dataEnterprise) {
             formData.append(`enterprise[${key}]`, value);
         }
     })
+
+    if(logoFile){
+        formData.append("enterprise[logo]", logoFile);
+    }
+
+    if(bannerFile){
+        formData.append("enterprise[banner]", bannerFile);
+    }
 
     return {
         method: "PUT",

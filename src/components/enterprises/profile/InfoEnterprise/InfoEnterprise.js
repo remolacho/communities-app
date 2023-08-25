@@ -6,6 +6,7 @@ import {faLocation, faUser, faMailBulk, faMap} from "@fortawesome/free-solid-svg
 import {BirthdateIcon} from "../../../../utils/icons";
 
 import "./InfoEnterprise.scss"
+import {Col, Row} from "react-bootstrap";
 
 export default function InfoEnterprise(props){
     const { enterprise } = props;
@@ -21,41 +22,45 @@ export default function InfoEnterprise(props){
                 { enterprise.email }
             </p>
 
-            { enterprise.address &&
-                <div className="address">
-                    { enterprise.address }
-                </div>
-            }
+            <Row className="more-info">
+               <Col xs={12} md={6}>
+                    {  enterprise.rut &&
+                        <p className="">
+                            <FontAwesomeIcon icon={faUser} />
+                            RUT {  enterprise.rut }
+                        </p>
+                    }
+                </Col>
 
-            <div className="more-info">
-                {  enterprise.rut &&
-                    <p className="">
-                        <FontAwesomeIcon icon={faUser} />
-                        RUT {  enterprise.rut }
-                    </p>
-                }
-
+                <Col xs={12} md={6}>
                 { enterprise.address &&
-                    <p className="">
-                        <FontAwesomeIcon icon={faLocation} />
-                        { enterprise.address }
-                    </p>
-                }
+                        <p className="">
+                            <FontAwesomeIcon icon={faLocation} />
+                            { enterprise.address }
+                        </p>
+                    }
+                </Col>
+            </Row>
 
-                { enterprise.subdomain &&
-                    <p className="">
-                        <FontAwesomeIcon icon={faMap} />
-                        { enterprise.subdomain }
-                    </p>
-                }
+            <Row className="more-info">
+                <Col xs={12} md={6}>
+                    { enterprise.subdomain &&
+                        <p className="">
+                            <FontAwesomeIcon icon={faMap} />
+                            { enterprise.subdomain }
+                        </p>
+                    }
+                </Col>
 
-                { enterprise.created_at &&
-                    <p className="">
-                        <BirthdateIcon />
-                        { moment(enterprise.created_at).locale("es", location).format("LL") }
-                    </p>
-                }
-            </div>
+                <Col xs={12} md={6}>
+                    { enterprise.created_at &&
+                        <p className="">
+                            <BirthdateIcon />
+                            { moment(enterprise.created_at).locale("es", location).format("LL") }
+                        </p>
+                    }
+                </Col>
+            </Row>
         </div>
     )
 }
