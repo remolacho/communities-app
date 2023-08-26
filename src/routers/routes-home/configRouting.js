@@ -2,6 +2,7 @@ import Dashboard from "../../pages/Home/DashBoard";
 import Profile from "../../pages/Home/users/Profile";
 import ProfileEnterprise from "../../pages/Home/enterprises/Profile"
 import Edit from "../../pages/Home/enterprises/Edit";
+import ListUsers from "../../pages/Home/users/ListUsers";
 
 export default [
     {
@@ -15,9 +16,14 @@ export default [
         page: Dashboard
     },
     {
-        path: "/users/profile",
+        path: "/users/profile/:token",
         exact: true,
         page: Profile
+    },
+    {
+        path: "/users/list",
+        exact: true,
+        page: ListUsers
     },
     {
         path: "/enterprises/profile",

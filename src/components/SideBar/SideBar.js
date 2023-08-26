@@ -14,6 +14,9 @@ function SideBar(props) {
     const [enterpriseMenuExpanded, seEnterpriseMenuExpanded] = useState(false);
     const [userMenuExpanded, setUserMenuExpanded] = useState(false);
     const [petitionsMenuExpanded, setPetitionsMenuExpanded] = useState(false);
+    const [suggestionsMenuExpanded, setSuggestionsMenuExpanded] = useState(false);
+
+
     const navigate = useNavigate()
     const {currentUser, currentEnterprise} = useAuth()
 
@@ -27,6 +30,10 @@ function SideBar(props) {
 
     const togglePetitionMenu = () => {
         setPetitionsMenuExpanded(!petitionsMenuExpanded);
+    };
+
+    const toggleSuggestionMenu = () => {
+        setSuggestionsMenuExpanded(!suggestionsMenuExpanded);
     };
 
     const avatarUrl = currentUser?.avatar_url
@@ -58,8 +65,8 @@ function SideBar(props) {
             <Nav.Link onClick={toggleUserMenu}><FontAwesomeIcon icon={faUsers} /> Usuarios</Nav.Link>
             {userMenuExpanded && (
                 <div className="sub-menu">
-                    <Nav.Link href="/users/profile">Mi perfil</Nav.Link>
-                    <Nav.Link href="#">Listar</Nav.Link>
+                    <Nav.Link href={`/users/profile/${currentUser.token}`}>Mi perfil</Nav.Link>
+                    <Nav.Link href="/users/list">Lista</Nav.Link>
                     <Nav.Link href="#">Asignar roles</Nav.Link>
                     <Nav.Link href="#">Remover roles</Nav.Link>
                 </div>
@@ -72,7 +79,13 @@ function SideBar(props) {
                     <Nav.Link href="#">Listar PQRs</Nav.Link>
                 </div>
             )}
-            <Nav.Link href="#"><FontAwesomeIcon icon={faComment} /> Sugerencias</Nav.Link>
+            <Nav.Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Nav.Link>
+            {suggestionsMenuExpanded && (
+                <div className="sub-menu">
+                    <Nav.Link href="#">Crear</Nav.Link>
+                    <Nav.Link href="#">Listar</Nav.Link>
+                </div>
+            )}
             <div className="separator" />
 
             <Nav.Link onClick={close}><FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesión</Nav.Link>

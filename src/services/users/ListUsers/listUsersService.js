@@ -3,8 +3,12 @@ import {getSubdomainApi} from "../../auth/authSubdomain";
 import {getLang} from "../../auth/authLang";
 import {getTokenApi} from "../../auth/authUser";
 
-export function profileService(token) {
-    const url = `${API_HOST}/${getSubdomainApi()}/v1/users/profile/show?token=${token}&lang=${getLang()}`;
+export function listUsersService(attr, term, numPage) {
+    let url = `${API_HOST}/${getSubdomainApi()}/v1/users/list?lang=${getLang()}`;
+
+    if(attr) url += `&attr=${attr}`;
+    if(term) url += `&term=${term}`;
+    if(numPage) url += `&page=${numPage}`;
 
     return fetch(url, params()).then(response => {
         return response.json();
