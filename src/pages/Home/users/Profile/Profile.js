@@ -4,15 +4,17 @@ import BannerAvatar from "../../../../components/users/profile/BannerAvatar";
 import {profileService} from "../../../../services/users/Profile/profileService";
 import {toast} from "react-toastify";
 import InfoUser from "../../../../components/users/profile/InfoUser";
+import {useParams} from "react-router-dom";
 
 import "./Profile.scss";
 
 export default function Profile(props){
     const {setCallLogin} = props;
     const [profile, setProfile] = useState(null);
+    const params = useParams();
 
     useEffect(() =>{
-        profileService().then(response => {
+        profileService(params.token).then(response => {
             if (!response.success) {
                 toast.warning(response.message, {theme: "colored"});
                 return null

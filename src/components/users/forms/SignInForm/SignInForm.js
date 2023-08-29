@@ -18,7 +18,7 @@ export default function SignInForm(props){
     const [formData, setFormData] = useState(initialLoginAttributes())
     const [btnLoading, setBtnLoading] = useState(false)
 
-    const onChance = e => {
+    const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
@@ -53,7 +53,7 @@ export default function SignInForm(props){
 
     return (
         <>
-            <Form onSubmit={onSubmit} onChange={onChance}>
+            <Form onSubmit={onSubmit} onChange={onChange}>
                 <Form.Group>
                     <Form.Control type="email"
                                   placeholder="Email"
