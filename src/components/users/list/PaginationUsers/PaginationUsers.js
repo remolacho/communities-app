@@ -7,6 +7,8 @@ export default function PaginationUsers(props) {
     const {paginate, setNumPage, numPage} = props;
     const [toggleNumPages, setToggleNumPages] = useState(false)
 
+    if(paginate.total_pages <= 1) return
+
     let active = numPage;
     let items = [];
 

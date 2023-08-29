@@ -55,7 +55,7 @@ export default function UserRow(props) {
             </td>
             <td>
                 <Dropdown>
-                    <Dropdown.Toggle variant="success" id="dropdown-basic">
+                    <Dropdown.Toggle variant={active ? "success" : "danger"} id="dropdown-basic">
                         {!btnLoading ? "Acciones" : <Spinner animation="border"/> }
                     </Dropdown.Toggle>
 
