@@ -67,8 +67,8 @@ function SideBar(props) {
                 <div className="sub-menu">
                     <Nav.Link href={`/users/profile/${currentUser.token}`}>Mi perfil</Nav.Link>
                     <Nav.Link href="/users/list">Lista</Nav.Link>
-                    <Nav.Link href="#">Asignar roles</Nav.Link>
-                    <Nav.Link href="#">Remover roles</Nav.Link>
+                    <Nav.Link href="/users/assign-roles">Asignar roles</Nav.Link>
+                    <Nav.Link href="/users/remove-roles">Remover roles</Nav.Link>
                 </div>
             )}
             <Nav.Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap} /> PQRs</Nav.Link>

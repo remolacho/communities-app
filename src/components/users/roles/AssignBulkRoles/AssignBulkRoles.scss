@@ -1,0 +1,55 @@
+@import "../../../../scss/index";
+
+.assign-bulk-roles{
+  .card{
+    margin-top: 40px;
+    width: 48rem;
+    background-color: $background-dark-light;
+    .card-title{
+      font-size: 24px;
+      color: $font-grey;
+      font-weight: bold;
+    }
+    .card-text{
+      font-size: 16px;
+      color: $font-light;
+      font-weight: bold;
+    }
+    .upload-file{
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      height: 180px;
+      background-color: $background-grey-light;
+
+      &:hover{
+        cursor: pointer;
+      }
+
+      svg{
+        width: 120px !important;
+        height: 150px !important;
+        fill: $font-light;
+        &:hover{
+          fill: $font-dark;
+        }
+      }
+    }
+  }
+  .action-button{
+    text-align: center;
+    margin-bottom: 20px;
+  }
+  .link-action{
+    display: flex;
+    justify-content: space-between;
+  }
+  button{
+    margin-top: 20px;
+  }
+  .file-name{
+    font-size: 16px;
+    color: $font-light;
+    font-weight: bold;
+  }
+}

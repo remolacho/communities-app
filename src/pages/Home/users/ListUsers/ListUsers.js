@@ -7,7 +7,6 @@ import SearchUsers from "../../../../components/users/list/SearchUsers";
 import PaginationUsers from "../../../../components/users/list/PaginationUsers";
 
 import "./ListUsers.scss";
-import {useParams} from "react-router-dom";
 
 export default function ListUsers(props){
     const {setCallLogin} = props;
