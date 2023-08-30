@@ -82,7 +82,7 @@ function SideBar(props) {
             <Nav.Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Nav.Link>
             {suggestionsMenuExpanded && (
                 <div className="sub-menu">
-                    <Nav.Link href="#">Crear</Nav.Link>
+                    <Nav.Link href="/suggestions/create">Crear</Nav.Link>
                     <Nav.Link href="#">Listar</Nav.Link>
                 </div>
             )}

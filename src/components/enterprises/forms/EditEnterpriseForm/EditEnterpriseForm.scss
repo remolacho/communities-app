@@ -1,6 +1,5 @@
 @import "../../../../scss/index";
-
-.edit-enterprise-form{
+.header-enterprise{
   .banner{
     display: flex;
     align-items: center;
@@ -54,6 +53,25 @@
       }
     }
   }
+}
+
+.edit-enterprise-form{
+  .card {
+    width: 64rem;
+    background-color: $background-dark-light;
+
+    .card-title {
+      font-size: 24px;
+      color: $font-grey;
+      font-weight: bold;
+    }
+
+    .card-text {
+      font-size: 16px;
+      color: $font-light;
+      font-weight: bold;
+    }
+  }
 
   form{
     padding: 0 20px 20px 20px;
@@ -70,10 +88,6 @@
     .form-control{
       margin-top: 25px;
       font-size: 25px;
-    }
-
-    .react-datepicker-wrapper{
-      margin-top: 25px !important;
     }
   }
 }

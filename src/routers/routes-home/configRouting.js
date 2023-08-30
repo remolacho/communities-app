@@ -5,6 +5,7 @@ import Edit from "../../pages/Home/enterprises/Edit";
 import ListUsers from "../../pages/Home/users/ListUsers";
 import AssignImportRoles from "../../pages/Home/users/AssignImportRoles";
 import RemoveImportRoles from "../../pages/Home/users/RemoveImportRoles";
+import CreateSuggestion from "../../pages/Home/suggestions/CreateSuggestion";
 
 export default [
     {
@@ -46,5 +47,10 @@ export default [
         path: "/users/remove-roles",
         exact: true,
         page: RemoveImportRoles
+    },
+    {
+        path: "/suggestions/create",
+        exact: true,
+        page: CreateSuggestion
     },
 ]

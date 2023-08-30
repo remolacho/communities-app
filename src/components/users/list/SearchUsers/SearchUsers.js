@@ -37,10 +37,10 @@ export default function SearchUsers(props) {
         <div className="search-users">
              <Form onSubmit={onSubmit} onChange={onChange}>
                  <Row>
-                     <Col xs="2" md="1">
+                     <Col xs="2" md="1" className="d-none d-sm-table-cell">
                          <Form.Label className="label-search">Buscar:</Form.Label>
                      </Col>
-                     <Col xs="3" md="3">
+                     <Col xs="5" md="3">
                          <Form.Select defaultValue={formData.filter}
                                       className="mr-sm-2"
                                       name="filter">
