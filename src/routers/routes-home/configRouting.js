@@ -3,6 +3,8 @@ import Profile from "../../pages/Home/users/Profile";
 import ProfileEnterprise from "../../pages/Home/enterprises/Profile"
 import Edit from "../../pages/Home/enterprises/Edit";
 import ListUsers from "../../pages/Home/users/ListUsers";
+import AssignImportRoles from "../../pages/Home/users/AssignImportRoles";
+import RemoveImportRoles from "../../pages/Home/users/RemoveImportRoles";
 
 export default [
     {
@@ -16,6 +18,16 @@ export default [
         page: Dashboard
     },
     {
+        path: "/enterprises/profile",
+        exact: true,
+        page: ProfileEnterprise
+    },
+    {
+        path: "/enterprises/edit",
+        exact: true,
+        page: Edit
+    },
+    {
         path: "/users/profile/:token",
         exact: true,
         page: Profile
@@ -26,13 +38,13 @@ export default [
         page: ListUsers
     },
     {
-        path: "/enterprises/profile",
+        path: "/users/assign-roles",
         exact: true,
-        page: ProfileEnterprise
+        page: AssignImportRoles
     },
     {
-        path: "/enterprises/edit",
+        path: "/users/remove-roles",
         exact: true,
-        page: Edit
-    }
+        page: RemoveImportRoles
+    },
 ]
