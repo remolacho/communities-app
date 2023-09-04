@@ -38,13 +38,13 @@ code {
   }
 }
 
-input.form-control, textarea.form-control {
+input.form-control, textarea.form-control, select {
   background-color: $background-light !important;
-  border-radius: 0 !important;
+  border-radius: 10px !important;
   border: 0 !important;
   border-bottom: 1px solid $border-grey !important;
   color: $font-dark !important;
-
+  font-size: 20px !important;
   &:focus{
     background-color: $background-dark-light;
     box-shadow: none;

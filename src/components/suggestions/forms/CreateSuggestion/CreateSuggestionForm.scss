@@ -1,0 +1,76 @@
+@import "../../../../scss/index";
+
+.create-suggestion-form{
+  .card {
+    width: 64rem;
+    background-color: $background-dark-light;
+
+    .card-title {
+      font-size: 24px;
+      color: $font-grey;
+      font-weight: bold;
+    }
+
+    .card-text {
+      font-size: 16px;
+      color: $font-light;
+      font-weight: bold;
+    }
+  }
+
+  form{
+    padding: 0 20px 20px 20px;
+
+    .counter{
+      margin-top: 5px;
+      margin-bottom: 10px;
+      color: $font-light;
+      font-weight: bold;
+      &.danger{
+        color: $danger;
+        font-weight: bold;
+      }
+    }
+
+    .btn-submit{
+      width: 100%;
+      font-size: 20px;
+      font-weight: bold;
+      padding: 10px;
+      border-radius: 50px;
+      margin-top: 30px;
+    }
+
+    .form-control{
+      margin-top: 25px;
+      font-size: 25px;
+    }
+
+    select{
+      margin-top: 15px;
+    }
+  }
+
+  &__upload-file{
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: $background-grey-dark;
+    color: $font-light;
+    &:hover{
+      cursor: pointer;
+      border: 2px solid $primary;
+    }
+
+    svg{
+      margin-top: 10px;
+      width: 50px !important;
+      height: 25px !important;
+      fill: $font-light;
+      &:hover{
+        fill: $font-primary;
+      }
+    }
+  }
+}
