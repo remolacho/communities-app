@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useCallback} from "react";
+import React, {useState, useCallback} from "react";
 import {API_HOST} from "../../../../utils/variablesApi"
 import {Button, Card, Spinner} from "react-bootstrap";
 import {getSubdomainApi} from "../../../../services/auth/authSubdomain";

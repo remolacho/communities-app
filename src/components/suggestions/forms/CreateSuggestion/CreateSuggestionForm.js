@@ -1,7 +1,7 @@
 import React, {useRef, useState} from "react";
-import {Button, Card, Col, Form, Row, Spinner} from "react-bootstrap";
+import {Button, Card, Form, Spinner} from "react-bootstrap";
 import classNames from "classnames";
-import InputUploadFile from "../../../shared/UploadFile";
+import InputUploadFile from "../../../shared/InputUploadFile";
 import {toast} from "react-toastify";
 import {createSuggestionService} from "../../../../services/suggestions/Create/createSuggestionService";
 

@@ -1,4 +1,4 @@
-import React, {useCallback, useState} from "react";
+import React, {useCallback} from "react";
 import {useDropzone} from "react-dropzone";
 import {Button, Col, Row} from "react-bootstrap";
 import {UploadIcon} from "../../../utils/icons";
