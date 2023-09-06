@@ -1,6 +1,6 @@
 import React from "react";
 import Logo from "../../../../assets/png/logo2.png";
-import {Badge, Image, Dropdown, Spinner} from "react-bootstrap";
+import {Badge, Image, Dropdown} from "react-bootstrap";
 
 import "./SuggestionRow.scss"
 

@@ -13,7 +13,7 @@ import "./BannerAvatar.scss"
 export default function BannerAvatar(props){
     const { profile } = props;
     const [btnLoading, setBtnLoading] = useState(false)
-    const {currentUser, currentEnterprise} = useAuth()
+    const {currentEnterprise} = useAuth()
     const [avatarFile, setAvatarFile] = useState(null);
     const [avatarUrl, setAvatarUrl] = useState(
         profile.avatar_url ?  profile.avatar_url : AvatarAlt

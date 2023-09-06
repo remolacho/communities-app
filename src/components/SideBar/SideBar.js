@@ -18,7 +18,7 @@ function SideBar(props) {
 
 
     const navigate = useNavigate()
-    const {currentUser, currentEnterprise} = useAuth()
+    const {currentUser} = useAuth()
 
     const toggleEnterpriseMenu = () => {
         seEnterpriseMenuExpanded(!enterpriseMenuExpanded);

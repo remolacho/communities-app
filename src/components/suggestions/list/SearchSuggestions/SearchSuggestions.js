@@ -1,4 +1,4 @@
-import React, {useState, useRef} from "react";
+import React, {useState} from "react";
 import {Form, Col, Row, Button} from "react-bootstrap";
 
 import "./SearchSuggestions.scss"
