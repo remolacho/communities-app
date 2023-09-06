@@ -4,7 +4,7 @@ import TableUsers from "../../../../components/users/list/TableUsers";
 import {toast} from "react-toastify";
 import {listUsersService} from "../../../../services/users/ListUsers/listUsersService";
 import SearchUsers from "../../../../components/users/list/SearchUsers";
-import PaginationUsers from "../../../../components/users/list/PaginationUsers";
+import PaginationTable from "../../../../components/shared/PaginationTable";
 
 import "./ListUsers.scss";
 
@@ -41,7 +41,7 @@ export default function ListUsers(props){
 
             <TableUsers users={users}/>
 
-            <PaginationUsers
+            <PaginationTable
                 paginate={paginate}
                 setNumPage={setNumPage}
                 numPage={numPage}

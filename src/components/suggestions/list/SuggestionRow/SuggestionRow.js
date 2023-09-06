@@ -27,8 +27,8 @@ export default function SuggestionRow(props) {
             <td>
                 {
                     suggestion.read ?
-                        <Badge bg="success">Leido</Badge>
-                        : <Badge bg="danger">No leido</Badge>}
+                        <Badge bg="primary">Leido</Badge>
+                        : <Badge bg="secondary">No leido</Badge>}
 
             </td>
             <td>

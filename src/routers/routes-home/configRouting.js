@@ -55,7 +55,7 @@ export default [
         page: CreateSuggestion
     },
     {
-        path: "/suggestions/list",
+        path: "/suggestions/list/:type",
         exact: true,
         page: ListSuggestions
     },
