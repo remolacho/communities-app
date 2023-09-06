@@ -83,7 +83,8 @@ function SideBar(props) {
             {suggestionsMenuExpanded && (
                 <div className="sub-menu">
                     <Nav.Link href="/suggestions/create">Crear</Nav.Link>
-                    <Nav.Link href="#">Listar</Nav.Link>
+                    <Nav.Link href="/suggestions/list/list_own">Mis Sugerencias</Nav.Link>
+                    <Nav.Link href="/suggestions/list/list_group_roles">Lista Sugerencias</Nav.Link>
                 </div>
             )}
             <div className="separator" />

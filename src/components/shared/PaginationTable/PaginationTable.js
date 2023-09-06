@@ -1,9 +1,9 @@
 import React, {useState} from "react";
 import Pagination from 'react-bootstrap/Pagination';
 
-import "./PaginationUsers.scss"
+import "./PaginationTable.scss"
 
-export default function PaginationUsers(props) {
+export default function PaginationTable(props) {
     const {paginate, setNumPage, numPage} = props;
     const [toggleNumPages, setToggleNumPages] = useState(false)
 
@@ -24,7 +24,7 @@ export default function PaginationUsers(props) {
     }
 
     return(
-        <div className="pagination-users">
+        <div className="pagination-table">
             <Pagination>
                 <Pagination.First onClick={()=>{setNumPage(1)}} />
 
