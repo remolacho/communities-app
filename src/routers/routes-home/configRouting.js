@@ -7,6 +7,7 @@ import AssignImportRoles from "../../pages/Home/users/AssignImportRoles";
 import RemoveImportRoles from "../../pages/Home/users/RemoveImportRoles";
 import CreateSuggestion from "../../pages/Home/suggestions/CreateSuggestion";
 import ListSuggestions from "../../pages/Home/suggestions/ListSuggestions";
+import DetailSuggestion from "../../pages/Home/suggestions/DetailSuggestion";
 
 export default [
     {
@@ -58,5 +59,10 @@ export default [
         path: "/suggestions/list/:type",
         exact: true,
         page: ListSuggestions
+    },
+    {
+        path: "/suggestions/detail/:token",
+        exact: true,
+        page: DetailSuggestion
     },
 ]

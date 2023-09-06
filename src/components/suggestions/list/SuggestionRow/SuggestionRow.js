@@ -28,8 +28,8 @@ export default function SuggestionRow(props) {
                 {
                     suggestion.read ?
                         <Badge bg="primary">Leido</Badge>
-                        : <Badge bg="secondary">No leido</Badge>}
-
+                        : <Badge bg="secondary">No leido</Badge>
+                }
             </td>
             <td>
                 <Dropdown>
@@ -38,7 +38,7 @@ export default function SuggestionRow(props) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item>Ver detalle</Dropdown.Item>
+                        <Dropdown.Item href={`/suggestions/detail/${suggestion.token}`}>Ver detalle</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </td>
