@@ -1,45 +1,42 @@
 import React, {useEffect, useState} from "react";
 import BannerLayout from "../../../../layouts/BannerLayout";
-import TableSuggestions from "../../../../components/suggestions/list/TableSuggestions";
-import {listSuggestionsService} from "../../../../services/suggestions/ListSuggestions/listSuggestionsService";
-import {toast} from "react-toastify";
-import SearchSuggestions from "../../../../components/suggestions/list/SearchSuggestions";
-import PaginationTable from "../../../../components/shared/PaginationTable";
 import {useParams} from "react-router-dom";
+import {toast} from "react-toastify";
+import {listPetitionsService} from "../../../../services/petitions/ListPetitions/listPetitionsService";
+import TablePetitions from "../../../../components/petitions/list/TablePetitions";
+import PaginationTable from "../../../../components/shared/PaginationTable";
+import SearchPetitions from "../../../../components/petitions/list/SearchPetitions";
 
-import "./ListSuggestions.scss"
-
-export default function ListSuggestions(props) {
+export default function ListPetitions(props) {
     const {setCallLogin} = props;
     const params = useParams();
-    const [suggestions, setSuggestions] = useState([]);
+    const [petitions, setPetitions] = useState([]);
     const [numPage, setNumPage] = useState(1);
-    const [read, setRead] = useState(null);
-    const [anonymous, setAnonymous] = useState(null);
+    const [categoryId, setCategoryId] = useState(null)
+    const [statusId, setStatusId] = useState(null)
     const [paginate, setPaginate] = useState({});
 
     useEffect(() =>{
-        listSuggestionsService(params.type, read, anonymous, numPage).then(response => {
+        listPetitionsService(params.type, categoryId, statusId, numPage).then(response => {
             if (!response.success) {
                 toast.warning(response.message, {theme: "colored"});
                 return null
             }
 
             setPaginate(response.paginate)
-            setSuggestions(response.data)
+            setPetitions(response.data)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
-    },[read, anonymous, numPage])
+    },[categoryId, statusId, numPage])
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>
-            <SearchSuggestions
-             setNumPage={setNumPage}
-             setRead={setRead}
-             setAnonymous={setAnonymous}/>
+            <SearchPetitions setCategoryId={setCategoryId}
+                             setStatusId={setStatusId}
+                             setNumPage={setNumPage}/>
 
-            <TableSuggestions suggestions={suggestions}/>
+            <TablePetitions petitions={petitions}/>
 
             <PaginationTable
                 paginate={paginate}

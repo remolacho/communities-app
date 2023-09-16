@@ -74,8 +74,8 @@ function SideBar(props) {
             {petitionsMenuExpanded && (
                 <div className="sub-menu">
                     <Nav.Link href="/petitions/create">Crear</Nav.Link>
-                    <Nav.Link href="#">Mis PQRs</Nav.Link>
-                    <Nav.Link href="#">Listar PQRs</Nav.Link>
+                    <Nav.Link href="/petitions/list/list_own">Mis PQRs</Nav.Link>
+                    <Nav.Link href="/petitions/list/list_group_roles">Listar PQRs</Nav.Link>
                 </div>
             )}
             <Nav.Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Nav.Link>

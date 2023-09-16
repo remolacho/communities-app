@@ -9,6 +9,7 @@ import CreateSuggestion from "../../pages/Home/suggestions/CreateSuggestion";
 import ListSuggestions from "../../pages/Home/suggestions/ListSuggestions";
 import DetailSuggestion from "../../pages/Home/suggestions/DetailSuggestion";
 import CreatePetition from "../../pages/Home/petitions/CreatePetition";
+import ListPetitions from "../../pages/Home/petitions/ListPetitions/ListPetitions";
 
 export default [
     {
@@ -70,5 +71,10 @@ export default [
         path: "petitions/create",
         exact: true,
         page: CreatePetition
-    }
+    },
+    {
+        path: "/petitions/list/:type",
+        exact: true,
+        page: ListPetitions
+    },
 ]

@@ -2,26 +2,27 @@ import React from "react";
 import {map} from "lodash";
 import {Table} from "react-bootstrap";
 
-import "./TableSuggestions.scss"
-import SuggestionRow from "../SuggestionRow";
+import "./TablePetitions.scss"
+import PetitionRow from "../PetitionRow";
 
-export default function TableSuggestions(props) {
-    const {suggestions} = props;
+export default function TablePetitions(props) {
+    const {petitions} = props;
 
     return(
-        <div className="table-suggestions">
+        <div className="table-petitions">
             <Table responsive striped bordered hover variant="dark">
                 <thead>
                     <tr className="thead">
                         <th>Nombre</th>
                         <th className="d-none d-sm-table-cell">Ticket</th>
-                        <th>Estado</th>
+                        <th>Tipo</th>
+                        <th className="d-none d-sm-table-cell">Estado</th>
                         <th></th>
                     </tr>
                 </thead>
                 <tbody>
-                {map(suggestions, (suggestion) => {
-                    return <SuggestionRow suggestion={suggestion} />
+                {map(petitions, (petition) => {
+                    return <PetitionRow petition={petition} />
                 })}
                 </tbody>
             </Table>

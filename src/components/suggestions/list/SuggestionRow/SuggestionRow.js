@@ -1,5 +1,5 @@
 import React from "react";
-import Logo from "../../../../assets/png/logo2.png";
+import Avatar from "../../../../assets/jpg/avatar2.jpg";
 import {Badge, Image, Dropdown} from "react-bootstrap";
 
 import "./SuggestionRow.scss"
@@ -9,7 +9,7 @@ export default function SuggestionRow(props) {
 
     const avatarUrl = suggestion.user.avatar_url
         ?  suggestion.user.avatar_url
-        : Logo
+        : Avatar
 
     return(
         <tr className="suggestion-row">
