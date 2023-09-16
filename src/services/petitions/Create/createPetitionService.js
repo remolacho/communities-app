@@ -4,10 +4,10 @@ import {getLang} from "../../auth/authLang";
 import {getTokenApi} from "../../auth/authUser";
 import {each} from "lodash";
 
-export function createSuggestionService(dataSuggestion, file) {
-    const url = `${API_HOST}/${getSubdomainApi()}/v1/suggestion/create?lang=${getLang()}`;
+export function createPetitionService(dataPetition, files) {
+    const url = `${API_HOST}/${getSubdomainApi()}/v1/petition/create?lang=${getLang()}`;
 
-    return fetch(url, params(dataSuggestion, file)).then(response => {
+    return fetch(url, params(dataPetition, files)).then(response => {
         return response.json();
     }).then(result =>{
         return result;
@@ -16,18 +16,18 @@ export function createSuggestionService(dataSuggestion, file) {
     })
 }
 
-function params(dataSuggestion, file) {
+function params(dataPetition, files) {
     const formData = new FormData();
 
-    each(dataSuggestion, (value, key) => {
+    each(dataPetition, (value, key) => {
         if(value){
-            formData.append(`suggestion[${key}]`, value);
+            formData.append(`petition[${key}]`, value);
         }
     })
 
-    if(file){
-        formData.append("suggestion[files[0]]", file);
-    }
+    each(files, (file, index) => {
+        formData.append(`petition[files[${index}]]`, file);
+    })
 
     return {
         method: "POST",

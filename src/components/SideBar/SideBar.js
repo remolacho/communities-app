@@ -5,9 +5,9 @@ import {faDashboard, faBuilding, faUsers, faPowerOff, faMap, faComment} from "@f
 import { useNavigate } from 'react-router-dom';
 import {logoutUser} from "../../services/auth/authUser";
 import useAuth from "../../hooks/contextValues/useAuth";
-import Logo from "../../../src/assets/png/logo2.png";
+import Logo from "../../../src/assets/jpg/avatar2.jpg";
+
 import "./SideBar.scss"
-import {CameraIcon} from "../../utils/icons";
 
 function SideBar(props) {
     const {setCallLogin } = props
@@ -15,7 +15,6 @@ function SideBar(props) {
     const [userMenuExpanded, setUserMenuExpanded] = useState(false);
     const [petitionsMenuExpanded, setPetitionsMenuExpanded] = useState(false);
     const [suggestionsMenuExpanded, setSuggestionsMenuExpanded] = useState(false);
-
 
     const navigate = useNavigate()
     const {currentUser} = useAuth()
@@ -74,7 +73,7 @@ function SideBar(props) {
             <Nav.Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap} /> PQRs</Nav.Link>
             {petitionsMenuExpanded && (
                 <div className="sub-menu">
-                    <Nav.Link href="#">Crear</Nav.Link>
+                    <Nav.Link href="/petitions/create">Crear</Nav.Link>
                     <Nav.Link href="#">Mis PQRs</Nav.Link>
                     <Nav.Link href="#">Listar PQRs</Nav.Link>
                 </div>
