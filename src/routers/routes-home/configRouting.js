@@ -8,6 +8,7 @@ import RemoveImportRoles from "../../pages/Home/users/RemoveImportRoles";
 import CreateSuggestion from "../../pages/Home/suggestions/CreateSuggestion";
 import ListSuggestions from "../../pages/Home/suggestions/ListSuggestions";
 import DetailSuggestion from "../../pages/Home/suggestions/DetailSuggestion";
+import CreatePetition from "../../pages/Home/petitions/CreatePetition";
 
 export default [
     {
@@ -65,4 +66,9 @@ export default [
         exact: true,
         page: DetailSuggestion
     },
+    {
+        path: "petitions/create",
+        exact: true,
+        page: CreatePetition
+    }
 ]

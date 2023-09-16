@@ -1,5 +1,5 @@
 import React, {useState} from "react";
-import {Form, Button, Spinner} from "react-bootstrap";
+import {Form, Button, Spinner, Row, Col} from "react-bootstrap";
 
 import {setLogoEnterpriseApi, setSubdomainApi} from "../../../../services/auth/authSubdomain";
 import {toast} from "react-toastify";
@@ -48,11 +48,15 @@ export default function SubdomainForm(props){
             <h2><center>Iniciar con el dominio de tu comunidad</center></h2>
             <Form onSubmit={onSubmit} onChange={onChange}>
                 <Form.Group>
-                    <Form.Control type="text"
-                                  placeholder={SUBDOMAIN}
-                                  defaultValue={formData.subdomain}
-                                  name="subdomain"
-                    />
+                    <Row>
+                        <Col>
+                            <Form.Control type="text"
+                                          placeholder={SUBDOMAIN}
+                                          defaultValue={formData.subdomain}
+                                          name="subdomain"
+                            />
+                        </Col>
+                    </Row>
                 </Form.Group>
 
                 <Button variant="primary" type="submit" disabled={btnLoading}>

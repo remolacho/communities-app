@@ -17,7 +17,7 @@ function initializer(){
     }
 }
 
-function validSendTweet(lengthMessage){
+function validSendSuggestion(lengthMessage){
     return lengthMessage > MIN_LENGTH && lengthMessage <= MAX_LENGTH
 }
 
@@ -87,7 +87,7 @@ export default function CreateSuggestionForm(props) {
                         </Form.Group>
 
                         <span className={
-                            classNames(  "counter", { "danger": !validSendTweet(lengthMessage) } )}>
+                            classNames(  "counter", { "danger": !validSendSuggestion(lengthMessage) } )}>
                             Caracteres: {lengthMessage}
                         </span>
                         <hr/>
@@ -97,7 +97,7 @@ export default function CreateSuggestionForm(props) {
                         <Button variant="primary"
                                 type="submit"
                                 className="btn-submit"
-                                disabled={!validSendTweet(lengthMessage) || btnLoading}>
+                                disabled={!validSendSuggestion(lengthMessage) || btnLoading}>
                             {!btnLoading ? "Enviar" : <Spinner animation="border"/> }
                         </Button>
                     </Form>
