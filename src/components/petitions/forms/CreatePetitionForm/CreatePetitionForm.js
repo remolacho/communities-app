@@ -94,7 +94,7 @@ export default function CreatePetitionForm(props) {
                             </Form.Group>
 
                             <Form.Group>
-                                <Form.Label>Alcance que deseas</Form.Label>
+                                <Form.Label>A quien va dirigido?</Form.Label>
 
                                 <Form.Select
                                     defaultValue={formData.group_role_id}
