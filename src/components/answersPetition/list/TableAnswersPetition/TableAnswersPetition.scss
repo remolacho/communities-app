@@ -1,0 +1,46 @@
+@import "../../../../scss/index";
+
+.table-answers-petition{
+  margin-top: 20px;
+  margin-bottom: 20px;
+  color: $font-light;
+
+  h3{
+    padding: 15px;
+    font-size: 16px;
+    border-bottom: 1px solid $border-grey;
+  }
+
+  .refresh-answers{
+    cursor: pointer;
+    margin-right: 5px;
+  }
+
+  .answer{
+    padding: 10px 20px;
+    border-bottom: 1px solid $border-grey;
+
+    .user-info{
+      font-weight: bold;
+      font-size: 16px;
+
+      span{
+        margin-left: 10px;
+        font-size: 12px;
+        font-weight: normal;
+        color: $font-grey;
+      }
+
+      .avatar{
+        width: 50px;
+        height: 50px;
+        margin-right: 20px;
+      }
+    }
+
+    .body-answer{
+      margin-left: 70px;
+      font-size: 14px;
+    }
+  }
+}

@@ -1,11 +1,15 @@
 import React, {useEffect, useState} from "react";
-import {Button, Card, Dropdown} from "react-bootstrap";
+import {Button, Card} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
 import FilesList from "../../shared/FilesList";
 import {detailPetitionsService} from "../../../services/petitions/Detail/detailPetitionsService";
 import {toast} from "react-toastify";
-import "./DetailPetitionComponent.scss"
 import ChangeStatusPetition from "../ChangeStatusPetition";
+import moment from "moment";
+import location from "moment/locale/es"
+import AnswerForm from "../../answersPetition/forms/AnswerForm";
+
+import "./DetailPetitionComponent.scss"
 
 export default function DetailPetitionComponent(props) {
     const { token } = props
@@ -33,31 +37,33 @@ export default function DetailPetitionComponent(props) {
                 <Card.Body>
                     <Card.Title>
                         PQR {petition?.ticket}
-                        <span style={{
-                            background: petition?.status.color,
-                            borderRadius: "25px",
-                            padding: "5px 5px 5px 5px",
-                            fontSize: "16px",
-                            color: "black",
-                            fontWeight: "bold",
-                            marginLeft: 10}}
-                        >
-                            {petition?.status.name}
-                        </span>
                     </Card.Title>
-
-                    <Card.Text>{petition?.title}</Card.Text>
 
                     <ChangeStatusPetition
                         petition={petition}
                         setStatusId={setStatusId}
                     />
 
+                    <div className="petition-user">
+                        Creado Por {petition?.user?.name} {petition?.user?.lastname} {petition?.user?.reference}
+                    </div>
+
+                    <div className="petition-date">
+                        Creado el { moment(petition?.created_at).locale("es", location).format("LL") },
+                        Ultima modificación { moment(petition?.updated_at).calendar() }
+                    </div>
+
+                    <Card.Text>{petition?.title}</Card.Text>
+
                     <div className="petition-message">
                         {petition?.message}
                     </div>
 
                     <FilesList type="petition" token={token} />
+
+                    <hr/>
+
+                    <AnswerForm petition={petition}/>
                 </Card.Body>
                 <Card.Footer className="d-flex">
                     <Button onClick={() => navigate(-1)} style={{marginLeft: "auto"}}>

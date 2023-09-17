@@ -26,7 +26,20 @@ export default function ChangeStatusPetition(props) {
         })
     },[petition?.token, petition?.status?.id])
 
-    if(statuses.length === 0) return;
+    if(statuses.length === 0){
+        return(
+            <span style={{
+                background: petition?.status?.color,
+                borderRadius: "25px",
+                padding: "5px 5px 5px 5px",
+                fontSize: "16px",
+                color: "black",
+                fontWeight: "bold",
+            }}>
+                {petition?.status.name}
+            </span>
+        )
+    }
 
     const changeStatus = (statusId) =>{
         updateStatusPetitionService(petition?.token, statusId).then(response => {
