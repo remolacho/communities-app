@@ -8,6 +8,12 @@ import {faDownload} from "@fortawesome/free-solid-svg-icons"
 
 import "./FilesList.scss"
 
+function truncate(name){
+    if(name.length > 20) return name.substring(0, 20) + "..."
+
+    return name
+}
+
 export default function FilesList(props) {
     const [files, setFiles] = useState([])
     const {token, type} = props;
@@ -32,7 +38,7 @@ export default function FilesList(props) {
                 {
                     map(files, (value, key) => {
                        return <Link to={value.url} target='_blank' key={key}>
-                           <div><FontAwesomeIcon icon={faDownload} />{value.name}</div>
+                           <div><FontAwesomeIcon icon={faDownload} />{truncate(value.name)}</div>
                        </Link>
                     })
                 }

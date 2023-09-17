@@ -46,7 +46,8 @@ export default function PetitionRow(props) {
                     </Dropdown.Toggle>
 
                     <Dropdown.Menu>
-                        <Dropdown.Item href={`#`}>Ver detalle</Dropdown.Item>
+                        <Dropdown.Item href={`/petitions/detail/${petition.token}`}>Ver detalle</Dropdown.Item>
+                        <Dropdown.Item href={`#`}>Responder</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </td>

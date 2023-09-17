@@ -18,12 +18,10 @@ export function createPetitionService(dataPetition, files) {
 
 function params(dataPetition, files) {
     const formData = new FormData();
-
-    each(dataPetition, (value, key) => {
-        if(value){
-            formData.append(`petition[${key}]`, value);
-        }
-    })
+    formData.append('petition[category_petition_id]', dataPetition.category_petition_id);
+    formData.append('petition[group_role_id]', dataPetition.group_role_id);
+    formData.append('petition[title]', dataPetition.title);
+    formData.append('petition[message]', dataPetition.message);
 
     each(files, (file, index) => {
         formData.append(`petition[files[${index}]]`, file);

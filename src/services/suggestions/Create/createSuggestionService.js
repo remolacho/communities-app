@@ -19,15 +19,9 @@ export function createSuggestionService(dataSuggestion, file) {
 function params(dataSuggestion, file) {
     const formData = new FormData();
 
-    each(dataSuggestion, (value, key) => {
-        if(value){
-            formData.append(`suggestion[${key}]`, value);
-        }
-    })
-
-    if(file){
-        formData.append("suggestion[files[0]]", file);
-    }
+    formData.append('suggestion[message]', dataSuggestion.message);
+    formData.append('suggestion[anonymous]', dataSuggestion.anonymous);
+    if(file) formData.append('suggestion[files][0]', file);
 
     return {
         method: "POST",
