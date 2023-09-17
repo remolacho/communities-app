@@ -59,8 +59,8 @@ export default function DetailPetitionComponent(props) {
 
                     <FilesList type="petition" token={token} />
                 </Card.Body>
-                <Card.Footer>
-                    <Button onClick={() => navigate(-1)}>
+                <Card.Footer className="d-flex">
+                    <Button onClick={() => navigate(-1)} style={{marginLeft: "auto"}}>
                         Volver
                     </Button>
                 </Card.Footer>
