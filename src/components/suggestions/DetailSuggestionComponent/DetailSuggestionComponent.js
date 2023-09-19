@@ -38,8 +38,8 @@ export default function DetailSuggestionComponent(props) {
                     </div>
                     <FilesList type="suggestion" token={token} />
                 </Card.Body>
-                <Card.Footer>
-                    <Button onClick={() => navigate(-1)}>
+                <Card.Footer className="d-flex">
+                    <Button onClick={() => navigate(-1)} style={{marginLeft: "auto"}}>
                         Volver
                     </Button>
                 </Card.Footer>

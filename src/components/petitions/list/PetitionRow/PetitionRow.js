@@ -1,7 +1,8 @@
 import React from "react";
 import Avatar from "../../../../assets/jpg/avatar2.jpg";
 import {Image, Dropdown} from "react-bootstrap";
-
+import moment from "moment/moment";
+import location from "moment/locale/es"
 import "./PetitionRow.scss"
 
 export default function PetitionRow(props) {
@@ -23,6 +24,12 @@ export default function PetitionRow(props) {
             </td>
             <td className="d-none d-sm-table-cell petition-row__user-ticket">
                 {petition.ticket}
+            </td>
+            <td className="d-none d-sm-table-cell petition-row__user-ticket">
+                { moment(petition.created_at).locale("es", location).format("LL") }
+            </td>
+            <td>
+                { moment(petition?.updated_at).calendar() }
             </td>
             <td>
                 {petition.category.name}
@@ -47,7 +54,6 @@ export default function PetitionRow(props) {
 
                     <Dropdown.Menu>
                         <Dropdown.Item href={`/petitions/detail/${petition.token}`}>Ver detalle</Dropdown.Item>
-                        <Dropdown.Item href={`#`}>Responder</Dropdown.Item>
                     </Dropdown.Menu>
                 </Dropdown>
             </td>
