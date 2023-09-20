@@ -1,6 +1,4 @@
 import {API_HOST} from "../../../utils/variablesApi"
-import {getSubdomainApi} from "../../auth/authSubdomain";
-import {getLang} from "../../auth/authLang";
 
 export function verifierChangePasswordService(token, subdomain) {
     const url = `${API_HOST}/${subdomain}/v1/users/forgot_password/verifier/${token}`;

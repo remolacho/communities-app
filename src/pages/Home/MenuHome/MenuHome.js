@@ -4,7 +4,7 @@ import SideBar from "../../../components/SideBar/SideBar";
 
 
 function MenuHome(props) {
-    const {setCallLogin } = props
+    const {setCallLogin, menuSetting } = props
     const [expanded, setExpanded] = useState(false);
 
     return (
@@ -20,7 +20,7 @@ function MenuHome(props) {
                     className="mobile-toggle ml-auto"
                 />
                 <Navbar.Collapse id="sidebar-nav">
-                    <SideBar setCallLogin={setCallLogin}/>
+                    <SideBar setCallLogin={setCallLogin} menuSetting={menuSetting}/>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
