@@ -2,7 +2,6 @@ import {API_HOST} from "../../../utils/variablesApi"
 import {getSubdomainApi} from "../../auth/authSubdomain";
 import {getLang} from "../../auth/authLang";
 import {getTokenApi} from "../../auth/authUser";
-import {each} from "lodash";
 
 export function createSuggestionService(dataSuggestion, file) {
     const url = `${API_HOST}/${getSubdomainApi()}/v1/suggestion/create?lang=${getLang()}`;

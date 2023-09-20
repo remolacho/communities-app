@@ -1,6 +1,6 @@
 import React from "react";
 import BannerLayout from "../../../layouts/BannerLayout";
-import {Card, Col, Row} from "react-bootstrap";
+import {Card} from "react-bootstrap";
 import PQRsDashboard from "../../../components/petitions/dashboard/PQRsDashboard";
 import "./Dashboard.scss"
 
