@@ -19,8 +19,10 @@ export default function ColumnChartComponent(prop){
 
     return(
         <div className="column-chart-component">
-            {/*<span className="title-chart">PQRs Barra</span>*/}
-            <Chart chartType="ColumnChart" width="100%" height="300px" data={parseDataChart(data)} />
+            <Chart chartType="ColumnChart"
+                   width="100%"
+                   height="300px"
+                   data={parseDataChart(data)} />
         </div>
     )
 }

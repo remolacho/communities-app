@@ -19,8 +19,14 @@ export default function PieChartComponent(prop){
 
     return(
         <div className="pie-chart-component">
-            {/*<span className="title-chart">PQRs Torta</span>*/}
-            <Chart chartType="PieChart" width="100%" height="300px" data={parseDataChart(data)} />
+            <Chart
+                chartType="PieChart"
+                options={{
+                    title: "Porcentajes de PQRs por estados",
+                }}
+                width="100%"
+                height="300px"
+                data={parseDataChart(data)} />
         </div>
     )
 }
