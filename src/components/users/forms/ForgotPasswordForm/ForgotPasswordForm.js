@@ -17,7 +17,7 @@ export default function ForgotPasswordForm(){
     const [formData, setFormData] = useState(initialAttributes())
     const [btnLoading, setBtnLoading] = useState(false)
 
-    const onChance = e => {
+    const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
@@ -51,7 +51,7 @@ export default function ForgotPasswordForm(){
     return (
         <>
             <h2><center>¿Olvido su contraseña?</center></h2>
-            <Form onSubmit={onSubmit} onChange={onChance}>
+            <Form onSubmit={onSubmit} onChange={onChange}>
                 <Form.Group>
                     <Form.Control type="email"
                                   placeholder="Email"

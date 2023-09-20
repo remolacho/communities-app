@@ -3,8 +3,8 @@ import {getSubdomainApi} from "../../auth/authSubdomain";
 import {getLang} from "../../auth/authLang";
 import {getTokenApi} from "../../auth/authUser";
 
-export function profileService() {
-    const url = `${API_HOST}/${getSubdomainApi()}/v1/users/profile/show?lang=${getLang()}`;
+export function profileService(token) {
+    const url = `${API_HOST}/${getSubdomainApi()}/v1/users/profile/show?token=${token}&lang=${getLang()}`;
 
     return fetch(url, params()).then(response => {
         return response.json();

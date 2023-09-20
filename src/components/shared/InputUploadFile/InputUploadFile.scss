@@ -1,0 +1,28 @@
+@import "../../../scss/index";
+
+.upload-file{
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: $background-grey-dark;
+    color: $font-light;
+    &:hover{
+        cursor: pointer;
+        border: 2px solid $primary;
+    }
+
+    svg{
+        margin-top: 10px;
+        width: 50px !important;
+        height: 25px !important;
+        fill: $font-light;
+        &:hover{
+            fill: $font-primary;
+        }
+    }
+}
+
+.delete-file{
+  margin-top: 15px;
+}

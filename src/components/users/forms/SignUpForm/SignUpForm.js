@@ -24,7 +24,7 @@ export default function SignUpForm(){
     const [btnLoading, setBtnLoading] = useState(false)
     const navigate = useNavigate()
 
-    const onChance = e => {
+    const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
@@ -60,7 +60,7 @@ export default function SignUpForm(){
     return (
         <>
             <h2><center>Crear cuenta</center></h2>
-            <Form onSubmit={onSubmit} onChange={onChance}>
+            <Form onSubmit={onSubmit} onChange={onChange}>
                 <Form.Group>
                     <Form.Control
                         type="text"

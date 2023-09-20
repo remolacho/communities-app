@@ -5,6 +5,7 @@ import {toast} from "react-toastify"
 import {validFormSignIn} from "../../../../utils/validations/signIn"
 import {signInService} from "../../../../services/users/SignIn/signInService";
 import {setTokenApi} from "../../../../services/auth/authUser"
+import {getSubdomainApi} from "../../../../services/auth/authSubdomain";
 
 function initialLoginAttributes(){
     return {
@@ -18,7 +19,7 @@ export default function SignInForm(props){
     const [formData, setFormData] = useState(initialLoginAttributes())
     const [btnLoading, setBtnLoading] = useState(false)
 
-    const onChance = e => {
+    const onChange = e => {
         setFormData({ ...formData, [e.target.name]: e.target.value });
     }
 
@@ -52,8 +53,9 @@ export default function SignInForm(props){
     }
 
     return (
-        <>
-            <Form onSubmit={onSubmit} onChange={onChance}>
+            <Form onSubmit={onSubmit} onChange={onChange}>
+                <h2><center>Iniciar sesión {getSubdomainApi()}</center></h2>
+
                 <Form.Group>
                     <Form.Control type="email"
                                   placeholder="Email"
@@ -72,16 +74,15 @@ export default function SignInForm(props){
                 <Button variant="primary" type="submit"  disabled={btnLoading}>
                     {!btnLoading ? "Iniciar sesion" : <Spinner animation="border"/> }
                 </Button>
-            </Form>
 
-            <Row>
-                <Col>
-                    <Link to="/users/forgot-password">Olvide mi contraseña</Link>
-                </Col>
-                <Col>
-                    <Link to="/users/sign-up">Registrarse</Link>
-                </Col>
-            </Row>
-        </>
+                <Row>
+                    <Col>
+                        <Link to="/users/forgot-password">Olvide mi contraseña</Link>
+                    </Col>
+                    <Col>
+                        <Link to="/users/sign-up">Registrarse</Link>
+                    </Col>
+                </Row>
+            </Form>
     )
 }
