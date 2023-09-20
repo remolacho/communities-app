@@ -1,6 +1,6 @@
 import React, {useState, useEffect} from "react";
 import {LANG} from "./utils/variablesApi"
-import {ToastContainer} from "react-toastify"
+import {toast, ToastContainer} from "react-toastify"
 import {AuthContext} from "./utils/contexts"
 import RoutingLogin from "./routers/routes-sign-in/RoutingLogin";
 import {getTokenApi, userLoggedApi} from "./services/auth/authUser";
@@ -22,6 +22,7 @@ export default function App() {
         if(getTokenApi() && !callLogin){
             settingEnterpriseService().then(response => {
                 if (!response.success) {
+                    toast.error(response.message, {theme: "colored"});
                     return
                 }
 

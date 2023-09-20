@@ -16,7 +16,7 @@ export default function BannerAvatar(props){
     const {currentEnterprise} = useAuth()
     const [avatarFile, setAvatarFile] = useState(null);
     const [avatarUrl, setAvatarUrl] = useState(
-        profile?.avatar_url ?  profile.avatar_url : AvatarAlt
+        profile.avatar_url ?  profile.avatar_url : AvatarAlt
     );
 
     const onDropAvatar = useCallback(acceptedFile => {
@@ -56,14 +56,22 @@ export default function BannerAvatar(props){
         setBtnLoading(false)
     }
 
+    if (!profile.setting.can_edit){
+        return (
+            <div className="banner-avatar" style={{ backgroundImage: `url('${bannerUrl}')` }}>
+                <div className="avatar" style={{ backgroundImage: `url('${avatarUrl}')`}}/>
+            </div>
+        )
+    }
+
     return(
         <div className="banner-avatar" style={{ backgroundImage: `url('${bannerUrl}')` }}>
             <div className="avatar"
-                 style={{ backgroundImage: `url('${avatarUrl}')`}}
-                 {...getRootAvatarProps()} >
+               style={{ backgroundImage: `url('${avatarUrl}')`}}
+               {...getRootAvatarProps()} >
 
-                <input {...getInputAvatarProps()} />
-                <CameraIcon/>
+            <input {...getInputAvatarProps()} />
+            <CameraIcon/>
             </div>
             <div className="actions-profile">
                 <Button onClick={onSubmit}> {!btnLoading ? "Actualizar" : <Spinner animation="border"/> }</Button>

@@ -1,0 +1,24 @@
+@import "../../../scss/index";
+
+.pagination-table{
+  margin-top: 10px;
+  margin-left: 10px;
+
+  .pagination .page-item.active .page-link {
+    background-color: $primary;
+    border: 4px solid $border-dark;
+  }
+
+  .pagination{
+    .page-item .page-link {
+      background: $background-dark-light;
+      color: $font-light;
+      border: 4px solid $border-dark;
+
+      &:hover{
+        background-color: $background-dark-light;
+        border: 4px solid $primary;
+      }
+    }
+  }
+}

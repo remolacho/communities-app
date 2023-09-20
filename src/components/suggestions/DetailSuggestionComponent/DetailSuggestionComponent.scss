@@ -1,0 +1,27 @@
+@import "../../../scss/index";
+
+.detail-suggestion-component{
+  .card {
+    width: 64rem;
+    background-color: $background-dark-light;
+
+    .card-title {
+      font-size: 24px;
+      color: $font-grey;
+      font-weight: bold;
+    }
+
+    .card-text {
+      font-size: 18px;
+      color: $font-light;
+      font-weight: bold;
+    }
+
+    .suggestion-message{
+      color: $font-grey;
+      font-size: 16px;
+      font-weight: bold;
+      justify-content: left;
+    }
+  }
+}

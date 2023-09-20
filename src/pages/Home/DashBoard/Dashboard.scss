@@ -1,1 +1,20 @@
 @import "../../../scss/index";
+
+.dashboard{
+  .card {
+    width: 64rem;
+    background-color: $background-dark-light;
+
+    .card-title {
+      font-size: 24px;
+      color: $font-grey;
+      font-weight: bold;
+    }
+
+    .card-text {
+      font-size: 18px;
+      color: $font-light;
+      font-weight: bold;
+    }
+  }
+}

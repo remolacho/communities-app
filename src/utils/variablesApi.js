@@ -1,4 +1,4 @@
-export const API_HOST = "http://localhost:3000";
+export const API_HOST = process.env.REACT_APP_API_HOST;
 export const JWT = "jwt";
 export const ENTERPRISE_KEY = "subdomain";
 export const ENTERPRISE_LOGO_KEY = "logoUrl"

@@ -16,7 +16,7 @@ export default function SignInSignUpLayout(props) {
     return (
         <Container>
             <Row>
-                <Col md={{ span: 6, offset: 3 }} className="sign-in-sign-up-layout">
+                <Col md={{ span: 8, offset: 2 }} className="sign-in-sign-up-layout">
                     <div className="sign-in-sign-up-layout__form">
                         <h2><center><img src={logoUrl} alt="Communities"/></center></h2>
                         {children}

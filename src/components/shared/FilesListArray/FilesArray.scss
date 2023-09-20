@@ -1,0 +1,31 @@
+@import "../../../scss/index";
+
+.files-list-array{
+  margin-top: 10px;
+
+  div{
+    background-color: $background-grey-dark;
+    padding-left: 5px;
+    margin-bottom: 10px;
+
+    &:hover{
+      border: 2px solid $primary;
+    }
+  }
+
+  a{
+    font-size: 18px;
+    color: $font-light;
+    font-weight: bold;
+    margin-bottom: 30px;
+    text-decoration: none;
+
+    &:hover{
+      color: $font-grey
+    }
+
+    svg{
+      width: 30px;
+    }
+  }
+}

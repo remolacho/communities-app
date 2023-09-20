@@ -1,0 +1,62 @@
+@import "../../../../scss/index";
+
+.answer-form{
+
+  form{
+    .counter{
+      margin-top: 5px;
+      margin-bottom: 10px;
+      color: $font-light;
+      font-weight: bold;
+      &.danger{
+        color: $danger;
+        font-weight: bold;
+      }
+    }
+
+    .btn-submit{
+      font-weight: bold;
+      padding: 10px;
+    }
+
+    .btn-answer{
+      font-weight: bold;
+      padding: 10px;
+      margin-left: 10px;
+    }
+
+    .form-control{
+      margin-top: 25px;
+      font-size: 25px;
+    }
+  }
+
+  &__upload-file{
+    margin-top: 10px;
+    align-items: center;
+    justify-content: center;
+    height: 50px;
+    background-color: $background-grey-dark;
+    color: $font-light;
+    &:hover{
+      cursor: pointer;
+      border: 2px solid $primary;
+    }
+
+    svg{
+      margin-top: 10px;
+      width: 50px !important;
+      height: 25px !important;
+      fill: $font-light;
+      &:hover{
+        fill: $font-primary;
+      }
+    }
+  }
+
+  &__content{
+    margin-top: 20px;
+    border: 4px solid $border-dark;
+    padding: 10px 10px 10px 10px;
+  }
+}

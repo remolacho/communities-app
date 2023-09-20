@@ -1,7 +1,7 @@
 import React, {useState, useCallback} from "react";
-import { Form, Button, Row, Col, Spinner } from  "react-bootstrap";
+import {Form, Button, Row, Col, Spinner, Card} from "react-bootstrap";
 import { useDropzone } from "react-dropzone"
-import { CameraIcon } from "../../../../utils/icons"
+import {CameraIcon} from "../../../../utils/icons"
 import {toast} from "react-toastify";
 import {updateEnterpriseService} from "../../../../services/enterprises/Enterprise/updateEnterpriseService";
 import LogoAlt from "../../../../assets/png/logo2.png";
@@ -105,7 +105,7 @@ export default function EditEnterpriseForm(props){
     }
 
     return(
-        <div className="edit-enterprise-form">
+        <div className="header-enterprise">
             <div
                 className="banner"
                 style={{ backgroundImage: `url('${bannerUrl}')`}}
@@ -122,61 +122,67 @@ export default function EditEnterpriseForm(props){
                 <input {...getInputLogoProps()} />
                 <CameraIcon/>
             </div>
+            <div className="d-flex justify-content-center align-items-center edit-enterprise-form">
+                <Card>
+                    <Card.Body>
+                        <Card.Title>Editar Empresa</Card.Title>
+                        <Form onSubmit={onSubmit}>
+                            <Form.Group>
+                                <Row>
+                                    <Col>
+                                        <Form.Control
+                                            defaultValue={formData.rut}
+                                            type="text"
+                                            placeholder="RUT"
+                                            name="rut"
+                                            onChange={onChange}
+                                        />
+                                    </Col>
 
-            <Form onSubmit={onSubmit}>
-                <Form.Group>
-                    <Row>
-                        <Col>
-                            <Form.Control
-                                defaultValue={formData.rut}
-                                type="text"
-                                placeholder="RUT"
-                                name="rut"
-                                onChange={onChange}
-                            />
-                        </Col>
+                                    <Col>
+                                        <Form.Control
+                                            defaultValue={formData.name}
+                                            type="text"
+                                            placeholder="Nombre"
+                                            name="name"
+                                            onChange={onChange}
+                                        />
+                                    </Col>
+                                </Row>
+                            </Form.Group>
 
-                        <Col>
-                            <Form.Control
-                                defaultValue={formData.name}
-                                type="text"
-                                placeholder="Nombre"
-                                name="name"
-                                onChange={onChange}
-                            />
-                        </Col>
-                    </Row>
-                </Form.Group>
+                            <Form.Group>
+                                <Form.Control
+                                    defaultValue={formData.email}
+                                    placeholder="Email"
+                                    type="text"
+                                    name="email"
+                                    onChange={onChange}
+                                />
+                            </Form.Group>
 
-                <Form.Group>
-                    <Form.Control
-                        defaultValue={formData.email}
-                        placeholder="Email"
-                        type="text"
-                        name="email"
-                        onChange={onChange}
-                    />
-                </Form.Group>
+                            <Form.Group>
+                                <Form.Control
+                                    defaultValue={formData.address}
+                                    as="textarea"
+                                    rows="2"
+                                    placeholder="Direccion"
+                                    type="text"
+                                    name="address"
+                                    onChange={onChange}
+                                />
+                            </Form.Group>
 
-                <Form.Group>
-                    <Form.Control
-                        defaultValue={formData.address}
-                        as="textarea"
-                        row="5"
-                        placeholder="Direccion"
-                        type="text"
-                        name="address"
-                        onChange={onChange}
-                    />
-                </Form.Group>
-
-                <Button variant="primary"
-                        type="submit"
-                        className="btn-submit"
-                        disabled={btnLoading}>
-                    {!btnLoading ? "Guardar" : <Spinner animation="border"/> }
-                </Button>
-            </Form>
+                            <Button variant="primary"
+                                    type="submit"
+                                    className="btn-submit"
+                                    disabled={btnLoading}>
+                                {!btnLoading ? "Guardar" : <Spinner animation="border"/> }
+                            </Button>
+                        </Form>
+                    </Card.Body>
+                </Card>
+            </div>
         </div>
     )
 }
