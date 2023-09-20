@@ -15,7 +15,7 @@ export default function BannerLayout(props) {
         <Container className={`banner-layout`}>
             <Row>
                 <Col xp={2} className="banner-layout__menu">
-                    <MenuHome setCallLogin={setCallLogin}/>
+                    <MenuHome setCallLogin={setCallLogin} menuSetting={currentEnterprise.menu}/>
                 </Col>
                 <Col xs={12} md={10} className="banner-layout__content">
                     <div className="banner-layout__title">
