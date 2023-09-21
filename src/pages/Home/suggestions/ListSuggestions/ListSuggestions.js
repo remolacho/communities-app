@@ -32,7 +32,7 @@ export default function ListSuggestions(props) {
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[read, anonymous, numPage])
+    },[read, anonymous, numPage, params.type])
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>
