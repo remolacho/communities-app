@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Image} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faRefresh} from "@fortawesome/free-solid-svg-icons"
@@ -16,7 +16,7 @@ import FilesListArray from "../../../shared/FilesListArray";
 
 export default function TableAnswersPetition(props) {
     const {
-        isVisible: isVisible,
+        isVisible,
         petition,
         setViewBtnAnswersList,
         reloadTableAnswers,
