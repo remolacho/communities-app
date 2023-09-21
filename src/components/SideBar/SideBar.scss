@@ -16,12 +16,21 @@
     background-color: $background-grey-dark;
   }
 
-  .nav-link:hover {
-    background-color: $primary;
-  }
-
   .mobile-toggle {
     float: right;
     margin-left: auto;
+  }
+
+  .nav-link{
+    a{
+      font-size: 18px;
+      color: $font-light;
+      font-weight: bold;
+      text-decoration: none;
+    }
+  }
+
+  .nav-link:hover {
+    background-color: $primary;
   }
 }

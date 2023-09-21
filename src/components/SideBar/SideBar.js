@@ -56,99 +56,99 @@ function SideBar(props) {
 
             {
                 menuSetting?.dashboard?.show &&
-                <div><Link to="/home"><FontAwesomeIcon icon={faDashboard}/> Dashboard</Link></div>
+                <div className="nav-link"><Link to="/home"><FontAwesomeIcon icon={faDashboard}/> Dashboard</Link></div>
             }
 
             {
                 menuSetting?.enterprise?.show &&
-                <div><Link onClick={toggleEnterpriseMenu}><FontAwesomeIcon icon={faBuilding} /> Empresa</Link></div>
+                <div className="nav-link"><Link onClick={toggleEnterpriseMenu}><FontAwesomeIcon icon={faBuilding} /> Empresa</Link></div>
             }
 
             {enterpriseMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.enterprise?.items.detail.show &&
-                        <div> <Link to="/enterprises/profile">Ver</Link></div>
+                        <div className="nav-link"> <Link to="/enterprises/profile">Ver</Link></div>
                     }
                     {
                         menuSetting?.enterprise?.items.edit.show &&
-                        <div><Link to="/enterprises/edit">Editar</Link></div>
+                        <div className="nav-link"><Link to="/enterprises/edit">Editar</Link></div>
                     }
                 </div>
             )}
 
             {
                 menuSetting?.users?.show &&
-                <div><Link onClick={toggleUserMenu}><FontAwesomeIcon icon={faUsers}/> Usuarios</Link></div>
+                <div className="nav-link"><Link onClick={toggleUserMenu}><FontAwesomeIcon icon={faUsers}/> Usuarios</Link></div>
             }
 
             {userMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.users?.items.profile.show &&
-                        <div><Link to={`/users/profile/${currentUser.token}`}>Mi perfil</Link></div>
+                        <div className="nav-link"><Link to={`/users/profile/${currentUser.token}`}>Mi perfil</Link></div>
                     }
                     {
                         menuSetting?.users?.items.list.show &&
-                        <div><Link to="/users/list">Lista</Link></div>
+                        <div className="nav-link"><Link to="/users/list">Lista</Link></div>
                     }
                     {
                         menuSetting?.users?.items.assignRoles.show &&
-                        <div><Link to="/users/assign-roles">Asignar roles</Link></div>
+                        <div className="nav-link"><Link to="/users/assign-roles">Asignar roles</Link></div>
                     }
                     {
                         menuSetting?.users?.items.removeRoles.show &&
-                        <div><Link to="/users/remove-roles">Remover roles</Link></div>
+                        <div className="nav-link"><Link to="/users/remove-roles">Remover roles</Link></div>
                     }
                 </div>
             )}
 
             {
                 menuSetting?.pqrs?.show &&
-                <div><Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap}/> PQRs</Link></div>
+                <div className="nav-link"><Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap}/> PQRs</Link></div>
             }
 
             {petitionsMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.pqrs?.items.create.show &&
-                        <div><Link to="/petitions/create">Crear</Link></div>
+                        <div className="nav-link"><Link to="/petitions/create">Crear</Link></div>
                     }
                     {
                         menuSetting?.pqrs?.items.selfPqrs.show &&
-                        <div> <Link to="/petitions/list/list_own">Mis PQRs</Link></div>
+                        <div className="nav-link"> <Link to="/petitions/list/list_own">Mis PQRs</Link></div>
                     }
                     {
                         menuSetting?.pqrs?.items.list.show &&
-                        <div><Link to="/petitions/list/list_group_roles">Listar PQRs</Link></div>
+                        <div className="nav-link"><Link to="/petitions/list/list_group_roles">Listar PQRs</Link></div>
                     }
                 </div>
             )}
 
             {
                 menuSetting?.suggestions?.show &&
-                <div><Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Link></div>
+                <div className="nav-link"><Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Link></div>
             }
 
             {suggestionsMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.suggestions?.items.create.show &&
-                        <div><Link to="/suggestions/create">Crear</Link></div>
+                        <div className="nav-link"><Link to="/suggestions/create">Crear</Link></div>
                     }
                     {
                         menuSetting?.suggestions?.items.selfSuggestions.show &&
-                        <div><Link to="/suggestions/list/list_own">Mis Sugerencias</Link></div>
+                        <div className="nav-link"><Link to="/suggestions/list/list_own">Mis Sugerencias</Link></div>
                     }
                     {
                         menuSetting?.suggestions?.items.list.show &&
-                        <div><Link to="/suggestions/list/list_group_roles">Lista Sugerencias</Link></div>
+                        <div className="nav-link"><Link to="/suggestions/list/list_group_roles">Lista Sugerencias</Link></div>
                     }
                 </div>
             )}
 
             <div className="separator" />
-                    <div><Link onClick={close}><FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesión</Link></div>
+            <div className="nav-link"><Link onClick={close}><FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesión</Link></div>
         </Nav>
     );
 }
