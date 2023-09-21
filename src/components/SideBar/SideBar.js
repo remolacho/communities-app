@@ -1,7 +1,7 @@
 import React,  { useState }  from "react";
 import {Nav} from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faDashboard, faBuilding, faUsers, faPowerOff, faMap, faComment} from "@fortawesome/free-solid-svg-icons"
+import {faBuilding, faUsers, faPowerOff, faMap, faComment} from "@fortawesome/free-solid-svg-icons"
 import {Link, useNavigate} from 'react-router-dom';
 import {logoutUser} from "../../services/auth/authUser";
 import useAuth from "../../hooks/contextValues/useAuth";
