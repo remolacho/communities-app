@@ -30,7 +30,7 @@ export default function ListPetitions(props) {
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
-    },[categoryId, statusId, numPage])
+    },[categoryId, statusId, numPage, params.type])
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>

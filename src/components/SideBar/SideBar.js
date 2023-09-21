@@ -2,7 +2,7 @@ import React,  { useState }  from "react";
 import {Nav} from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faDashboard, faBuilding, faUsers, faPowerOff, faMap, faComment} from "@fortawesome/free-solid-svg-icons"
-import {useNavigate} from 'react-router-dom';
+import {Link, useNavigate} from 'react-router-dom';
 import {logoutUser} from "../../services/auth/authUser";
 import useAuth from "../../hooks/contextValues/useAuth";
 import Logo from "../../../src/assets/jpg/avatar2.jpg";
@@ -56,100 +56,99 @@ function SideBar(props) {
 
             {
                 menuSetting?.dashboard?.show &&
-                <Nav.Link href="/home"><FontAwesomeIcon icon={faDashboard}/> Dashboard</Nav.Link>
+                <div><Link to="/home"><FontAwesomeIcon icon={faDashboard}/> Dashboard</Link></div>
             }
 
             {
                 menuSetting?.enterprise?.show &&
-                <Nav.Link onClick={toggleEnterpriseMenu}><FontAwesomeIcon icon={faBuilding} /> Empresa</Nav.Link>
+                <div><Link onClick={toggleEnterpriseMenu}><FontAwesomeIcon icon={faBuilding} /> Empresa</Link></div>
             }
 
             {enterpriseMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.enterprise?.items.detail.show &&
-                        <Nav.Link href="/enterprises/profile">Ver</Nav.Link>
+                        <div> <Link to="/enterprises/profile">Ver</Link></div>
                     }
                     {
                         menuSetting?.enterprise?.items.edit.show &&
-                        <Nav.Link href="/enterprises/edit">Editar</Nav.Link>
+                        <div><Link to="/enterprises/edit">Editar</Link></div>
                     }
                 </div>
             )}
 
             {
                 menuSetting?.users?.show &&
-                <Nav.Link onClick={toggleUserMenu}><FontAwesomeIcon icon={faUsers}/> Usuarios</Nav.Link>
+                <div><Link onClick={toggleUserMenu}><FontAwesomeIcon icon={faUsers}/> Usuarios</Link></div>
             }
 
             {userMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.users?.items.profile.show &&
-                        <Nav.Link href={`/users/profile/${currentUser.token}`}>Mi perfil</Nav.Link>
+                        <div><Link to={`/users/profile/${currentUser.token}`}>Mi perfil</Link></div>
                     }
                     {
                         menuSetting?.users?.items.list.show &&
-                        <Nav.Link href="/users/list">Lista</Nav.Link>
+                        <div><Link to="/users/list">Lista</Link></div>
                     }
                     {
                         menuSetting?.users?.items.assignRoles.show &&
-                        <Nav.Link href="/users/assign-roles">Asignar roles</Nav.Link>
+                        <div><Link to="/users/assign-roles">Asignar roles</Link></div>
                     }
                     {
                         menuSetting?.users?.items.removeRoles.show &&
-                        <Nav.Link href="/users/remove-roles">Remover roles</Nav.Link>
+                        <div><Link to="/users/remove-roles">Remover roles</Link></div>
                     }
                 </div>
             )}
 
             {
                 menuSetting?.pqrs?.show &&
-                <Nav.Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap}/> PQRs</Nav.Link>
+                <div><Link onClick={togglePetitionMenu}><FontAwesomeIcon icon={faMap}/> PQRs</Link></div>
             }
 
             {petitionsMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.pqrs?.items.create.show &&
-                        <Nav.Link href="/petitions/create">Crear</Nav.Link>
+                        <div><Link to="/petitions/create">Crear</Link></div>
                     }
                     {
                         menuSetting?.pqrs?.items.selfPqrs.show &&
-                        <Nav.Link href="/petitions/list/list_own">Mis PQRs</Nav.Link>
+                        <div> <Link to="/petitions/list/list_own">Mis PQRs</Link></div>
                     }
                     {
                         menuSetting?.pqrs?.items.list.show &&
-                        <Nav.Link href="/petitions/list/list_group_roles">Listar PQRs</Nav.Link>
+                        <div><Link to="/petitions/list/list_group_roles">Listar PQRs</Link></div>
                     }
                 </div>
             )}
 
             {
                 menuSetting?.suggestions?.show &&
-                <Nav.Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Nav.Link>
+                <div><Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Link></div>
             }
 
             {suggestionsMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.suggestions?.items.create.show &&
-                        <Nav.Link href="/suggestions/create">Crear</Nav.Link>
+                        <div><Link to="/suggestions/create">Crear</Link></div>
                     }
                     {
                         menuSetting?.suggestions?.items.selfSuggestions.show &&
-                        <Nav.Link href="/suggestions/list/list_own">Mis Sugerencias</Nav.Link>
+                        <div><Link to="/suggestions/list/list_own">Mis Sugerencias</Link></div>
                     }
                     {
                         menuSetting?.suggestions?.items.list.show &&
-                        <Nav.Link href="/suggestions/list/list_group_roles">Lista Sugerencias</Nav.Link>
+                        <div><Link to="/suggestions/list/list_group_roles">Lista Sugerencias</Link></div>
                     }
                 </div>
             )}
 
             <div className="separator" />
-
-            <Nav.Link onClick={close}><FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesión</Nav.Link>
+                    <div><Link onClick={close}><FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesión</Link></div>
         </Nav>
     );
 }
