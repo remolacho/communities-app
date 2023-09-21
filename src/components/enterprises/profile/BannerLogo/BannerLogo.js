@@ -17,7 +17,7 @@ export default function BannerLogo(props){
 
     return(
         <div className="banner-logo" style={{ backgroundImage: `url('${bannerUrl}')` }}>
-            <img src={logoUrl} className="logo"/>
+            <img src={logoUrl} alt="community" className="logo"/>
         </div>
     )
 }
