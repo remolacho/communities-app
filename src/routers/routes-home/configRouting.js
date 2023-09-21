@@ -14,57 +14,52 @@ import DetailPetition from "../../pages/Home/petitions/DetailPetition";
 
 const configRouting = [
     {
-        path: "/",
+        path: "home",
         exact: true,
         page: Dashboard
     },
     {
-        path: "/home",
-        exact: true,
-        page: Dashboard
-    },
-    {
-        path: "/enterprises/profile",
+        path: "enterprises/profile",
         exact: true,
         page: ProfileEnterprise
     },
     {
-        path: "/enterprises/edit",
+        path: "enterprises/edit",
         exact: true,
         page: Edit
     },
     {
-        path: "/users/profile/:token",
+        path: "users/profile/:token",
         exact: true,
         page: Profile
     },
     {
-        path: "/users/list",
+        path: "users/list",
         exact: true,
         page: ListUsers
     },
     {
-        path: "/users/assign-roles",
+        path: "users/assign-roles",
         exact: true,
         page: AssignImportRoles
     },
     {
-        path: "/users/remove-roles",
+        path: "users/remove-roles",
         exact: true,
         page: RemoveImportRoles
     },
     {
-        path: "/suggestions/create",
+        path: "suggestions/create",
         exact: true,
         page: CreateSuggestion
     },
     {
-        path: "/suggestions/list/:type",
+        path: "suggestions/list/:type",
         exact: true,
         page: ListSuggestions
     },
     {
-        path: "/suggestions/detail/:token",
+        path: "suggestions/detail/:token",
         exact: true,
         page: DetailSuggestion
     },
@@ -74,15 +69,20 @@ const configRouting = [
         page: CreatePetition
     },
     {
-        path: "/petitions/list/:type",
+        path: "petitions/list/:type",
         exact: true,
         page: ListPetitions
     },
     {
-        path: "/petitions/detail/:token",
+        path: "petitions/detail/:token",
         exact: true,
         page: DetailPetition
     },
+    {
+        path: "/",
+        exact: true,
+        page: Dashboard
+    }
 ]
 
 export default configRouting;
