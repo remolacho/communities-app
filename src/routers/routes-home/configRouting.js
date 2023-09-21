@@ -12,7 +12,7 @@ import CreatePetition from "../../pages/Home/petitions/CreatePetition";
 import ListPetitions from "../../pages/Home/petitions/ListPetitions/ListPetitions";
 import DetailPetition from "../../pages/Home/petitions/DetailPetition";
 
-export default [
+const configRouting = [
     {
         path: "/",
         exact: true,
@@ -84,3 +84,5 @@ export default [
         page: DetailPetition
     },
 ]
+
+export default configRouting;
