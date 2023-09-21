@@ -68,11 +68,11 @@ function SideBar(props) {
                 <div className="sub-menu">
                     {
                         menuSetting?.enterprise?.items.detail.show &&
-                        <div className="nav-link"> <Link to="/enterprises/profile">Ver</Link></div>
+                        <Link to="/enterprises/profile" className="nav-link">Ver</Link>
                     }
                     {
                         menuSetting?.enterprise?.items.edit.show &&
-                        <div className="nav-link"><Link to="/enterprises/edit">Editar</Link></div>
+                        <Link to="/enterprises/edit" className="nav-link">Editar</Link>
                     }
                 </div>
             )}
@@ -86,19 +86,19 @@ function SideBar(props) {
                 <div className="sub-menu">
                     {
                         menuSetting?.users?.items.profile.show &&
-                        <div className="nav-link"><Link to={`/users/profile/${currentUser.token}`}>Mi perfil</Link></div>
+                        <Link to={`/users/profile/${currentUser.token}`} className="nav-link">Mi perfil</Link>
                     }
                     {
                         menuSetting?.users?.items.list.show &&
-                        <div className="nav-link"><Link to="/users/list">Lista</Link></div>
+                        <Link to="/users/list" className="nav-link">Lista</Link>
                     }
                     {
                         menuSetting?.users?.items.assignRoles.show &&
-                        <div className="nav-link"><Link to="/users/assign-roles">Asignar roles</Link></div>
+                        <Link to="/users/assign-roles" className="nav-link">Asignar roles</Link>
                     }
                     {
                         menuSetting?.users?.items.removeRoles.show &&
-                        <div className="nav-link"><Link to="/users/remove-roles">Remover roles</Link></div>
+                       <Link to="/users/remove-roles" className="nav-link">Remover roles</Link>
                     }
                 </div>
             )}
@@ -112,43 +112,43 @@ function SideBar(props) {
                 <div className="sub-menu">
                     {
                         menuSetting?.pqrs?.items.create.show &&
-                        <div className="nav-link"><Link to="/petitions/create">Crear</Link></div>
+                       <Link to="/petitions/create" className="nav-link">Crear</Link>
                     }
                     {
                         menuSetting?.pqrs?.items.selfPqrs.show &&
-                        <div className="nav-link"> <Link to="/petitions/list/list_own">Mis PQRs</Link></div>
+                        <Link to="/petitions/list/list_own" className="nav-link">Mis PQRs</Link>
                     }
                     {
                         menuSetting?.pqrs?.items.list.show &&
-                        <div className="nav-link"><Link to="/petitions/list/list_group_roles">Listar PQRs</Link></div>
+                        <Link to="/petitions/list/list_group_roles" className="nav-link">Listar PQRs</Link>
                     }
                 </div>
             )}
 
             {
                 menuSetting?.suggestions?.show &&
-                <div className="nav-link"><Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Link></div>
+                <div className="nav-link" ><Link onClick={toggleSuggestionMenu}><FontAwesomeIcon icon={faComment} /> Sugerencias</Link></div>
             }
 
             {suggestionsMenuExpanded && (
                 <div className="sub-menu">
                     {
                         menuSetting?.suggestions?.items.create.show &&
-                        <div className="nav-link"><Link to="/suggestions/create">Crear</Link></div>
+                        <Link to="/suggestions/create" className="nav-link">Crear</Link>
                     }
                     {
                         menuSetting?.suggestions?.items.selfSuggestions.show &&
-                        <div className="nav-link"><Link to="/suggestions/list/list_own">Mis Sugerencias</Link></div>
+                        <Link to="/suggestions/list/list_own" className="nav-link">Mis Sugerencias</Link>
                     }
                     {
                         menuSetting?.suggestions?.items.list.show &&
-                        <div className="nav-link"><Link to="/suggestions/list/list_group_roles">Lista Sugerencias</Link></div>
+                        <Link to="/suggestions/list/list_group_roles" className="nav-link">Lista Sugerencias</Link>
                     }
                 </div>
             )}
 
             <div className="separator" />
-            <div className="nav-link"><Link onClick={close}><FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesión</Link></div>
+            <Nav.Link onClick={close}><FontAwesomeIcon icon={faPowerOff} /> Cerrar Sesión</Nav.Link>
         </Nav>
     );
 }
