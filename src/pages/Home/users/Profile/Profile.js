@@ -25,6 +25,8 @@ export default function Profile(props){
             toast.error("Error del servidor", {theme: "colored"});
         }).finally(() =>{
         })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[])
 
     if (!profile) return

@@ -30,6 +30,8 @@ export default function ListUsers(props){
         }).finally(() =>{
 
         })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[numPage, term])
 
     return(
