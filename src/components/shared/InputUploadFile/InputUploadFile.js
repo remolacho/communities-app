@@ -18,6 +18,8 @@ export default function InputUploadFile(props) {
 
     const onDropFile = useCallback(acceptedFile => {
         setFile(acceptedFile[0])
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [])
 
     const { getRootProps: getRootFileProps, getInputProps: getInputFileProps } = useDropzone({
