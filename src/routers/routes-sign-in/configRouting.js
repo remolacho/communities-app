@@ -3,7 +3,7 @@ import ForgotPassword from "../../pages/SignInSignUp/users/ForgotPassword";
 import SignUp from "../../pages/SignInSignUp/users/SignUp";
 import RecoverPassword from "../../pages/SignInSignUp/users/RecoverPassword";
 
-export default [
+const configRouting = [
     {
         path: "users/login",
         exact: true,
@@ -30,3 +30,5 @@ export default [
         page: Login
     }
 ]
+
+export default configRouting;
