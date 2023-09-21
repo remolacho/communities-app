@@ -28,6 +28,8 @@ export default function ListPetitions(props) {
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[categoryId, statusId, numPage])
 
     return(

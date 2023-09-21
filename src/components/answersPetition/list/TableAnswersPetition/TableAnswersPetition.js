@@ -1,4 +1,4 @@
-import React, {useEffect, useRef, useState} from "react";
+import React, {useEffect, useState} from "react";
 import {Image} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faRefresh} from "@fortawesome/free-solid-svg-icons"
@@ -16,7 +16,7 @@ import FilesListArray from "../../../shared/FilesListArray";
 
 export default function TableAnswersPetition(props) {
     const {
-        isVisible: isVisible,
+        isVisible,
         petition,
         setViewBtnAnswersList,
         reloadTableAnswers,
@@ -40,6 +40,7 @@ export default function TableAnswersPetition(props) {
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [petition?.token, reloadTableAnswers]);
 
     if(!isVisible || !answers.length > 0) return

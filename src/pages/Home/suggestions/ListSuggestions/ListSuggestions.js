@@ -30,6 +30,8 @@ export default function ListSuggestions(props) {
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
+
+        // eslint-disable-next-line react-hooks/exhaustive-deps
     },[read, anonymous, numPage])
 
     return(

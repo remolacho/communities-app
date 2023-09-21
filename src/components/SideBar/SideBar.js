@@ -1,8 +1,8 @@
 import React,  { useState }  from "react";
 import {Nav} from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
-import {faDashboard, faBuilding, faUsers, faPowerOff, faMap, faComment} from "@fortawesome/free-solid-svg-icons"
-import { useNavigate } from 'react-router-dom';
+import {faBuilding, faUsers, faPowerOff, faMap, faComment} from "@fortawesome/free-solid-svg-icons"
+import {Link, useNavigate} from 'react-router-dom';
 import {logoutUser} from "../../services/auth/authUser";
 import useAuth from "../../hooks/contextValues/useAuth";
 import Logo from "../../../src/assets/jpg/avatar2.jpg";
@@ -56,7 +56,9 @@ function SideBar(props) {
 
             {
                 menuSetting?.dashboard?.show &&
-                <Nav.Link href="/home"><FontAwesomeIcon icon={faDashboard}/> Dashboard</Nav.Link>
+                <Link to="/home">Dashboard</Link>
+
+                // <Nav.Link href="/home"><FontAwesomeIcon icon={faDashboard}/> Dashboard</Nav.Link>
             }
 
             {
@@ -68,7 +70,8 @@ function SideBar(props) {
                 <div className="sub-menu">
                     {
                         menuSetting?.enterprise?.items.detail.show &&
-                        <Nav.Link href="/enterprises/profile">Ver</Nav.Link>
+                        <Link to="/enterprises/profile">Ver</Link>
+                        // <Nav.Link href="/enterprises/profile">Ver</Nav.Link>
                     }
                     {
                         menuSetting?.enterprise?.items.edit.show &&
