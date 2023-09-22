@@ -12,11 +12,13 @@ import {
 } from "../../../../services/groupRolesPetitions/List/listGroupRolesPetitionsService";
 
 import "./CreatePetition.scss"
+import Loading from "../../../../components/shared/Loading";
 
 export default function CreatePetition(props) {
     const {setCallLogin} = props;
     const [categories, setCategories] = useState([])
     const [groupRoles, setGroupRoles] = useState([])
+    const [loadingPage, setLoadingPage] = useState(true);
 
     useEffect(() =>{
         listCategoriesPetitionsServices().then(response => {
@@ -37,10 +39,13 @@ export default function CreatePetition(props) {
             }
 
             setGroupRoles(response.data)
+            setLoadingPage(false)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
     },[])
+
+    if(loadingPage) return (<Loading/>);
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>

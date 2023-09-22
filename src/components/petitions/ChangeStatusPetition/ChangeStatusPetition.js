@@ -1,5 +1,5 @@
 import React, {useEffect, useState} from "react";
-import {Dropdown} from "react-bootstrap";
+import {Dropdown, Spinner} from "react-bootstrap";
 import {listStatusesByPetitionServices} from "../../../services/petitions/statuses/listStatusesByPetitionService";
 import {toast} from "react-toastify";
 import {map} from "lodash";
@@ -10,6 +10,7 @@ import "./ChangeStatusPetition.scss"
 export default function ChangeStatusPetition(props) {
     const { petition, setStatusId } = props
     const [statuses, setStatuses] = useState([])
+    const [statusLoading, setStatusLoading] = useState(false)
 
     useEffect(() =>{
         if(!petition?.token) return
@@ -42,6 +43,8 @@ export default function ChangeStatusPetition(props) {
     }
 
     const changeStatus = (statusId) =>{
+        setStatusLoading(true)
+
         updateStatusPetitionService(petition?.token, statusId).then(response => {
             if (!response.success) {
                 toast.error(response.message, {theme: "colored"});
@@ -51,6 +54,8 @@ export default function ChangeStatusPetition(props) {
             setStatusId(statusId)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
+        }).finally(()=>{
+            setStatusLoading(false)
         })
     }
 
@@ -58,7 +63,7 @@ export default function ChangeStatusPetition(props) {
         <div className="change-status-petition">
             <Dropdown>
                 <Dropdown.Toggle variant="success" id="dropdown-basic">
-                    {petition?.status.name}
+                    {!statusLoading ? petition?.status.name : <Spinner animation="border"/> }
                 </Dropdown.Toggle>
 
                 <Dropdown.Menu>

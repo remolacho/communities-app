@@ -1,3 +1,4 @@
+import "./TableAnswersPetition.scss"
 import React, {useEffect, useState} from "react";
 import {Image} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -11,8 +12,8 @@ import {toast} from "react-toastify";
 import {map} from "lodash";
 import {replaceUrlWithLinks} from "../../../../utils/shared";
 import Logo from "../../../../assets/jpg/avatar2.jpg";
-import "./TableAnswersPetition.scss"
 import FilesListArray from "../../../shared/FilesListArray";
+import Loading from "../../../shared/Loading";
 
 export default function TableAnswersPetition(props) {
     const {
@@ -24,9 +25,12 @@ export default function TableAnswersPetition(props) {
     } = props;
 
     const [answers, setAnswers] = useState([])
+    const [loadingPage, setLoadingPage] = useState(true);
 
     useEffect(() => {
         if(!petition?.token || reloadTableAnswers === null) return
+
+        setLoadingPage(true)
 
         listAnswersPetitionService(petition?.token).then(response => {
             if (!response.success) {
@@ -37,12 +41,14 @@ export default function TableAnswersPetition(props) {
             setAnswers(response.data)
             setViewBtnAnswersList(response.data.length > 0)
             if(setReloadTableAnswers) setReloadTableAnswers(null)
+            setLoadingPage(false)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [petition?.token, reloadTableAnswers]);
 
+    if(loadingPage) return (<Loading/>);
     if(!isVisible || !answers.length > 0) return
 
     const avatarUrl = (user) => {

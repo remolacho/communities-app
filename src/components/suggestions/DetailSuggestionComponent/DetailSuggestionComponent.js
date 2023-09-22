@@ -1,16 +1,17 @@
+import "./DetailSuggestionComponent.scss"
 import React, {useEffect, useState} from "react";
 import {Button, Card} from "react-bootstrap";
 import {toast} from "react-toastify";
 import {detailSuggestionsService} from "../../../services/suggestions/Detail/detailSuggestionsService";
 import {useNavigate} from "react-router-dom";
 import FilesList from "../../shared/FilesList";
-
-import "./DetailSuggestionComponent.scss"
+import Loading from "../../shared/Loading";
 
 export default function DetailSuggestionComponent(props) {
     const { token } = props
     const [suggestion, setSuggestion] = useState(null)
     const navigate = useNavigate();
+    const [loadingPage, setLoadingPage] = useState(true);
 
     useEffect(() =>{
         detailSuggestionsService(token).then(response => {
@@ -23,9 +24,11 @@ export default function DetailSuggestionComponent(props) {
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         }).finally(() =>{
-
+            setLoadingPage(false)
         })
     },[token])
+
+    if(loadingPage) return (<Loading/>);
 
     return(
         <div className="d-flex justify-content-center align-items-center detail-suggestion-component">

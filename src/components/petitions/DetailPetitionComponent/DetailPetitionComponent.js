@@ -1,3 +1,4 @@
+import "./DetailPetitionComponent.scss"
 import React, {useEffect, useState} from "react";
 import {Button, Card} from "react-bootstrap";
 import {useNavigate} from "react-router-dom";
@@ -8,13 +9,13 @@ import ChangeStatusPetition from "../ChangeStatusPetition";
 import moment from "moment";
 import location from "moment/locale/es"
 import AnswerForm from "../../answersPetition/forms/AnswerForm";
-
-import "./DetailPetitionComponent.scss"
+import Loading from "../../shared/Loading";
 
 export default function DetailPetitionComponent(props) {
     const { token } = props
     const [petition, setPetition] = useState(null)
     const [statusId, setStatusId] = useState(null)
+    const [loadingPage, setLoadingPage] = useState(true);
 
     const navigate = useNavigate();
 
@@ -26,10 +27,13 @@ export default function DetailPetitionComponent(props) {
             }
 
             setPetition(response.data)
+            setLoadingPage(false)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
     },[token, statusId])
+
+    if(loadingPage) return (<Loading/>);
 
     return(
         <div className="d-flex justify-content-center align-items-center detail-petition-component">

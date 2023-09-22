@@ -6,6 +6,7 @@ import {toast} from "react-toastify";
 import SearchSuggestions from "../../../../components/suggestions/list/SearchSuggestions";
 import PaginationTable from "../../../../components/shared/PaginationTable";
 import {useParams} from "react-router-dom";
+import Loading from "../../../../components/shared/Loading";
 
 import "./ListSuggestions.scss"
 
@@ -17,8 +18,11 @@ export default function ListSuggestions(props) {
     const [read, setRead] = useState(null);
     const [anonymous, setAnonymous] = useState(null);
     const [paginate, setPaginate] = useState({});
+    const [loadingPage, setLoadingPage] = useState(true);
 
     useEffect(() =>{
+        setLoadingPage(true)
+
         listSuggestionsService(params.type, read, anonymous, numPage).then(response => {
             if (!response.success) {
                 toast.warning(response.message, {theme: "colored"});
@@ -27,12 +31,15 @@ export default function ListSuggestions(props) {
 
             setPaginate(response.paginate)
             setSuggestions(response.data)
+            setLoadingPage(false)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[read, anonymous, numPage, params.type])
+
+    if(loadingPage) return (<Loading/>);
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>
