@@ -14,7 +14,6 @@ export default function TablePetitions(props) {
                 <thead>
                     <tr className="thead">
                         <th>Nombre</th>
-                        <th className="d-none d-sm-table-cell">Ticket</th>
                         <th className="d-none d-sm-table-cell petition-row__user-ticket">Fecha creación</th>
                         <th>Ultima modificación</th>
                         <th>Tipo</th>
