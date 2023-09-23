@@ -16,7 +16,7 @@ export default function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [currentEnterprise, setCurrentEnterprise] = useState(null);
     const [callLogin, setCallLogin] = useState(false);
-    const [loadingPage, setLoadingPage] = useState(true);
+    const [loadingPage, setLoadingPage] = useState(false);
 
     const close = ()=> {
         logoutUser()
@@ -25,10 +25,9 @@ export default function App() {
 
     useEffect(() => {
         setLang(LANG)
+        setLoadingPage(true)
 
         if(getTokenApi() && !callLogin){
-            setLoadingPage(true)
-
             settingEnterpriseService().then(response => {
                 if (!response.success) {
                     toast.error(response.message, {theme: "colored"});
@@ -46,6 +45,7 @@ export default function App() {
 
         setCurrentUser(userLoggedApi());
         setCallLogin(false);
+        setLoadingPage(false)
     }, [callLogin])
 
     if(loadingPage) return (<Loading/>);
