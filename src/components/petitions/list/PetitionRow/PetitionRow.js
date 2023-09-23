@@ -23,9 +23,6 @@ export default function PetitionRow(props) {
                 <p className="petition-row__user-identifier">{petition.user.identifier}</p>
             </td>
             <td className="d-none d-sm-table-cell petition-row__user-ticket">
-                {petition.ticket}
-            </td>
-            <td className="d-none d-sm-table-cell petition-row__user-ticket">
                 { moment(petition.created_at).locale("es", location).format("LL") }
             </td>
             <td>
