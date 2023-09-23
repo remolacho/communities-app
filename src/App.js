@@ -37,9 +37,10 @@ export default function App() {
                 }
 
                 setCurrentEnterprise(response.data)
-                setLoadingPage(false)
             }).catch(() =>{
                 return null
+            }).finally(()=>{
+                setLoadingPage(false)
             })
         }
 
