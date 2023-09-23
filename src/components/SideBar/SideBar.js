@@ -1,3 +1,5 @@
+import "./SideBar.scss"
+
 import React,  { useState }  from "react";
 import {Nav} from 'react-bootstrap';
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
@@ -6,8 +8,7 @@ import {Link, useNavigate} from 'react-router-dom';
 import {logoutUser} from "../../services/auth/authUser";
 import useAuth from "../../hooks/contextValues/useAuth";
 import Logo from "../../../src/assets/jpg/avatar2.jpg";
-
-import "./SideBar.scss"
+import LazyLoadedImage from "../shared/LazyImage";
 
 function SideBar(props) {
     const {setCallLogin, menuSetting } = props
@@ -47,9 +48,10 @@ function SideBar(props) {
 
     return (
         <Nav className="flex-column">
-            <div className="avatar"
-                 style={{ backgroundImage: `url('${avatarUrl}')`}}>
-            </div>
+            <LazyLoadedImage
+                src={avatarUrl}
+                className="avatar"
+            />
             <div className="user">{currentUser?.name} {currentUser?.lastname}</div>
 
             <div className="separator" />

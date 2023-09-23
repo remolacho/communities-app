@@ -1,9 +1,10 @@
+import "./PetitionRow.scss"
 import React from "react";
 import Avatar from "../../../../assets/jpg/avatar2.jpg";
-import {Image, Dropdown} from "react-bootstrap";
+import {Dropdown} from "react-bootstrap";
 import moment from "moment/moment";
 import location from "moment/locale/es"
-import "./PetitionRow.scss"
+import LazyLoadedImage from "../../../shared/LazyImage";
 
 export default function PetitionRow(props) {
     const {petition} = props;
@@ -15,10 +16,12 @@ export default function PetitionRow(props) {
     return(
         <tr className="petition-row">
             <td>
-                <Image className="petition-row__avatar"
-                       src={avatarUrl}
-                       roundedCircle
+                <LazyLoadedImage
+                    src={avatarUrl}
+                    className="petition-row__avatar"
+                    roundedCircle={true}
                 />
+
                 <span className="petition-row__user-name">{petition.user.name} {petition.user.lastname}</span>
                 <p className="petition-row__user-identifier">{petition.user.identifier}</p>
             </td>

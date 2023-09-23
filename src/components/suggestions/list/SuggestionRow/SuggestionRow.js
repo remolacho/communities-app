@@ -1,8 +1,9 @@
 import React from "react";
 import Avatar from "../../../../assets/jpg/avatar2.jpg";
-import {Badge, Image, Dropdown} from "react-bootstrap";
+import {Badge, Dropdown} from "react-bootstrap";
 
 import "./SuggestionRow.scss"
+import LazyLoadedImage from "../../../shared/LazyImage";
 
 export default function SuggestionRow(props) {
     const {suggestion} = props;
@@ -14,9 +15,10 @@ export default function SuggestionRow(props) {
     return(
         <tr className="suggestion-row">
             <td>
-                <Image className="avatar"
-                       src={avatarUrl}
-                       roundedCircle
+                <LazyLoadedImage
+                    src={avatarUrl}
+                    className="avatar"
+                    roundedCircle={true}
                 />
                 <span className="user-name">{suggestion.user.name} {suggestion.user.lastname}</span>
                 <p className="user-identifier">{suggestion.user.identifier}</p>

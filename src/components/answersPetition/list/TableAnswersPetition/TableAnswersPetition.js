@@ -1,6 +1,5 @@
 import "./TableAnswersPetition.scss"
 import React, {useEffect, useState} from "react";
-import {Image} from "react-bootstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome"
 import {faRefresh} from "@fortawesome/free-solid-svg-icons"
 import moment from "moment";
@@ -14,6 +13,7 @@ import {replaceUrlWithLinks} from "../../../../utils/shared";
 import Logo from "../../../../assets/jpg/avatar2.jpg";
 import FilesListArray from "../../../shared/FilesListArray";
 import Loading from "../../../shared/Loading";
+import LazyLoadedImage from "../../../shared/LazyImage";
 
 export default function TableAnswersPetition(props) {
     const {
@@ -71,7 +71,11 @@ export default function TableAnswersPetition(props) {
                     map(answers, (answer) => {
                         return <div className="answer" key={answer.id}>
                             <div className="user-info">
-                                <Image className="avatar" src={avatarUrl(answer.user)} roundedCircle></Image>
+                                <LazyLoadedImage
+                                    src={avatarUrl(answer.user)}
+                                    className="avatar"
+                                    roundedCircle={true}
+                                />
                                 {answer.user.name} {answer.user.lastname}
                                 <span>{moment(answer.created_at).calendar()}</span>
                             </div>
