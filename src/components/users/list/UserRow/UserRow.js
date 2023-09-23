@@ -1,10 +1,11 @@
 import React, {useState} from "react";
 import Logo from "../../../../assets/png/logo2.png";
-import {Badge, Image, Dropdown, Spinner} from "react-bootstrap";
+import {Badge, Dropdown, Spinner} from "react-bootstrap";
 import {changeStatusService} from "../../../../services/users/ChangeStatus/changeStatusService";
 import {toast} from "react-toastify";
 
 import "./UserRow.scss"
+import LazyLoadedImage from "../../../shared/LazyImage";
 
 export default function UserRow(props) {
     const {user} = props;
@@ -36,9 +37,10 @@ export default function UserRow(props) {
     return(
         <tr className="user-row">
             <td>
-                <Image className="avatar"
-                       src={avatarUrl}
-                       roundedCircle
+                <LazyLoadedImage
+                    src={avatarUrl}
+                    className="avatar"
+                    roundedCircle={true}
                 />
                 <span className="user-name">{user.name} {user.lastname}</span>
                 <p className="user-identifier">{user.identifier}</p>
