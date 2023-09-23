@@ -1,14 +1,15 @@
+import "./Edit.scss";
 import React, {useState, useEffect} from "react";
 import MainLayout from "../../../../layouts/MainLayout";
 import {toast} from "react-toastify";
 import {profileEnterpriseService} from "../../../../services/enterprises/Enterprise/profileEnterpriseService";
-
-import "./Edit.scss";
 import EditEnterpriseForm from "../../../../components/enterprises/forms/EditEnterpriseForm";
+import Loading from "../../../../components/shared/Loading";
 
 export default function Edit(props){
     const {setCallLogin} = props;
     const [enterprise, setEnterprise] = useState(null);
+    const [loadingPage, setLoadingPage] = useState(true);
 
     useEffect(() =>{
         profileEnterpriseService().then(response => {
@@ -18,12 +19,14 @@ export default function Edit(props){
             }
 
             setEnterprise(response.data)
+            setLoadingPage(false)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         }).finally(() =>{
         })
     },[])
 
+    if(loadingPage) return (<Loading/>);
     if (!enterprise) return
 
     return(

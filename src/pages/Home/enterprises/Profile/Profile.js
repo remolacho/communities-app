@@ -1,16 +1,17 @@
+import "./Profile.scss";
 import React, {useState, useEffect} from "react";
 import {toast} from "react-toastify";
 import {profileEnterpriseService} from "../../../../services/enterprises/Enterprise/profileEnterpriseService";
 import InfoEnterprise from "../../../../components/enterprises/profile/InfoEnterprise";
-
-import "./Profile.scss";
 import BannerLayout from "../../../../layouts/BannerLayout";
 import {Link} from "react-router-dom";
 import {Button} from "react-bootstrap";
+import Loading from "../../../../components/shared/Loading";
 
 export default function Profile(props){
     const {setCallLogin} = props;
     const [enterprise, setEnterprise] = useState(null);
+    const [loadingPage, setLoadingPage] = useState(true);
 
     useEffect(() =>{
         profileEnterpriseService().then(response => {
@@ -23,9 +24,11 @@ export default function Profile(props){
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         }).finally(() =>{
+            setLoadingPage(false)
         })
     },[])
 
+    if(loadingPage) return (<Loading/>);
     if (!enterprise) return
 
     return(

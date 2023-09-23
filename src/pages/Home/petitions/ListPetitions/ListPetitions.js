@@ -6,6 +6,9 @@ import {listPetitionsService} from "../../../../services/petitions/ListPetitions
 import TablePetitions from "../../../../components/petitions/list/TablePetitions";
 import PaginationTable from "../../../../components/shared/PaginationTable";
 import SearchPetitions from "../../../../components/petitions/list/SearchPetitions";
+import Loading from "../../../../components/shared/Loading";
+
+import "./ListPetitions.scss"
 
 export default function ListPetitions(props) {
     const {setCallLogin} = props;
@@ -15,8 +18,11 @@ export default function ListPetitions(props) {
     const [categoryId, setCategoryId] = useState(null)
     const [statusId, setStatusId] = useState(null)
     const [paginate, setPaginate] = useState({});
+    const [loadingPage, setLoadingPage] = useState(true);
 
     useEffect(() =>{
+        setLoadingPage(true)
+
         listPetitionsService(params.type, categoryId, statusId, numPage).then(response => {
             if (!response.success) {
                 toast.warning(response.message, {theme: "colored"});
@@ -25,12 +31,15 @@ export default function ListPetitions(props) {
 
             setPaginate(response.paginate)
             setPetitions(response.data)
+            setLoadingPage(false)
         }).catch(() =>{
             toast.error("Error del servidor", {theme: "colored"});
         })
 
         // eslint-disable-next-line react-hooks/exhaustive-deps
     },[categoryId, statusId, numPage, params.type])
+
+    if(loadingPage) return (<Loading/>);
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>
