@@ -16,16 +16,16 @@ export default function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [currentEnterprise, setCurrentEnterprise] = useState(null);
     const [callLogin, setCallLogin] = useState(false);
-    const [loadingPage, setLoadingPage] = useState(false);
+    const [loadingPage, setLoadingPage] = useState(true);
 
     const close = ()=> {
         logoutUser()
+        setLoadingPage(false)
         setCallLogin(true)
     }
 
     useEffect(() => {
         setLang(LANG)
-        setLoadingPage(true)
 
         if(getTokenApi() && !callLogin){
             settingEnterpriseService().then(response => {
@@ -36,16 +36,16 @@ export default function App() {
                 }
 
                 setCurrentEnterprise(response.data)
-            }).catch(() =>{
-                return null
+            }).catch((e) =>{
+                toast.error(e, {theme: "colored"});
             }).finally(()=>{
-                setLoadingPage(false)
+                setLoadingPage(false);
             })
         }
 
         setCurrentUser(userLoggedApi());
         setCallLogin(false);
-        setLoadingPage(false)
+        setLoadingPage(false);
     }, [callLogin])
 
     if(loadingPage) return (<Loading/>);
