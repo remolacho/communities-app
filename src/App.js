@@ -20,6 +20,7 @@ export default function App() {
 
     const close = ()=> {
         logoutUser()
+        setLoadingPage(false)
         setCallLogin(true)
     }
 
@@ -27,8 +28,6 @@ export default function App() {
         setLang(LANG)
 
         if(getTokenApi() && !callLogin){
-            setLoadingPage(true)
-
             settingEnterpriseService().then(response => {
                 if (!response.success) {
                     toast.error(response.message, {theme: "colored"});
@@ -37,15 +36,16 @@ export default function App() {
                 }
 
                 setCurrentEnterprise(response.data)
-            }).catch(() =>{
-                return null
+            }).catch((e) =>{
+                toast.error(e, {theme: "colored"});
             }).finally(()=>{
-                setLoadingPage(false)
+                setLoadingPage(false);
             })
         }
 
         setCurrentUser(userLoggedApi());
         setCallLogin(false);
+        setLoadingPage(false);
     }, [callLogin])
 
     if(loadingPage) return (<Loading/>);
