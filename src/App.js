@@ -10,17 +10,17 @@ import {setLang} from "./services/auth/authLang";
 
 import RoutingHome from "./routers/routes-home/RoutingHome";
 import {settingEnterpriseService} from "./services/enterprises/Enterprise/settingEnterpriseService";
-import Loading from "./components/shared/Loading";
+// import Loading from "./components/shared/Loading";
 
 export default function App() {
     const [currentUser, setCurrentUser] = useState(null);
     const [currentEnterprise, setCurrentEnterprise] = useState(null);
     const [callLogin, setCallLogin] = useState(false);
-    const [loadingPage, setLoadingPage] = useState(true);
+   // const [loadingPage, setLoadingPage] = useState(true);
 
     const close = ()=> {
         logoutUser()
-        setLoadingPage(false)
+       // setLoadingPage(false)
         setCallLogin(true)
     }
 
@@ -31,24 +31,23 @@ export default function App() {
             settingEnterpriseService().then(response => {
                 if (!response.success) {
                     toast.error(response.message, {theme: "colored"});
-                    close()
-                    return
+                    return close();
                 }
 
                 setCurrentEnterprise(response.data)
             }).catch((e) =>{
                 toast.error(e, {theme: "colored"});
             }).finally(()=>{
-                setLoadingPage(false);
+               // setLoadingPage(false);
             })
         }
 
         setCurrentUser(userLoggedApi());
         setCallLogin(false);
-        setLoadingPage(false);
+        // setLoadingPage(false);
     }, [callLogin])
 
-    if(loadingPage) return (<Loading/>);
+    // if(loadingPage) return (<Loading/>);
 
     return (
         <AuthContext.Provider value={{currentUser: currentUser, currentEnterprise: currentEnterprise}}>
