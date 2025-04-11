@@ -1,0 +1,23 @@
+{
+  "recommendations": [
+    "dbaeumer.vscode-eslint",
+    "esbenp.prettier-vscode",
+    "dsznajder.es7-react-js-snippets",
+    "formulahendry.auto-rename-tag",
+    "christian-kohler.path-intellisense",
+    "christian-kohler.npm-intellisense",
+    "streetsidesoftware.code-spell-checker",
+    "wix.vscode-import-cost",
+    "mgmcdermott.vscode-language-babel",
+    "mikestead.dotenv",
+    "pkief.material-icon-theme",
+    "visualstudioexptteam.vscodeintellicode",
+    "eamodio.gitlens",
+    "steoates.autoimport",
+    "donjayamanne.githistory",
+    "dracula-theme.theme-dracula",
+    "github.github-vscode-theme",
+    "zhuangtongfa.material-theme",
+    "sdras.night-owl"
+  ]
+}
