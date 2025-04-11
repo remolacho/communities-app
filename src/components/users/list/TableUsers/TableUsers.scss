@@ -1,6 +1,5 @@
 @import "../../../../scss/index";
 
-.table-users{
-  margin-left: 10px;
-  margin-right: 10px;
+.table-users {
+  @extend .table-container;
 }

@@ -1,22 +1,147 @@
 $primary: #8abd36;
 $primary-light: #71c9f8;
 $primary-grey: #8799a6;
-$primary-dark-light: #192734;
-$primary-dark: #15212b;
+$primary-dark-light: #f5f5f5;
+$primary-dark: #ffffff;
 
-$font-primary: $primary;
-$font-light: #fff;
-$font-grey: $primary-grey;
-$font-dark: #000;
+$font-primary: #333333;
+$font-light: #666666;
+$font-grey: #555555;
+$font-dark: #222222;
 
 $border-primary: $primary;
-$border-light: #fff;
-$border-grey: #38444d;
-$border-dark: $primary-dark;
+$border-light: #e0e0e0;
+$border-grey: #d0d0d0;
+$border-dark: #cccccc;
 
-$background-light: #fff;
-$background-grey-dark: $primary-dark;
-$background-dark-light: $primary-dark-light;
-$background-grey-light: $primary-grey;
+$background-light: #ffffff;
+$background-gradient-start: #ffffff;
+$background-gradient-end: #f0f0f0;
+$background-grey-dark: #f8f8f8;
+$background-dark-light: #f5f5f5;
+$background-grey-light: #fafafa;
 
 $danger: #e0245e;
+
+// Gradientes globales
+:root {
+  --main-gradient: linear-gradient(
+    135deg,
+    #{$background-gradient-start} 0%,
+    #{$background-gradient-end} 100%
+  );
+}
+
+body {
+  background: var(--main-gradient);
+  color: $font-primary;
+}
+
+// Botones
+$button-default: #4a5568;
+$button-hover: #2d3748;
+$button-text: #ffffff;
+$button-danger: #e53e3e;
+$button-danger-hover: #c53030;
+
+// Estilos específicos para botones
+.btn {
+  font-weight: bold !important;
+  padding: 8px 16px !important;
+  border-radius: 8px !important;
+  background-color: $primary !important;
+  border-color: $primary !important;
+  color: white !important;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1) !important;
+  transition: all 0.3s ease !important;
+  font-size: 16px !important;
+
+  &:hover,
+  &:focus,
+  &:active {
+    background-color: $primary !important;
+    border-color: $primary !important;
+    opacity: 0.9 !important;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.15) !important;
+    transform: translateY(-2px) !important;
+  }
+
+  &:disabled {
+    opacity: 0.6 !important;
+    cursor: not-allowed !important;
+    transform: none !important;
+  }
+
+  .spinner-border {
+    width: 20px !important;
+    height: 20px !important;
+  }
+
+  // Variantes específicas
+  &.btn-block {
+    width: 100% !important;
+  }
+
+  &.btn-lg {
+    font-size: 20px !important;
+    padding: 10px 20px !important;
+  }
+
+  &.btn-sm {
+    font-size: 14px !important;
+    padding: 6px 12px !important;
+  }
+
+  &.btn-secondary {
+    background-color: $button-default !important;
+    border-color: $button-default !important;
+
+    &:hover {
+      background-color: $button-hover !important;
+      border-color: $button-hover !important;
+    }
+  }
+
+  &.btn-danger {
+    background-color: $button-danger !important;
+    border-color: $button-danger !important;
+
+    &:hover {
+      background-color: $button-danger-hover !important;
+      border-color: $button-danger-hover !important;
+    }
+  }
+}
+
+// Estilos para el enlace de cerrar sesión
+.nav-link {
+  &[onClick] {
+    // Selector específico para el enlace de cerrar sesión
+    color: $button-danger !important;
+    font-weight: 500;
+    padding: 8px 16px;
+    border-radius: 6px;
+    transition: all 0.3s ease;
+    margin: 8px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+
+    svg {
+      // Estilo para el ícono
+      color: $button-danger;
+      transition: all 0.3s ease;
+    }
+
+    &:hover {
+      background-color: rgba($button-danger, 0.1);
+      color: darken($button-danger, 10%) !important;
+      transform: translateY(-1px);
+
+      svg {
+        color: darken($button-danger, 10%);
+        transform: rotate(90deg);
+      }
+    }
+  }
+}

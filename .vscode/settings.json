@@ -1,14 +1,16 @@
 {
   "editor.defaultFormatter": "esbenp.prettier-vscode",
-  "editor.formatOnSave": true,
+  "editor.formatOnSave": false,
+  "editor.formatOnPaste": false,
+  "editor.formatOnType": false,
   "editor.codeActionsOnSave": {
-    "source.fixAll.eslint": true
+    "source.fixAll.eslint": false
   },
   "javascript.updateImportsOnFileMove.enabled": "always",
   "editor.tabSize": 2,
   "files.eol": "\n",
-  "files.trimTrailingWhitespace": true,
-  "files.insertFinalNewline": true,
+  "files.trimTrailingWhitespace": false,
+  "files.insertFinalNewline": false,
   "emmet.includeLanguages": {
     "javascript": "javascriptreact"
   },
@@ -46,10 +48,15 @@
   "editor.fontSize": 14,
   "editor.lineHeight": 22,
   "editor.fontFamily": "'Fira Code', Consolas, 'Courier New', monospace",
-  "editor.multiCursorModifier": "ctrlCmd",
+  "editor.multiCursorModifier": "shift",
+  "editor.columnSelection": false,
   "editor.multiCursorMergeOverlapping": true,
   "editor.multiCursorLimit": 10000,
   "editor.selectionHighlight": true,
   "editor.wordSeparators": "`~!@#$%^&*()-=+[{]}\\|;:'\",.<>/?",
-  "editor.find.autoFindInSelection": "multiline"
+  "editor.find.autoFindInSelection": "multiline",
+  "editor.mouseWheelZoom": false,
+  "editor.dragAndDrop": false,
+  "editor.links": true,
+  "editor.mouseSelection": "copy"
 }
