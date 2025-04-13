@@ -2,6 +2,7 @@
 
 ## Descripción General
 
+
 Communities App es una aplicación web desarrollada con React diseñada específicamente para la gestión administrativa de comunidades residenciales cerradas (conjuntos residenciales, edificios de apartamentos y condominios). La plataforma tiene como objetivo digitalizar y optimizar todos los procesos administrativos que ocurren en estas comunidades.
 
 ### Estado Actual del Proyecto
@@ -23,6 +24,7 @@ El objetivo a largo plazo es convertir Communities App en una solución integral
 - Gestión de mantenimientos y servicios
 - Administración de documentos y actas
 - Módulo de votaciones y asambleas
+
 
 ## Estructura del Proyecto
 
