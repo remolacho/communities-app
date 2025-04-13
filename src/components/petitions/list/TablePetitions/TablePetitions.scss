@@ -1,6 +1,5 @@
 @import "../../../../scss/index";
 
-.table-petitions{
-  margin-left: 10px;
-  margin-right: 10px;
+.table-petitions {
+  @extend .table-container;
 }

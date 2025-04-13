@@ -1,6 +1,5 @@
 @import "../../../../scss/index";
 
-.table-suggestions{
-  margin-left: 10px;
-  margin-right: 10px;
+.table-suggestions {
+  @extend .table-container;
 }
