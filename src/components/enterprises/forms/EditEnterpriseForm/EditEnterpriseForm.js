@@ -11,7 +11,7 @@ import "./EditEnterpriseForm.scss"
 function attributes(){
     return  {
         name: "",
-        rut:  "",
+        identifier:  "",
         email: "",
         address:  "",
         logo: null,
@@ -25,7 +25,7 @@ function initializer(enterprise){
     if (!enterprise) return enterpriseAttributes;
 
     enterpriseAttributes.name = enterprise.name
-    enterpriseAttributes.rut = enterprise.rut
+    enterpriseAttributes.identifier = enterprise.identifier
     enterpriseAttributes.email = enterprise.email
     enterpriseAttributes.address = enterprise.address
 
@@ -131,10 +131,10 @@ export default function EditEnterpriseForm(props){
                                 <Row>
                                     <Col>
                                         <Form.Control
-                                            defaultValue={formData.rut}
+                                            defaultValue={formData.identifier}
                                             type="text"
-                                            placeholder="RUT"
-                                            name="rut"
+                                            placeholder="Identificador"
+                                            name="identifier"
                                             onChange={onChange}
                                         />
                                     </Col>
