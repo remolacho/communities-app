@@ -7,7 +7,7 @@ import TablePetitions from "../../../../components/petitions/list/TablePetitions
 import PaginationTable from "../../../../components/shared/PaginationTable";
 import SearchPetitions from "../../../../components/petitions/list/SearchPetitions";
 import Loading from "../../../../components/shared/Loading";
-
+import { Card } from "react-bootstrap";
 import "./ListPetitions.scss"
 
 export default function ListPetitions(props) {
@@ -43,17 +43,22 @@ export default function ListPetitions(props) {
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>
-            <SearchPetitions setCategoryId={setCategoryId}
-                             setStatusId={setStatusId}
-                             setNumPage={setNumPage}/>
+            <Card>
+                <Card.Body>
+                    <Card.Title>Listado de peticiones</Card.Title>
+                    <SearchPetitions setCategoryId={setCategoryId}
+                                    setStatusId={setStatusId}
+                                    setNumPage={setNumPage}/>
 
-            <TablePetitions petitions={petitions}/>
+                    <TablePetitions petitions={petitions}/>
 
-            <PaginationTable
-                paginate={paginate}
-                setNumPage={setNumPage}
-                numPage={numPage}
-            />
+                    <PaginationTable
+                        paginate={paginate}
+                        setNumPage={setNumPage}
+                        numPage={numPage}
+                    />
+                </Card.Body>
+            </Card>
         </BannerLayout>
     )
 }

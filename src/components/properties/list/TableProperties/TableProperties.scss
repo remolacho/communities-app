@@ -1,0 +1,8 @@
+@import "../../../../scss/index";
+
+.table-properties {
+  @extend .table-container;
+  .thead {
+    background-color: $background-dark-light;
+  }
+} 

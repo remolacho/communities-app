@@ -1,0 +1,40 @@
+.dashboard-pqrs {
+    padding: 2rem;
+    min-height: calc(100vh - 64px);
+
+    .card {
+        width: 100%;
+        max-width: 64rem;
+        border: none;
+        border-radius: 10px;
+        box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+
+        .card-body {
+            padding: 2rem;
+        }
+
+        .card-title {
+            color: #333;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+    }
+}
+
+@media (max-width: 768px) {
+    .dashboard-pqrs {
+        padding: 1rem;
+
+        .card {
+            .card-body {
+                padding: 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+                margin-bottom: 1.5rem;
+            }
+        }
+    }
+} 

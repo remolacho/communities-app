@@ -24,10 +24,10 @@ export default function InfoEnterprise(props){
 
             <Row className="more-info">
                <Col xs={12} md={6}>
-                    {  enterprise.rut &&
+                    {  enterprise.identifier &&
                         <p className="">
                             <FontAwesomeIcon icon={faUser} />
-                            RUT {  enterprise.rut }
+                            { enterprise.document_type } {  enterprise.identifier }
                         </p>
                     }
                 </Col>

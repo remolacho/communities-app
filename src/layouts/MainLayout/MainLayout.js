@@ -1,26 +1,26 @@
 import React from "react";
-import {Container, Row, Col} from "react-bootstrap"
-import MenuHome from "../../pages/Home/MenuHome/MenuHome";
-
-import "./MainLayout.scss"
+import {Container} from "react-bootstrap"
+import SideMenu from "../../components/SideMenu/SideMenu";
 import useAuth from "../../hooks/contextValues/useAuth";
+import "./MainLayout.scss"
 
 export default function MainLayout(props) {
     const { children, className, setCallLogin} = props
     const {currentEnterprise} = useAuth()
 
-    if(!currentEnterprise) return;
+    if(!currentEnterprise) return null;
 
     return (
-        <Container className={`main-layout ${className}`}>
-            <Row>
-                <Col xp={2} className="main-layout__menu">
-                    <MenuHome setCallLogin={setCallLogin} menuSetting={currentEnterprise.menu}/>
-                </Col>
-                <Col xs={12} md={10} className="main-layout__content">
+        <div className="layout-wrapper">
+            <SideMenu 
+                setCallLogin={setCallLogin} 
+                menuSetting={currentEnterprise.menu}
+            />
+            <main className={`main-content ${className || ''}`}>
+                <Container fluid>
                     {children}
-                </Col>
-            </Row>
-        </Container>
+                </Container>
+            </main>
+        </div>
     )
 }

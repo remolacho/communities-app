@@ -18,7 +18,7 @@ export default function TablePetitions(props) {
               Fecha creación
             </th>
             <th>Ultima modificación</th>
-            <th>Tipo</th>
+            <th className="d-none d-sm-table-cell">Tipo</th>
             <th className="d-none d-sm-table-cell">Estado</th>
             <th></th>
           </tr>

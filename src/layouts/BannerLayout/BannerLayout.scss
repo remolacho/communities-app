@@ -1,5 +1,51 @@
 @import "../../scss/index";
 
+.banner-layout {
+  background-color: $background-grey-dark;
+  
+  &__title {
+    background-color: white;
+    border-bottom: 1px solid $border-grey;
+    padding: 15px;
+    margin-bottom: 1rem;
+
+    h2 {
+      font-size: 22px;
+      margin-bottom: 0;
+      font-weight: bold;
+    }
+  }
+
+  &__content {
+    height: calc(100vh - 180px); // Adjust for title and banner
+    overflow-y: auto;
+    padding: 1rem !important;
+    background-color: $background-grey-dark;
+    border-right: 1px solid $border-grey;
+
+    &::-webkit-scrollbar {
+      display: none;
+    }
+  }
+}
+
+// Inherit layout styles
+.layout-wrapper {
+  display: flex;
+  min-height: 100vh;
+}
+
+.main-content {
+  flex: 1;
+  margin-left: 250px;
+  transition: margin-left 0.3s ease;
+  
+  @media (max-width: 768px) {
+    margin-left: 0;
+    padding-top: 4rem;
+  }
+}
+
 .banner-layout{
   &__menu{
     padding-right: 0 !important;
@@ -21,29 +67,6 @@
 
     .user{
       color: $font-grey;
-      font-weight: bold;
-    }
-  }
-
-  &__content{
-    height: 100vh;
-    overflow-y: scroll;
-    padding: 0 !important;
-    background-color: $background-grey-dark;
-    border-right: 1px solid $border-grey;
-
-    &::-webkit-scrollbar{
-      display: none;
-    }
-  }
-
-  &__title{
-    border-bottom: 1px solid $border-grey;
-    padding: 15px;
-
-    h2{
-      font-size: 22px;
-      margin-bottom: 0;
       font-weight: bold;
     }
   }

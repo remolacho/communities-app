@@ -1,1 +1,15 @@
 @import "../../../../scss/index";
+
+.create-suggestion {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    min-height: calc(100vh - 4rem);
+    padding: 2rem;
+    
+    @media (max-width: 768px) {
+        padding: 1rem;
+        min-height: calc(100vh - 3rem);
+    }
+}

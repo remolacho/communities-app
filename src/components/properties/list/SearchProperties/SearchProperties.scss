@@ -1,0 +1,37 @@
+@import "../../../../scss/index";
+
+.search-properties {
+    padding: 10px 20px;
+    background-color: $background-dark-light;
+    border-radius: 4px;
+    margin-bottom: 20px;
+    margin-top: 75px;
+
+    .label-search {
+        color: $font-light;
+        margin-top: 5px;
+        padding-left: 15px;
+        padding-top: 6px;
+        font-size: 18px;
+        font-weight: bold;
+    }
+
+    input, select {
+        background-color: $background-grey-light;
+        border-radius: 50px;
+        border: 0;
+        color: $font-light;
+
+        &:focus {
+            background-color: $background-grey-light;
+            border: 0;
+            box-shadow: none;
+            color: $font-light;
+        }
+    }
+
+    button {
+        width: 100%;
+        border-radius: 50px;
+    }
+} 

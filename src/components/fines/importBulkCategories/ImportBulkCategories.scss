@@ -1,0 +1,158 @@
+@import "../../../scss/index";
+
+.import-bulk-categories {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    padding: 2rem;
+    
+    @media (max-width: 768px) {
+        padding: 1rem;
+    }
+
+    .card {
+        width: 100%;
+        max-width: 48rem;
+        background-color: $background-dark-light;
+        border-radius: 0.5rem;
+        box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+        transition: all 0.3s ease;
+
+        &:hover {
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        .card-body {
+            padding: 2rem;
+
+            @media (max-width: 768px) {
+                padding: 1rem;
+            }
+        }
+
+        .card-title {
+            font-size: 1.5rem;
+            color: $font-grey;
+            font-weight: bold;
+            margin-bottom: 1rem;
+
+            @media (max-width: 768px) {
+                font-size: 1.25rem;
+            }
+        }
+
+        .card-text {
+            font-size: 1rem;
+            color: $font-light;
+            line-height: 1.5;
+            margin-bottom: 1.5rem;
+
+            @media (max-width: 768px) {
+                font-size: 0.875rem;
+                margin-bottom: 1rem;
+            }
+        }
+
+        .upload-file {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 12rem;
+            background-color: $background-grey-light;
+            border-radius: 0.5rem;
+            transition: all 0.3s ease;
+            border: 2px dashed transparent;
+            margin-bottom: 1.5rem;
+
+            @media (max-width: 768px) {
+                height: 8rem;
+                margin-bottom: 1rem;
+            }
+
+            &:hover {
+                cursor: pointer;
+                border-color: $primary;
+                background-color: lighten($background-grey-light, 2%);
+            }
+
+            svg {
+                width: 7.5rem !important;
+                height: 9rem !important;
+                fill: $font-light;
+                transition: all 0.3s ease;
+
+                @media (max-width: 768px) {
+                    width: 5rem !important;
+                    height: 6rem !important;
+                }
+
+                &:hover {
+                    fill: $font-dark;
+                    transform: scale(1.05);
+                }
+            }
+        }
+    }
+
+    .action-button {
+        text-align: center;
+        margin: 1.5rem 0;
+
+        button {
+            padding: 0.75rem 1.5rem;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+
+            @media (max-width: 768px) {
+                font-size: 0.875rem;
+                padding: 0.5rem 1rem;
+            }
+
+            &:hover {
+                transform: translateY(-2px);
+            }
+        }
+    }
+
+    .link-action {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 1rem;
+
+        @media (max-width: 576px) {
+            flex-direction: column;
+            text-align: center;
+        }
+
+        .download-link {
+            color: $font-grey !important;
+            text-decoration: none !important;
+            background: none !important;
+            border: none !important;
+            box-shadow: none !important;
+            font-size: 0.875rem;
+            transition: all 0.2s ease;
+            padding: 0.5rem 1rem !important;
+
+            &:hover {
+                color: $primary !important;
+                text-decoration: underline !important;
+                transform: translateY(-1px);
+            }
+        }
+    }
+
+    .file-name {
+        font-size: 1rem;
+        color: $font-light;
+        font-weight: bold;
+        word-break: break-word;
+
+        @media (max-width: 768px) {
+            font-size: 0.875rem;
+        }
+    }
+}
