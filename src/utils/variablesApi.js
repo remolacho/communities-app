@@ -1,4 +1,5 @@
 export const API_HOST = process.env.REACT_APP_API_HOST;
+export const TEMPLATE_FINE_CATEGORIES = "fines/categories/template.xlsx";
 export const JWT = "jwt";
 export const ENTERPRISE_KEY = "subdomain";
 export const ENTERPRISE_LOGO_KEY = "logoUrl"

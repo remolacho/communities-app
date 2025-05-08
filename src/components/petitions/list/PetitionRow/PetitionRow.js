@@ -23,7 +23,6 @@ export default function PetitionRow(props) {
                 />
 
                 <span className="petition-row__user-name">{petition.user.name} {petition.user.lastname}</span>
-                <p className="petition-row__user-identifier">{petition.user.identifier}</p>
             </td>
             <td className="d-none d-sm-table-cell petition-row__user-ticket">
                 { moment(petition.created_at).locale("es", location).format("LL") }
@@ -31,7 +30,7 @@ export default function PetitionRow(props) {
             <td>
                 { moment(petition?.updated_at).calendar() }
             </td>
-            <td>
+            <td className="d-none d-sm-table-cell">
                 {petition.category.name}
             </td>
             <td className="d-none d-sm-table-cell petition-row__status">

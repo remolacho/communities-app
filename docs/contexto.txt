@@ -1,0 +1,32 @@
+Tengo una aplicacion hecha en react y que consume una API esta espar ael manjejo o control de condominios su estructura es es la siguoente
+
+Routes
+Layuots
+Pages
+Components
+Services
+Scss
+Hooks
+
+no tiene mucha complejidad a la hora de manejar estados ya que no usa redux
+
+EL hook auth se usa en el  <AuthContext.Provider value={{currentUser: currentUser, currentEnterprise: currentEnterprise}}>
+en el App.js para cargar el usuario, la empresa y su configuracion.
+
+Los layuots sin palntillas o emboltorios que se usan para dar una misma estructura a las pages
+
+Las pages son fachadas que implementan otros componentes, los pages son implementados por los routes que a su ves  implementan en congigRoutes que es un listado de rutas donde se lllaman los pages
+
+Los compoments son los engranajes visuales que usan llas pages aca estan las partes visuales que necesitan los pages para dar una vista al usuario, a su ves estos manejan usestates para el manejo o llamado de los servicios
+
+Los services son la para logica que implemanta el llamado a las API y manejan el request y el reponse de la API
+
+Para el manejo de de la Auth podemos ver que tiene un contexts.js y tenemos un hook para el useAuth que usa el contexto mensionado, este contexto se usa para el usuario la empresa y el menu y sus roles.
+
+Tenemos los scss separados globales y aparte cada compoentnte usa su scss para dar algunas personalizaciones al componente.
+
+Con esto tienes constexto suficiente para convertirte en mi asistente personal para agregar mas utilidades a la aplicacion.
+
+esta es la docuemntacion docs/api-doc.yml
+
+

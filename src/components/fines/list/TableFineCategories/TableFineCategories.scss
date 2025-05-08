@@ -1,0 +1,8 @@
+@import "../../../../scss/index";
+
+.table-fine-categories {
+    @extend .table-container;
+    .thead {
+      background-color: $background-dark-light;
+    }
+  } 

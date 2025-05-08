@@ -1,0 +1,177 @@
+.main-page {
+  padding: 2rem;
+  min-height: calc(100vh - 64px);
+  background: linear-gradient(135deg, #f5f7fa 0%, #e4e8eb 100%);
+
+  .hero-section {
+    text-align: center;
+    margin-bottom: 3rem;
+    padding: 3rem 1rem;
+    background: white;
+    border-radius: 15px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+    h1 {
+      font-size: 2.5rem;
+      color: #2c3e50;
+      margin-bottom: 1rem;
+      font-weight: 600;
+    }
+
+    .subtitle {
+      font-size: 1.2rem;
+      color: #7f8c8d;
+      margin: 0;
+    }
+  }
+
+  .features-section {
+    margin-bottom: 2rem;
+
+    .feature-col {
+      margin-bottom: 1.5rem;
+      display: flex;
+    }
+
+    .feature-card {
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: none;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      width: 100%;
+
+      &:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+      }
+
+      .card-body {
+        padding: 1.5rem;
+        text-align: center;
+        display: flex;
+        flex-direction: column;
+        flex: 1;
+      }
+
+      .icon-wrapper {
+        width: 60px;
+        height: 60px;
+        border-radius: 50%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        margin: 0 auto 1.5rem;
+        
+        svg {
+          font-size: 1.5rem;
+          color: white;
+        }
+      }
+
+      .card-title {
+        color: #2c3e50;
+        font-size: 1.25rem;
+        margin-bottom: 1rem;
+        font-weight: 600;
+      }
+
+      .card-text {
+        color: #7f8c8d;
+        font-size: 0.95rem;
+        margin-bottom: 1.5rem;
+        flex-grow: 1;
+      }
+
+      .btn-outline-primary {
+        border-width: 2px;
+        font-weight: 500;
+        padding: 0.75rem 1.5rem;
+        width: 100%;
+        margin-top: auto;
+
+        &:hover {
+          color: white;
+        }
+      }
+    }
+  }
+
+  .quick-stats {
+    .stats-card {
+      border: none;
+      border-radius: 12px;
+      background: white;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+
+      .card-body {
+        padding: 2rem;
+        text-align: center;
+
+        h3 {
+          color: #2c3e50;
+          font-size: 1.5rem;
+          margin-bottom: 1rem;
+          font-weight: 600;
+        }
+
+        p {
+          color: #7f8c8d;
+          margin: 0;
+        }
+      }
+    }
+  }
+}
+
+@media (max-width: 768px) {
+  .main-page {
+    padding: 1rem;
+
+    .hero-section {
+      padding: 2rem 1rem;
+
+      h1 {
+        font-size: 2rem;
+      }
+
+      .subtitle {
+        font-size: 1rem;
+      }
+    }
+
+    .features-section {
+      .feature-card {
+        .icon-wrapper {
+          width: 50px;
+          height: 50px;
+
+          svg {
+            font-size: 1.25rem;
+          }
+        }
+
+        .card-title {
+          font-size: 1.1rem;
+        }
+
+        .card-text {
+          font-size: 0.9rem;
+        }
+      }
+    }
+
+    .quick-stats {
+      .stats-card {
+        .card-body {
+          padding: 1.5rem;
+
+          h3 {
+            font-size: 1.25rem;
+          }
+        }
+      }
+    }
+  }
+} 

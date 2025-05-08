@@ -7,7 +7,7 @@ import {listUsersService} from "../../../../services/users/ListUsers/listUsersSe
 import SearchUsers from "../../../../components/users/list/SearchUsers";
 import PaginationTable from "../../../../components/shared/PaginationTable";
 import Loading from "../../../../components/shared/Loading";
-
+import { Card } from "react-bootstrap";
 export default function ListUsers(props){
     const {setCallLogin} = props;
     const [users, setUsers] = useState([]);
@@ -41,6 +41,9 @@ export default function ListUsers(props){
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>
+            <Card>
+                <Card.Body>
+                    <Card.Title>Listado de usuarios</Card.Title>
             <SearchUsers
                 setTerm={setTerm}
                 setAttr={setAttr}
@@ -51,8 +54,10 @@ export default function ListUsers(props){
             <PaginationTable
                 paginate={paginate}
                 setNumPage={setNumPage}
-                numPage={numPage}
-            />
+                    numPage={numPage}
+                />
+            </Card.Body>
+        </Card>
         </BannerLayout>
     )
 }

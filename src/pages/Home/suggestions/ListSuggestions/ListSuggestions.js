@@ -7,7 +7,7 @@ import SearchSuggestions from "../../../../components/suggestions/list/SearchSug
 import PaginationTable from "../../../../components/shared/PaginationTable";
 import {useParams} from "react-router-dom";
 import Loading from "../../../../components/shared/Loading";
-
+import { Card } from "react-bootstrap";
 import "./ListSuggestions.scss"
 
 export default function ListSuggestions(props) {
@@ -43,18 +43,23 @@ export default function ListSuggestions(props) {
 
     return(
         <BannerLayout setCallLogin={setCallLogin}>
-            <SearchSuggestions
-             setNumPage={setNumPage}
-             setRead={setRead}
-             setAnonymous={setAnonymous}/>
+            <Card>
+                <Card.Body>
+                    <Card.Title>Listado de sugerencias</Card.Title>
+                    <SearchSuggestions
+                    setNumPage={setNumPage}
+                    setRead={setRead}
+                    setAnonymous={setAnonymous}/>
 
-            <TableSuggestions suggestions={suggestions}/>
+                     <TableSuggestions suggestions={suggestions}/>
 
-            <PaginationTable
-                paginate={paginate}
-                setNumPage={setNumPage}
-                numPage={numPage}
-            />
+                    <PaginationTable
+                        paginate={paginate}
+                        setNumPage={setNumPage}
+                        numPage={numPage}
+                    />
+                </Card.Body>
+            </Card>
         </BannerLayout>
     )
 }

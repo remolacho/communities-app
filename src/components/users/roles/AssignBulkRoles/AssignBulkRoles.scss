@@ -1,56 +1,115 @@
 @import "../../../../scss/index";
 
-.assign-bulk-roles{
-  .card{
+.assign-bulk-roles {
+  padding: 20px;
+
+  @media (max-width: 768px) {
+    padding: 10px;
+  }
+
+  .card {
     margin-top: 40px;
-    width: 48rem;
+    width: 100%;
+    max-width: 48rem;
     background-color: $background-dark-light;
-    .card-title{
+
+    @media (max-width: 768px) {
+      margin-top: 20px;
+    }
+
+    .card-title {
       font-size: 24px;
       color: $font-grey;
       font-weight: bold;
+
+      @media (max-width: 768px) {
+        font-size: 20px;
+      }
     }
-    .card-text{
+
+    .card-text {
       font-size: 16px;
       color: $font-light;
       font-weight: bold;
+
+      @media (max-width: 768px) {
+        font-size: 14px;
+      }
     }
-    .upload-file{
+
+    .upload-file {
       display: flex;
       align-items: center;
       justify-content: center;
       height: 180px;
       background-color: $background-grey-light;
+      border-radius: 8px;
+      transition: all 0.3s ease;
 
-      &:hover{
+      @media (max-width: 768px) {
+        height: 120px;
+      }
+
+      &:hover {
         cursor: pointer;
         border: 4px solid $primary;
       }
 
-      svg{
+      svg {
         width: 120px !important;
         height: 150px !important;
         fill: $font-light;
-        &:hover{
+        transition: fill 0.3s ease;
+
+        @media (max-width: 768px) {
+          width: 80px !important;
+          height: 100px !important;
+        }
+
+        &:hover {
           fill: $font-dark;
         }
       }
     }
   }
-  .action-button{
+
+  .action-button {
     text-align: center;
     margin-bottom: 20px;
+
+    button {
+      @media (max-width: 768px) {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+    }
   }
-  .link-action{
+
+  .link-action {
     display: flex;
     justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 10px;
+
+    @media (max-width: 576px) {
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
   }
-  button{
+
+  button {
     margin-top: 20px;
   }
-  .file-name{
+
+  .file-name {
     font-size: 16px;
     color: $font-light;
     font-weight: bold;
+    word-break: break-word;
+
+    @media (max-width: 768px) {
+      font-size: 14px;
+    }
   }
 }

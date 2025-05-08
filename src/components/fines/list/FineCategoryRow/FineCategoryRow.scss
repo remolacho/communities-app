@@ -1,0 +1,19 @@
+@import "../../../../scss/index";
+
+.fine-category-row {
+    td {
+        vertical-align: middle;
+        font-size: 14px;
+    }
+
+    .actions {
+        text-align: left;
+        width: 120px;
+
+        .dropdown {
+            .dropdown-toggle {
+                width: 100px;
+            }
+        }
+    }
+} 

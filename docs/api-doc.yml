@@ -1,0 +1,4043 @@
+---
+openapi: 3.0.1
+info:
+  title: API V1
+  version: v1
+paths:
+  "/{enterprise_subdomain}/v1/categories_petitions/list":
+    get:
+      summary: List of categories petitions
+      tags:
+      - Community API V1 Categories Petitions
+      description: Allow to users get categories for petitions
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        slug:
+                          type: string
+                        name:
+                          type: string
+        '403':
+          description: error not logged!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/enterprise/profile":
+    get:
+      summary: Find the profile and data of current enterprise
+      tags:
+      - Community API V1 Enterprises
+      description: Find the profile and data of current enterprise
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      identifier:
+                        type: string
+                      social_reason:
+                        type: string
+                      email:
+                        type: string
+                      token:
+                        type: string
+                      name:
+                        type: string
+                      address:
+                        type: string
+                        nullable: true
+                      subdomain:
+                        type: string
+                      logo_url:
+                        type: string
+                        nullable: true
+                      banner_url:
+                        type: string
+                        nullable: true
+                      reference_regex:
+                        type: string
+                      short_name:
+                        type: string
+                      active:
+                        type: boolean
+                        default: true
+                      created_at:
+                        type: string
+                      updated_at:
+                        type: string
+        '403':
+          description: error user has not read permission!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/enterprise/setting":
+    get:
+      summary: Find the setting and data of current enterprise
+      tags:
+      - Community API V1 Enterprises
+      description: Find the setting and data of current enterprise
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+                      subdomain:
+                        type: string
+                      name:
+                        type: string
+                      logo_url:
+                        type: string
+                        nullable: true
+                      banner_url:
+                        type: string
+                        nullable: true
+                      country:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          code:
+                            type: string
+                          currency_code:
+                            type: string
+                          currency_symbol:
+                            type: string
+                          active:
+                            type: boolean
+        '403':
+          description: error user not valid!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/enterprise/subdomain":
+    get:
+      summary: valid the subdomain of the enterprise
+      tags:
+      - Community API V1 Enterprises
+      description: valid the subdomain of the enterprise
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      logo_url:
+                        type: string
+                        nullable: true
+        '403':
+          description: error user not valid!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/enterprise/update/{token}":
+    put:
+      summary: Modify the profile of the current enterprise
+      tags:
+      - Community API V1 Enterprises
+      description: Modify the profile of the current enterprise
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: token of the enterprise"
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '404':
+          description: error enterprise not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: error user not valid, has not edit permission!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                enterprise:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    email:
+                      type: string
+                    address:
+                      type: string
+                    identifier:
+                      type: string
+                    social_reason:
+                      type: string
+                    logo:
+                      type: string
+                      description: the file of image
+                    banner:
+                      type: string
+                      description: the file of image
+  "/{enterprise_subdomain}/v1/fines/categories/create":
+    post:
+      summary: Create a new fine category
+      tags:
+      - Community API V1 Fines
+      description: Allow users to create a new fine category, optionally as a child
+        of an existing category
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Optional, default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      name:
+                        type: string
+                      description:
+                        type: string
+                      code:
+                        type: string
+                      formula:
+                        type: string
+                      value:
+                        type: number
+                      active:
+                        type: boolean
+                      parent_category_fine_id:
+                        type: integer
+                        nullable: true
+        '403':
+          description: error forbidden!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '422':
+          description: error unprocessable entity!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+                  errors:
+                    type: object
+                    properties:
+                      name:
+                        type: array
+                        items:
+                          type: string
+                      code:
+                        type: array
+                        items:
+                          type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                category_fine:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                      description: Name of the category
+                    code:
+                      type: string
+                      description: Unique code for the category
+                    description:
+                      type: string
+                      description: Optional description
+                    formula:
+                      type: string
+                      description: Optional formula for calculation
+                    value:
+                      type: number
+                      description: Optional base value
+                    parent_category_fine_id:
+                      type: integer
+                      description: Optional ID of parent category
+                      nullable: true
+                    active:
+                      type: boolean
+                      description: Optional status, defaults to true
+                  required:
+                  - name
+                  - code
+  "/{enterprise_subdomain}/v1/fines/categories/delete/{id}":
+    delete:
+      summary: Deactivate a fine category
+      tags:
+      - Community API V1 Fines
+      description: Allow users to deactivate a fine category
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: ID of the category to deactivate
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Optional, default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '403':
+          description: error forbidden!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+                  data:
+                    type: object
+        '404':
+          description: error not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/fines/categories/import":
+    post:
+      summary: Import fine categories from Excel file
+      tags:
+      - Community API V1 Fines
+      description: Allow users to import fine categories from an Excel file
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Optional, default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '422':
+          description: error invalid header!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: error forbidden!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+                  data:
+                    type: object
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: file
+        required: true
+        description: Excel file with categories data
+  "/{enterprise_subdomain}/v1/fines/categories/list":
+    get:
+      summary: Request the list of fine categories
+      tags:
+      - Community API V1 Fines
+      description: Allow users to get list of fine categories with their children
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Optional, default is "es"
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: Optional, represents the page number
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        description:
+                          type: string
+                        code:
+                          type: string
+                        formula:
+                          type: string
+                        value:
+                          type: number
+                        active:
+                          type: boolean
+                        parent_category_fine_id:
+                          type: integer
+                          nullable: true
+                  paginate:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                        description: Number of items per page
+                      total_pages:
+                        type: integer
+                        description: Total number of pages
+                      current_page:
+                        type: integer
+                        description: Current page number
+        '403':
+          description: error forbidden!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/fines/statuses/all/{type}":
+    get:
+      summary: Find all statuses of fines by type
+      tags:
+      - Community API V1 Statuses Fines
+      description: Allow users to find all statuses of fines by type (legal or warning)
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: type
+        in: path
+        description: Type of fine status (legal or warning)
+        enum:
+        - legal
+        - warning
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Optional, default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success lists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        as_name:
+                          type: string
+                        code:
+                          type: string
+                        color:
+                          type: string
+        '403':
+          description: forbidden access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '423':
+          description: invalid type
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/fines/statuses/list/{token}":
+    get:
+      summary: Find all available statuses for a fine
+      tags:
+      - Community API V1 Statuses Fine
+      description: Allow users to find all available statuses according to fine type
+        and current state
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise created in tenant creation
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: Token of the fine
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Optional language parameter, defaults to "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success lists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        code:
+                          type: string
+                        description:
+                          type: string
+        '403':
+          description: error unauthorized access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error fine not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/fines/statuses/update/{token}":
+    put:
+      summary: Change status of a fine
+      tags:
+      - Community API V1 Fines
+      description: Allow users to change the status of fines
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise created in tenant creation
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: Token of the fine to update
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Optional language parameter, defaults to "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: Status updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '404':
+          description: Fine not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: Status change not allowed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                fine:
+                  type: object
+                  properties:
+                    status_id:
+                      type: integer
+  "/{enterprise_subdomain}/v1/group_roles/list_petitions":
+    get:
+      summary: List of group of roles by petitions entity
+      tags:
+      - Community API V1 Group Roles
+      description: Allow to users get group of roles by petitions entity
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+        '403':
+          description: error not logged!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/answer/{token}/create":
+    post:
+      summary: Create a new answer for petition
+      tags:
+      - Community API V1 Answers petition
+      description: Allow to users create answer in a petition
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token is the petition information
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '404':
+          description: error petition!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: error not logged, not allowed role or the petition is resolved
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                answer:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    files:
+                      type: array
+                      items:
+                        type: string
+  "/{enterprise_subdomain}/v1/petition/answer/delete/{id}":
+    delete:
+      summary: Delete answer from petition
+      tags:
+      - Community API V1 Answers petition
+      description: Allow users to delete their answers from a petition
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: this identifier unique of the answer
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success the user has can destroy the answer is not owner
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '403':
+          description: error the user not logged !!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error the answer not found !!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/answer/files/{id}/list":
+    get:
+      summary: Find all files of answer
+      tags:
+      - Community API V1 Answers petition
+      description: Allow to users find all files of answer
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: this identifier is the answer
+        required: true
+        schema:
+          type: integer
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        ext:
+                          type: string
+                        url:
+                          type: string
+        '403':
+          description: error role not allowed!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error answer not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/answers/list/{token}":
+    get:
+      summary: Find all answers of one petition
+      tags:
+      - Community API V1 Answers petition
+      description: Allow to users find all answers of the petition
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token is the petition information
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success lists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        message:
+                          type: string
+                        date_at:
+                          type: string
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            lastname:
+                              type: string
+                            avatar_url:
+                              type: string
+                              nullable: true
+                        files:
+                          type: array
+                          items:
+                            type: object
+                            properties:
+                              name:
+                                type: string
+                              ext:
+                                type: string
+                              url:
+                                type: string
+                                nullable: true
+                        setting:
+                          type: object
+                          properties:
+                            delete:
+                              type: object
+                              properties:
+                                action:
+                                  type: boolean
+                                  default: true
+                                description:
+                                  type: string
+        '403':
+          description: error role not allowed!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error petition not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/create":
+    post:
+      summary: Create a new petition
+      tags:
+      - Community API V1 Petitions
+      description: Allow to users create petitions
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      ticket:
+                        type: string
+                      token:
+                        type: string
+        '404':
+          description: error category, group_role not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: error not logged!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                petition:
+                  type: object
+                  properties:
+                    title:
+                      type: string
+                    message:
+                      type: string
+                    category_petition_id:
+                      type: integer
+                    group_role_id:
+                      type: integer
+                    files:
+                      type: array
+                      items:
+                        type: string
+  "/{enterprise_subdomain}/v1/petition/dashboard/chart_statuses":
+    get:
+      summary: Find all petitions by status and calculate percentage
+      tags:
+      - Community API V1 Petitions
+      description: Find all petitions by status and calculate percentage
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success lists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        code:
+                          type: string
+                        name:
+                          type: string
+                        color:
+                          type: string
+                        percentage:
+                          type: number
+                        counter:
+                          type: integer
+                        total:
+                          type: integer
+                        symbol:
+                          type: string
+        '403':
+          description: error role not allowed!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/detail/{token}":
+    get:
+      summary: Find the detail of petition
+      tags:
+      - Community API V1 Petitions
+      description: Allow to users find petition and your detail
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token is the petition information
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      ticket:
+                        type: string
+                      token:
+                        type: string
+                      title:
+                        type: string
+                      message:
+                        type: string
+                      status:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          code:
+                            type: string
+                          color:
+                            type: string
+                      category:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                      group_role:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          lastname:
+                            type: string
+                          avatar_url:
+                            type: string
+                            nullable: true
+                      setting:
+                        type: object
+                        properties:
+                          reply:
+                            type: object
+                            properties:
+                              action:
+                                type: boolean
+                                default: true
+                              description:
+                                type: string
+        '403':
+          description: error role not allowed!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error petition not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/files/{token}/list":
+    get:
+      summary: Find all files of petition
+      tags:
+      - Community API V1 Petitions
+      description: Allow to users find all files of petitions
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token is the petition information
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        ext:
+                          type: string
+                        url:
+                          type: string
+        '403':
+          description: error role not allowed!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error petition not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/list_group_roles":
+    get:
+      summary: Request the list of petitions with group roles
+      tags:
+      - Community API V1 Petitions
+      description: Allow to users get list of petition with group roles
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: status_id
+        in: query
+        description: is optional represent the filter by status
+        schema:
+          type: integer
+      - name: category_petition_id
+        in: query
+        description: is optional represent the filter by category
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: is optional represent the number page of find
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        ticket:
+                          type: string
+                        token:
+                          type: string
+                        title:
+                          type: string
+                        message:
+                          type: string
+                        status:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            identifier:
+                              type: string
+                            name:
+                              type: string
+                            code:
+                              type: string
+                            color:
+                              type: string
+                        category:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        group_role:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            identifier:
+                              type: string
+                            name:
+                              type: string
+                            lastname:
+                              type: string
+                            avatar_url:
+                              type: string
+                              nullable: true
+                        setting:
+                          type: object
+                          properties:
+                            reply:
+                              type: object
+                              properties:
+                                action:
+                                  type: boolean
+                                  default: true
+                                description:
+                                  type: string
+                  paginate:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                      total_pages:
+                        type: integer
+                      current_page:
+                        type: integer
+        '403':
+          description: error forbidden!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/list_own":
+    get:
+      summary: Request the list of petitions own
+      tags:
+      - Community API V1 Petitions
+      description: Allow to users get your list of petition
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: status_id
+        in: query
+        description: is optional represent the filter by status
+        schema:
+          type: integer
+      - name: category_petition_id
+        in: query
+        description: is optional represent the filter by category
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: is optional represent the number page of find
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        ticket:
+                          type: string
+                        token:
+                          type: string
+                        title:
+                          type: string
+                        message:
+                          type: string
+                        status:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            identifier:
+                              type: string
+                            name:
+                              type: string
+                            code:
+                              type: string
+                            color:
+                              type: string
+                        category:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        group_role:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                            name:
+                              type: string
+                            lastname:
+                              type: string
+                            avatar_url:
+                              type: string
+                              nullable: true
+                        setting:
+                          type: object
+                          properties:
+                            reply:
+                              type: object
+                              properties:
+                                action:
+                                  type: boolean
+                                  default: true
+                                description:
+                                  type: string
+                  paginate:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                      total_pages:
+                        type: integer
+                      current_page:
+                        type: integer
+        '403':
+          description: error the user not logged!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/statuses/all":
+    get:
+      summary: Find all statuses of type petition
+      tags:
+      - Community API V1 Statuses petition
+      description: Allow to users find all statuses of type petition
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success lists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        as_name:
+                          type: string
+                        code:
+                          type: string
+                        color:
+                          type: string
+        '403':
+          description: error user logged!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/statuses/list/{token}":
+    get:
+      summary: Find all statuses of one petition
+      tags:
+      - Community API V1 Statuses petition
+      description: Allow to users find all statuses according to petition through
+        your state
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token is the petition information
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success lists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        code:
+                          type: string
+                        color:
+                          type: string
+        '403':
+          description: error user logged!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error petition not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/petition/statuses/update/{token}":
+    put:
+      summary: Change status to petition
+      tags:
+      - Community API V1 Petitions
+      description: Allow to users change of status in the petitions
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token is the petition information
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '404':
+          description: Error petition not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: error change status allowed
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                petition:
+                  type: object
+                  properties:
+                    status_id:
+                      type: integer
+  "/{enterprise_subdomain}/v1/properties/create":
+    post:
+      summary: Create a new property
+      tags:
+      - Community API V1 Properties
+      description: Creates a new property with the given parameters
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: property created successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  property:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      location:
+                        type: string
+                      active:
+                        type: boolean
+                      enterprise_id:
+                        type: integer
+                      property_type_id:
+                        type: integer
+                      status_id:
+                        type: integer
+                    required:
+                    - id
+                    - location
+                    - active
+                    - enterprise_id
+                    - property_type_id
+                    - status_id
+                required:
+                - success
+                - property
+        '403':
+          description: forbidden access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: property type not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '422':
+          description: invalid location format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                property:
+                  type: object
+                  properties:
+                    property_type_id:
+                      type: integer
+                    location:
+                      type: string
+                    status_id:
+                      type: integer
+                  required:
+                  - property_type_id
+                  - location
+                  - status_id
+  "/{enterprise_subdomain}/v1/properties/delete/{id}":
+    delete:
+      summary: Toggle property active status
+      tags:
+      - Community API V1 Properties
+      description: Toggles the active status of a property (active to inactive or
+        vice versa)
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: Property ID
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: property deleted successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  message:
+                    type: string
+                required:
+                - success
+                - message
+        '403':
+          description: forbidden access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/properties/import/create":
+    post:
+      summary: Import properties from XLSX file
+      tags:
+      - Community API V1 Properties Import
+      description: Allow users to import properties from an XLSX file
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: properties imported successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '403':
+          description: error forbidden!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  error:
+                    type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: file
+        required: true
+        description: XLSX file with properties to import
+  "/{enterprise_subdomain}/v1/properties/import/template":
+    get:
+      summary: Download template for property import
+      tags:
+      - Community API V1 Properties Import
+      description: Allow users to download the template for importing properties
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: Optional, default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: template downloaded successfully
+        '403':
+          description: error forbidden!!!
+          content:
+            application/vnd.openxmlformats-officedocument.spreadsheetml.sheet:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/properties/list":
+    get:
+      summary: List all properties
+      tags:
+      - Community API V1 Properties
+      description: Returns a list of properties
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: search_attr
+        in: query
+        description: is optional represent the field of find
+        schema:
+          type: string
+      - name: term
+        in: query
+        description: is optional represent the value of find
+        schema:
+          type: string
+      - name: status_id
+        in: query
+        description: is optional represent the value of find
+        schema:
+          type: string
+      - name: property_type_id
+        in: query
+        description: is optional represent the value of find
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: is optional represent the number page of find
+        schema:
+          type: string
+      responses:
+        '200':
+          description: properties listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        location:
+                          type: string
+                        active:
+                          type: boolean
+                        enterprise_id:
+                          type: integer
+                        property_type_id:
+                          type: integer
+                        status_id:
+                          type: integer
+                        property_type_name:
+                          type: string
+                        status_name:
+                          type: string
+                  paginate:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                      total_pages:
+                        type: integer
+                      current_page:
+                        type: integer
+                required:
+                - success
+                - data
+                - paginate
+        '403':
+          description: forbidden access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/properties/property_types/all":
+    get:
+      summary: List all property types
+      tags:
+      - Community API V1 Properties
+      description: Returns a list of active property types
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: property types listed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        name:
+                          type: string
+                        active:
+                          type: boolean
+                required:
+                - success
+                - data
+        '403':
+          description: forbidden access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/properties/statuses/all":
+    get:
+      summary: Find all statuses of type property
+      tags:
+      - Community API V1 Statuses property
+      description: Allow to users find all statuses of type property
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success lists
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        as_name:
+                          type: string
+                        code:
+                          type: string
+                        color:
+                          type: string
+        '403':
+          description: forbidden access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/properties/update/{id}":
+    put:
+      summary: Update an existing property
+      tags:
+      - Community API V1 Properties
+      description: Updates an existing property with the given parameters
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      - name: id
+        in: path
+        description: ID of the property to update
+        required: true
+        schema:
+          type: integer
+      responses:
+        '200':
+          description: property updated successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                  property:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      location:
+                        type: string
+                      active:
+                        type: boolean
+                      enterprise_id:
+                        type: integer
+                      property_type_id:
+                        type: integer
+                      status_id:
+                        type: integer
+                    required:
+                    - id
+                    - location
+                    - active
+                    - enterprise_id
+                    - property_type_id
+                    - status_id
+                required:
+                - success
+                - property
+        '403':
+          description: forbidden - insufficient permissions
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: property not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                property:
+                  type: object
+                  properties:
+                    property_type_id:
+                      type: integer
+                    location:
+                      type: string
+                    status_id:
+                      type: integer
+  "/{enterprise_subdomain}/v1/suggestion/create":
+    post:
+      summary: Create a new suggestion
+      tags:
+      - Community API V1 Suggestions
+      description: Allow to users create suggestions
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      ticket:
+                        type: string
+                      token:
+                        type: string
+        '403':
+          description: error not logged!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                suggestion:
+                  type: object
+                  properties:
+                    message:
+                      type: string
+                    anonymous:
+                      type: boolean
+                      default: false
+                    files:
+                      type: array
+                      items:
+                        type: string
+  "/{enterprise_subdomain}/v1/suggestion/detail/{token}":
+    get:
+      summary: Find the detail of suggestion
+      tags:
+      - Community API V1 Suggestions
+      description: Allow to users find suggestion and your detail
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token is the suggestion information
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      ticket:
+                        type: string
+                      token:
+                        type: string
+                      message:
+                        type: string
+                      read:
+                        type: boolean
+                        default: false
+                      anonymous:
+                        type: boolean
+                        default: false
+                      user:
+                        type: object
+                        properties:
+                          id:
+                            type: integer
+                          name:
+                            type: string
+                          lastname:
+                            type: string
+                          avatar_url:
+                            type: string
+                            nullable: true
+        '403':
+          description: error role not allowed!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error suggestion not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/suggestion/files/{token}/list":
+    get:
+      summary: Find all files of suggestion
+      tags:
+      - Community API V1 Suggestions
+      description: Allow to users find all files of petitions
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token is the suggestion information
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: Authorization
+        in: header
+        required: true
+      responses:
+        '200':
+          description: success owner!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        name:
+                          type: string
+                        ext:
+                          type: string
+                        url:
+                          type: string
+        '403':
+          description: error role not allowed!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error suggestion not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/suggestion/list_group_roles":
+    get:
+      summary: Request the list of suggestions with group roles
+      tags:
+      - Community API V1 Suggestions
+      description: Allow to users get list of suggestion with group roles
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: read
+        in: query
+        description: is optional represent the filter by read
+        schema:
+          type: integer
+      - name: anonymous
+        in: query
+        description: is optional represent the filter by user anonymous
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: is optional represent the number page of find
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        token:
+                          type: string
+                        title:
+                          type: string
+                        message:
+                          type: string
+                        read:
+                          type: boolean
+                        anonymous:
+                          type: boolean
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              nullable: true
+                            name:
+                              type: string
+                            lastname:
+                              type: string
+                            avatar_url:
+                              type: string
+                              nullable: true
+                  paginate:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                      total_pages:
+                        type: integer
+                      current_page:
+                        type: integer
+        '403':
+          description: error forbidden!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/suggestion/list_own":
+    get:
+      summary: Request the list of suggestions own
+      tags:
+      - Community API V1 Suggestions
+      description: Allow to users get your list of suggestions
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: read
+        in: query
+        description: is optional represent the filter by read
+        schema:
+          type: integer
+      - name: page
+        in: query
+        description: is optional represent the number page of find
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        token:
+                          type: string
+                        title:
+                          type: string
+                        message:
+                          type: string
+                        read:
+                          type: boolean
+                        anonymous:
+                          type: boolean
+                        user:
+                          type: object
+                          properties:
+                            id:
+                              type: integer
+                              nullable: true
+                            identifier:
+                              type: string
+                            name:
+                              type: string
+                            lastname:
+                              type: string
+                            avatar_url:
+                              type: string
+                              nullable: true
+                  paginate:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                      total_pages:
+                        type: integer
+                      current_page:
+                        type: integer
+        '403':
+          description: error the user not logged!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/user_properties/import/create":
+    post:
+      summary: Import user properties from XLSX file
+      tags:
+      - Community API V1 User Properties Import
+      description: Allow users to import user properties from an XLSX file
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user properties imported successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '422':
+          description: invalid header format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: user not found
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: forbidden access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: file
+        required: true
+        description: XLSX file with user properties to import
+  "/{enterprise_subdomain}/v1/user_properties/import/remove":
+    delete:
+      summary: Remove user properties from XLSX file
+      tags:
+      - Community API V1 User Properties Import
+      description: Allow users to remove user properties from an XLSX file
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: Subdomain of enterprise
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: user properties removed successfully
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '422':
+          description: invalid header format
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: forbidden access
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          multipart/form-data:
+            schema:
+              type: file
+        required: true
+        description: XLSX file with user properties to remove
+  "/{enterprise_subdomain}/v1/user_roles/import/create":
+    post:
+      summary: Allow to users create roles to users
+      tags:
+      - Community API V1 Users Roles
+      description: Allow to users create roles to users by xlsx
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: user_roles_file
+        in: form
+        description: the file import user roles
+        schema:
+          type: file
+      responses:
+        '200':
+          description: success, but It can finish with errors!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+        '403':
+          description: user not role admin or super admin!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/user_roles/import/remove":
+    delete:
+      summary: Allow to users remove roles to users
+      tags:
+      - Community API V1 Users Roles
+      description: Allow to users remove roles to users by xlsx
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: user_roles_file
+        in: form
+        description: the file import user roles
+        schema:
+          type: file
+      responses:
+        '200':
+          description: success, but It can finish with errors!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                  errors:
+                    type: array
+                    items:
+                      type: string
+        '403':
+          description: user not role admin or super admin!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/user_roles/templates/import":
+    get:
+      summary: Allow to users download a tempelate for importer the user roles
+      tags:
+      - Community API V1 Users Roles
+      description: Allow to users download a tempelate for importer the user roles
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success down laod file!!!
+  "/{enterprise_subdomain}/v1/users/change_status/{token}":
+    get:
+      summary: Can change status active or inactive of the user
+      tags:
+      - Community API V1 Users
+      description: Allow a user activate or inactivate other user, the current user
+        should have nay the roles [admin, super admin]
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: the user token to change status
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '403':
+          description: error the user has not role can_write!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error the user token!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/users/forgot_password/change/{token}":
+    post:
+      summary: Change password
+      tags:
+      - Community API V1 Users
+      description: Allow to users do change to password
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token represent the reset_password_key
+        required: true
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '422':
+          description: error password not match!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                forgot_password:
+                  type: object
+                  properties:
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+  "/{enterprise_subdomain}/v1/users/forgot_password":
+    post:
+      summary: Create a new request for change password
+      tags:
+      - Community API V1 Users
+      description: Allow to users do change to password
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '422':
+          description: error email is empty!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '404':
+          description: error user not found!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                forgot_password:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+  "/{enterprise_subdomain}/v1/users/forgot_password/verifier/{token}":
+    get:
+      summary: Create a new request for verifier token to change password
+      tags:
+      - Community API V1 Users
+      description: Allow to users verifier to change password
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token represent the reset_password_key
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+                  data:
+                    type: object
+                    properties:
+                      token:
+                        type: string
+        '404':
+          description: error token not valid!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/users/list":
+    get:
+      summary: Request the user list only roles [admin, super admin, manager]
+      tags:
+      - Community API V1 Users
+      description: Allow to users get 1 list of users, the current user should have
+        nay the roles [admin, super admin, manager]
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: attr
+        in: query
+        description: is optional represent the field of find
+        schema:
+          type: string
+      - name: term
+        in: query
+        description: is optional represent the value of find
+        schema:
+          type: string
+      - name: page
+        in: query
+        description: is optional represent the number page of find
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success can list!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: array
+                    items:
+                      type: object
+                      properties:
+                        id:
+                          type: integer
+                        token:
+                          type: string
+                        name:
+                          type: string
+                        lastname:
+                          type: string
+                        email:
+                          type: string
+                        reference:
+                          type: string
+                          nullable: true
+                        identifier:
+                          type: string
+                        phone:
+                          type: string
+                          nullable: true
+                  paginate:
+                    type: object
+                    properties:
+                      limit:
+                        type: integer
+                      total_pages:
+                        type: integer
+                      current_page:
+                        type: integer
+        '403':
+          description: error the user has not role!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/users/profile/show":
+    get:
+      summary: Find the profile of current user
+      tags:
+      - Community API V1 Users
+      description: Allow see the user's data logged
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: query
+        description: is optional, the token of user
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success other user!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                      token:
+                        type: string
+                      name:
+                        type: string
+                      lastname:
+                        type: string
+                      email:
+                        type: string
+                      reference:
+                        type: string
+                        nullable: true
+                      identifier:
+                        type: string
+                      phone:
+                        type: string
+                        nullable: true
+                      avatar_url:
+                        type: string
+                        nullable: true
+                      setting:
+                        type: object
+                        properties:
+                          can_edit:
+                            type: boolean
+                            default: true
+        '404':
+          description: user token not found !!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+        '403':
+          description: error user not valid!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/users/sign_in":
+    post:
+      summary: Create login by user
+      tags:
+      - Community API V1 Users
+      description: Allow to users enter to api through of the email and password
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  data:
+                    type: object
+                    properties:
+                      jwt:
+                        type: string
+        '403':
+          description: error password or user is not active!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sign_in:
+                  type: object
+                  properties:
+                    email:
+                      type: string
+                    password:
+                      type: string
+  "/{enterprise_subdomain}/v1/users/sign_up/active/{token}":
+    get:
+      summary: Request activation account
+      tags:
+      - Community API V1 Users
+      description: Allow to users activate account
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: token
+        in: path
+        description: this token represent the active_key
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '404':
+          description: error token not valid!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+  "/{enterprise_subdomain}/v1/users/sign_up":
+    post:
+      summary: Create user
+      tags:
+      - Community API V1 Users
+      description: Allow create a account in the app
+      parameters:
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      responses:
+        '200':
+          description: success!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '422':
+          description: error user already exists identifier duplicate!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+      requestBody:
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                sign_up:
+                  type: object
+                  properties:
+                    name:
+                      type: string
+                    lastname:
+                      type: string
+                    identifier:
+                      type: string
+                    email:
+                      type: string
+                    phone:
+                      type: string
+                    reference:
+                      type: string
+                    password:
+                      type: string
+                    password_confirmation:
+                      type: string
+  "/{enterprise_subdomain}/v1/users/upload_avatar":
+    post:
+      summary: Allow to users load your image max 1 mb
+      tags:
+      - Community API V1 Users
+      description: Allow to users load image for your profile Max 1 mb
+      parameters:
+      - name: Authorization
+        in: header
+        required: true
+      - name: enterprise_subdomain
+        in: path
+        description: this subdomain of enterprise create in creations tenant
+        required: true
+        schema:
+          type: string
+      - name: lang
+        in: query
+        description: is optional by default is "es"
+        schema:
+          type: string
+      - name: avatar_file
+        in: form
+        description: the file image user
+        schema:
+          type: file
+      responses:
+        '200':
+          description: success!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '422':
+          description: file empty!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: true
+                  message:
+                    type: string
+        '403':
+          description: user not logged!!!
+          content:
+            application/json:
+              schema:
+                type: object
+                properties:
+                  success:
+                    type: boolean
+                    default: false
+                  message:
+                    type: string
+servers:
+- url: http://localhost:3000
+  variables:
+    defaultHost:
+      default: www.example.com

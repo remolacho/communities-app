@@ -22,7 +22,7 @@ export default function InfoUser(props){
                 {  profile?.identifier &&
                     <p className="">
                         <FontAwesomeIcon icon={faUser} />
-                        CC { profile.identifier }
+                        { profile.document_type } { profile.identifier }
                     </p>
                 }
 

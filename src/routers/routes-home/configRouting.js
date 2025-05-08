@@ -1,4 +1,3 @@
-import Dashboard from "../../pages/Home/DashBoard";
 import Profile from "../../pages/Home/users/Profile";
 import ProfileEnterprise from "../../pages/Home/enterprises/Profile"
 import Edit from "../../pages/Home/enterprises/Edit";
@@ -11,12 +10,29 @@ import DetailSuggestion from "../../pages/Home/suggestions/DetailSuggestion";
 import CreatePetition from "../../pages/Home/petitions/CreatePetition";
 import ListPetitions from "../../pages/Home/petitions/ListPetitions/ListPetitions";
 import DetailPetition from "../../pages/Home/petitions/DetailPetition";
+import ImportFineCategories from "../../pages/Home/fines/ImportFineCategories";
+import ListFineCategories from "../../pages/Home/fines/ListFineCategories";
+import CreateFine from "../../pages/Home/fines/CreateFine";
+import ImportProperties from "../../pages/Home/properties/ImportProperties";
+import ListProperties from "../../pages/Home/properties/ListProperties";
+import DashboardPQRs from "../../pages/Home/DashBoard/DashboardPQRs";
+import Main from "../../pages/Home/Main";
 
 const configRouting = [
     {
+        path: "/",
+        exact: true,
+        page: Main
+    },
+    {
         path: "home",
         exact: true,
-        page: Dashboard
+        page: Main
+    },
+    {
+        path: "dashboard/pqrs",
+        exact: true,
+        page: DashboardPQRs
     },
     {
         path: "enterprises/profile",
@@ -79,9 +95,29 @@ const configRouting = [
         page: DetailPetition
     },
     {
-        path: "/",
+        path: "fines/categories/import",
         exact: true,
-        page: Dashboard
+        page: ImportFineCategories
+    },
+    {
+        path: "fines/categories/list",
+        exact: true,
+        page: ListFineCategories
+    },
+    {
+        path: "fines/create",
+        exact: true,
+        page: CreateFine
+    },
+    {
+        path: "properties/import",
+        exact: true,
+        page: ImportProperties
+    },
+    {
+        path: "properties/list",
+        exact: true,
+        page: ListProperties
     }
 ]
 
